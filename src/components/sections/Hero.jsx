@@ -63,12 +63,12 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button size="lg" className="text-lg h-14 px-8 rounded-full shadow-purple-500/25 shadow-xl bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300" asChild>
+                            <Button size="lg" className="text-lg h-14 px-8 rounded-full shadow-purple-500/25 shadow-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 hover:scale-105 transition-all duration-300 border border-white/10" asChild>
                                 <Link to="/projects">
                                     View Case Studies <ArrowRight className="ml-2 w-5 h-5" />
                                 </Link>
                             </Button>
-                            <Button size="lg" variant="outline" className="text-lg h-14 px-8 rounded-full border-white/10 hover:bg-white/5 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300" asChild>
+                            <Button size="lg" variant="outline" className="text-lg h-14 px-8 rounded-full border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-purple-500/50 transition-all duration-300" asChild>
                                 <Link to="/contact">
                                     Start a Conversation
                                 </Link>
@@ -76,9 +76,9 @@ const Hero = () => {
                         </div>
 
                         <div className="pt-8 flex items-center gap-6 text-sm text-gray-400 font-medium font-mono">
-                            <div className="flex items-center gap-2"><Cpu className="w-4 h-4 text-purple-400" /> Agentic AI</div>
-                            <div className="flex items-center gap-2"><Network className="w-4 h-4 text-cyan-400" /> RAG Systems</div>
-                            <div className="flex items-center gap-2"><Terminal className="w-4 h-4 text-pink-400" /> Automation</div>
+                            <div className="flex items-center gap-2 self-center"><Cpu className="w-4 h-4 text-purple-400" /> <span className="pt-0.5">Agentic AI</span></div>
+                            <div className="flex items-center gap-2 self-center"><Network className="w-4 h-4 text-cyan-400" /> <span className="pt-0.5">RAG Systems</span></div>
+                            <div className="flex items-center gap-2 self-center"><Terminal className="w-4 h-4 text-pink-400" /> <span className="pt-0.5">Automation</span></div>
                         </div>
                     </motion.div>
 
@@ -118,20 +118,7 @@ const Hero = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Second Floating Badge */}
-                            <motion.div
-                                animate={{ y: [0, 15, 0] }}
-                                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute top-10 -right-8 bg-[#1c1038]/90 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl flex items-center gap-4"
-                            >
-                                <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                                    <Network className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <div className="text-white font-bold font-display text-lg">RAG</div>
-                                    <div className="text-xs text-cyan-300 font-mono">Expert</div>
-                                </div>
-                            </motion.div>
+
                         </div>
                     </motion.div>
 

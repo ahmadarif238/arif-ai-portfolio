@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 
 const Button = React.forwardRef(({ className, variant = 'default', size = 'md', children, ...props }, ref) => {
     const variants = {
-        default: "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/20 border border-transparent",
-        outline: "bg-transparent border-2 border-gray-700 text-white hover:bg-gray-800 hover:border-gray-600 hover:text-white",
-        ghost: "bg-transparent text-gray-300 hover:bg-gray-800 hover:text-white",
-        secondary: "bg-[#1F2937] text-white border border-gray-700 hover:bg-gray-700 hover:border-gray-600",
-        destructive: "bg-red-600 text-white hover:bg-red-700",
+        default: "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/20 border border-white/10 backdrop-blur-sm",
+        outline: "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-purple-500/50 hover:text-white backdrop-blur-sm",
+        ghost: "bg-transparent text-gray-300 hover:bg-white/5 hover:text-white",
+        secondary: "bg-[#1F2937] text-white border border-white/10 hover:bg-[#374151] hover:border-gray-500",
+        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-500/20",
     };
 
     const sizes = {

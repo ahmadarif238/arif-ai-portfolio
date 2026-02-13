@@ -37,7 +37,6 @@ export const skills = [
     {
         category: 'Development',
         items: [
-            { name: 'React', level: 'Advanced' },
             { name: 'JavaScript', level: 'Advanced' },
             { name: 'Git / GitHub', level: 'Expert' },
             { name: 'REST APIs', level: 'Expert' },
