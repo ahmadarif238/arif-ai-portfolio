@@ -59,11 +59,36 @@ const About = () => {
                                 <CardContent className="p-8">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                         <div>
-                                            <h3 className="text-2xl font-bold text-white">AI Engineer & Agentic AI Specialist</h3>
-                                            <p className="text-indigo-400 font-semibold text-lg">Freelance / Projects</p>
+                                            <h3 className="text-2xl font-bold text-white">AI Automation Engineer & Cloud Assistant</h3>
+                                            <p className="text-indigo-400 font-semibold text-lg">Int. Dublin Tax Company Ltd.</p>
                                         </div>
                                         <Badge variant="secondary" className="w-fit bg-[#111827] border border-white/10 text-gray-300 px-4 py-1">
                                             <Calendar className="w-3 h-3 mr-2" /> Present
+                                        </Badge>
+                                    </div>
+                                    <ul className="list-disc list-outside ml-5 space-y-2 text-gray-300">
+                                        <li>Design and implement AI driven automation and cloud solutions using Microsoft Azure, Power Platform, and Power Automate.</li>
+                                        <li>Build and manage workflow automations using n8n and integrate AI capabilities with LangChain and LangGraph for intelligent agent based systems.</li>
+                                        <li>Develop and deploy API based automation services using FastAPI, enabling seamless integration between cloud platforms, business tools, and AI models.</li>
+                                        <li>Support cloud operations, process automation, and AI powered solutions in a fully remote international environment.</li>
+                                        <li>Collaborate on automation projects, optimize workflows, and contribute to scalable, production ready cloud and AI infrastructure while continuously expanding technical capabilities.</li>
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                        </div>
+
+                        {/* Experience Item 2 */}
+                        <div className="relative">
+                            <span className="absolute -left-[41px] md:-left-[57px] top-2 w-5 h-5 rounded-full bg-cyan-600 border-4 border-[#0B0F19]" />
+                            <Card className="bg-[#1F2937] border border-gray-800 shadow-lg">
+                                <CardContent className="p-8">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white">AI Engineer & Agentic AI Specialist</h3>
+                                            <p className="text-cyan-400 font-semibold text-lg">Freelance / Projects</p>
+                                        </div>
+                                        <Badge variant="secondary" className="w-fit bg-[#111827] border border-white/10 text-gray-300 px-4 py-1">
+                                            <Calendar className="w-3 h-3 mr-2" /> 2024 - Present
                                         </Badge>
                                     </div>
                                     <ul className="list-disc list-outside ml-5 space-y-2 text-gray-300">
