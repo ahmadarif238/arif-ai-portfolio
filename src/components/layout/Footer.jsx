@@ -22,8 +22,8 @@ const Footer = () => {
                             Have a project in mind?
                         </h2>
                         <p className="max-w-xl text-[17px] leading-relaxed text-muted">
-                            Let&apos;s collaborate on something exceptional. I&apos;m ready to bring your
-                            agentic AI vision to production with precision and craft.
+Tell me what you&apos;re trying to build or automate, and I&apos;ll show you the
+                            fastest sensible way to get there.
                         </p>
                     </div>
                     <div className="flex lg:justify-end">

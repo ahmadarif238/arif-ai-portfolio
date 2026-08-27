@@ -11,10 +11,9 @@ import { cn } from '../../lib/utils';
  * scales on hover the way the reference cards' imagery does.
  */
 const ProjectCard = ({ project, className, height = 'h-[460px] lg:h-[560px]', index = 0 }) => {
-    // The type chip and the lead tech are often the same word — don't repeat it.
-    const tags = [project.type, ...project.techStack]
-        .filter((t, i, all) => all.indexOf(t) === i)
-        .slice(0, 2);
+    // Cards lead with what the project *is*; the full tech stack lives on the
+    // detail page so one framework name doesn't repeat across the whole grid.
+    const tags = [project.type];
 
     return (
         <motion.article

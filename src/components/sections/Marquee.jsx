@@ -1,12 +1,13 @@
 import React from 'react';
 
 const items = [
-    'Agentic AI Engineering',
-    'Multi-Agent LangGraph',
-    'RAG Architecture',
+    'Web Development',
+    'App Development',
+    'AI Agents',
+    'Chatbot Development',
+    'AI Calling Agents',
     'Workflow Automation',
-    'FastAPI Backends',
-    'LLM Ops',
+    'AI Integration',
 ];
 
 /** Tilted green band that breaks the vertical rhythm between sections. */

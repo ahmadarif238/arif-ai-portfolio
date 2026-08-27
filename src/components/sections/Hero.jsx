@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const stats = [
-    { value: '10+', label: 'Agentic Systems Shipped' },
-    { value: '7', label: 'Production Case Studies' },
-    { value: '0', label: 'Hallucination Incidents' },
+    { value: '10+', label: 'Systems Delivered' },
+    { value: '10+', label: 'Hours Saved Weekly' },
+    { value: '24/7', label: 'Automation Uptime' },
 ];
 
 const Hero = () => {
@@ -25,7 +25,7 @@ const Hero = () => {
                         transition={{ duration: 0.5 }}
                         className="eyebrow"
                     >
-                        AI Engineer / Agentic Systems
+                        Software Engineer / AI &amp; Automation
                     </motion.span>
 
                     <motion.h1
@@ -34,9 +34,9 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.05 }}
                         className="display max-w-4xl text-[48px] sm:text-[64px] lg:text-[84px]"
                     >
-                        Engineering{' '}
-                        <span className="font-light italic text-primary">Autonomous</span> AI
-                        with <br className="hidden lg:block" /> Production Precision
+                        Building{' '}
+                        <span className="font-light italic text-primary">Intelligent</span>{' '}
+                        Software <br className="hidden lg:block" /> That Works For You
                     </motion.h1>
 
                     <motion.p
@@ -45,9 +45,9 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.15 }}
                         className="max-w-2xl text-[18px] leading-[1.65] text-muted lg:text-[20px]"
                     >
-                        I design and deploy multi-agent LangGraph systems, zero-hallucination RAG
-                        architectures, and workflow automation that survives real traffic — not
-                        just a demo notebook.
+                        I&apos;m a Software Engineer building websites, apps, and AI systems that
+                        take the repetitive work off your team — chatbots, calling agents, and
+                        automations that run quietly in the background while you focus on growth.
                     </motion.p>
 
                     <motion.div

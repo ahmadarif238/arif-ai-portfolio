@@ -96,9 +96,9 @@ const Contact = () => {
                             </h1>
 
                             <p className="max-w-md text-[17px] leading-[1.75] text-muted lg:text-[19px]">
-                                Looking for an engineer to take an agentic AI idea to production? Drop
-                                me a line with what you&apos;re building and I&apos;ll come back with a
-                                concrete approach.
+Need a website, an app, or AI that takes work off your team? Tell me what
+                                you&apos;re trying to solve and I&apos;ll come back with a clear plan and
+                                an honest timeline.
                             </p>
                         </div>
 
@@ -179,7 +179,7 @@ const Contact = () => {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     required
-                                    placeholder="Multi-agent system, RAG pipeline, automation..."
+                                    placeholder="Website, app, chatbot, automation..."
                                     className="field"
                                 />
                             </div>

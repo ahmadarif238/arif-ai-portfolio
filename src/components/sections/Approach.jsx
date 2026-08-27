@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const coreStack = ['LangGraph / LangChain', 'FastAPI / Python', 'Pinecone / pgvector', 'Groq / Cerebras'];
-const focusAreas = ['Multi-Agent Orchestration', 'Retrieval Grounding', 'Workflow Automation', 'Latency Engineering'];
+const coreStack = ['ChatGPT / Claude / Gemini', 'React / Next.js', 'Python / FastAPI', 'Cloud & Databases'];
+const focusAreas = ['Web & App Development', 'AI Agents & Chatbots', 'AI Calling Agents', 'Workflow Automation'];
 
 const Approach = () => {
     return (
@@ -44,21 +44,20 @@ const Approach = () => {
                         <span className="eyebrow block">The Approach</span>
 
                         <h2 className="headline text-[36px] leading-[1.1] lg:text-[54px]">
-                            An agent is only useful <br className="hidden lg:block" /> when it can be trusted.
+                            Technology should <br className="hidden lg:block" /> give you time back.
                         </h2>
 
                         <div className="space-y-6 text-[17px] leading-[1.7] text-secondary lg:text-[19px]">
                             <p>
-                                I&apos;m an AI Engineer working at the intersection of applied LLM research and
-                                hard backend engineering. I build multi-agent systems on LangGraph, ground them
-                                in vector retrieval, and wrap them in FastAPI services that hold up under real
-                                operational load.
+                                I&apos;m a Software Engineer who builds the websites, apps, and AI systems
+                                businesses actually run on. Whether it&apos;s a site that converts, an app your
+                                team relies on, or an assistant that answers customers at 2am, the goal is the
+                                same — remove the friction between your business and the people it serves.
                             </p>
                             <p>
-                                My philosophy is grounding over cleverness: strip the system to the agents that
-                                genuinely earn their place, then make every claim traceable to a source. A model
-                                that guesses confidently is a liability — one that cites its evidence is a
-                                product.
+                                Every hour spent on repetitive work is an hour taken from growth. So I focus on
+                                the parts that can be handled automatically, and build them properly: reliable,
+                                easy to maintain, and simple enough that your team can actually use them.
                             </p>
                         </div>
 

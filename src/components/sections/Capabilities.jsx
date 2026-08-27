@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, Network, Database, Workflow as WorkflowIcon } from 'lucide-react';
+import { Check, Bot, Globe, Smartphone, MessageSquare, PhoneCall, Puzzle } from 'lucide-react';
 import { services } from '../../data/services';
 
 const iconMap = {
-    agents: Network,
-    retrieval: Database,
-    automation: WorkflowIcon,
+    agents: Bot,
+    web: Globe,
+    app: Smartphone,
+    chat: MessageSquare,
+    call: PhoneCall,
+    integration: Puzzle,
 };
 
 const Capabilities = ({ withHeading = true }) => {
@@ -16,11 +19,12 @@ const Capabilities = ({ withHeading = true }) => {
                 <div className="mb-16 max-w-3xl space-y-6">
                     <span className="eyebrow block">What I Do</span>
                     <h2 className="headline text-[44px] leading-none lg:text-[68px]">
-                        Core <span className="text-primary">Capabilities</span>
+                        What I <span className="text-primary">Build</span>
                     </h2>
                     <p className="text-[18px] leading-relaxed text-muted">
-                        I bridge applied LLM work and production backend engineering — three services
-                        for teams that need AI to actually run in front of users.
+                        From websites and apps to the AI that runs inside them — everything I build
+                        is aimed at the same thing: fewer manual hours, faster answers, better
+                        outcomes for the people using it.
                     </p>
                 </div>
             )}

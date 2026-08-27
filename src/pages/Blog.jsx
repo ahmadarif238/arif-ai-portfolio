@@ -28,8 +28,8 @@ const Blog = () => {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-[17px] leading-[1.7] text-muted lg:col-span-4 lg:col-start-9 lg:pt-4"
                     >
-                        Deep dives into multi-agent architectures, retrieval grounding, and the
-                        production failures that taught me more than the successes did.
+Practical write-ups on building with AI, automating real workflows, and the
+                        lessons that only show up once something is running in production.
                     </motion.p>
                 </div>
             </section>

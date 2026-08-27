@@ -8,21 +8,21 @@ const experience = [
         company: 'Int. Dublin Tax Company Ltd.',
         period: 'Present',
         points: [
-            'Design and implement AI-driven automation and cloud solutions using Microsoft Azure, Power Platform, and Power Automate.',
-            'Build and manage workflow automations in n8n, integrating AI capabilities with LangChain and LangGraph for agent-based systems.',
-            'Develop and deploy API-based automation services with FastAPI, connecting cloud platforms, business tools, and AI models.',
+            'Design and implement AI-driven automation and cloud solutions across Microsoft Azure, Power Platform, and Power Automate.',
+            'Build and manage workflow automations in n8n, adding AI capabilities to create agent-based systems.',
+            'Develop and deploy API-based automation services that connect cloud platforms, business tools, and AI models.',
             'Support cloud operations and AI-powered process automation in a fully remote international environment.',
             'Collaborate on automation projects and contribute to scalable, production-ready cloud and AI infrastructure.',
         ],
     },
     {
-        role: 'AI Engineer & Agentic AI Specialist',
+        role: 'Software Engineer & AI Developer',
         company: 'Freelance / Independent Projects',
         period: '2024 — Present',
         points: [
-            'Engineered autonomous multi-agent systems using LangGraph and LangChain.',
-            'Built voice-enabled AI agents and RAG architectures on Groq and Cerebras inference.',
-            'Developed auto-negotiating supply chain agents and internal operations copilots.',
+            'Built websites, web applications, and AI assistants for clients across several industries.',
+            'Developed chatbots and voice-based calling agents, integrated directly into client websites and CRMs.',
+            'Delivered automation systems that replaced manual inventory, sales, and support workflows.',
         ],
     },
     {
@@ -62,15 +62,15 @@ const About = () => {
                         </h1>
                         <div className="max-w-2xl space-y-6 text-[17px] leading-[1.75] text-secondary lg:text-[19px]">
                             <p>
-                                I&apos;m an AI Engineer with deep expertise in Agentic AI, Retrieval
-                                Augmented Generation, and LLM-backed backend systems. I build
-                                multi-agent workflows on LangGraph and LangChain, scalable APIs with
-                                FastAPI, and enterprise assistants grounded in vector databases.
+                                I&apos;m a Software Engineer who builds websites, applications, and
+                                AI systems for businesses. That covers everything from a site that
+                                brings in customers, to an app your team works in daily, to chatbots
+                                and calling agents that handle enquiries around the clock.
                             </p>
                             <p>
-                                My focus is production readiness: agents that hold up under load,
-                                cite their sources, and solve a real operational problem rather than
-                                demoing well once.
+                                I work across the whole build — interface, backend, and the
+                                automation that ties it together — so you get one person accountable
+                                for the result rather than a handoff between three.
                             </p>
                         </div>
 

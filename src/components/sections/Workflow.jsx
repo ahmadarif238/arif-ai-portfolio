@@ -22,9 +22,9 @@ const Workflow = () => {
                             How I <br /> Build
                         </h2>
                         <p className="text-[17px] leading-relaxed text-muted">
-                            A systematic path from operational problem to deployed agent. Rigorous
-                            planning up front is what keeps agentic systems from becoming
-                            unmaintainable demos.
+                            A clear path from the problem you have to software that solves it.
+                            Planning properly up front is what keeps a project on budget and
+                            easy to live with afterwards.
                         </p>
                         <Link
                             to="/contact"

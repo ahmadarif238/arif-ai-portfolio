@@ -1,50 +1,71 @@
 export const services = [
     {
-        title: 'Agentic AI Systems',
+        title: 'AI Agents & Automation',
         icon: 'agents',
         description:
-            'Multi-agent architectures on LangGraph and LangChain where specialised agents plan, delegate, and validate each other instead of one prompt doing everything.',
-        deliverables: ['Graph-based orchestration', 'Tool & function calling', 'Self-correcting agent loops'],
+            'Custom AI agents that carry out real business workflows on their own — researching, deciding, and acting instead of waiting for a human at every step.',
+        deliverables: ['Autonomous task agents', 'Multi-step workflow logic', 'Human-in-the-loop controls'],
     },
     {
-        title: 'RAG & Retrieval',
-        icon: 'retrieval',
+        title: 'Web Development',
+        icon: 'web',
         description:
-            'Production retrieval pipelines grounded in vector stores, with citation enforcement so every answer the system gives is traceable back to a source document.',
-        deliverables: ['Pinecone / pgvector indexing', 'Hybrid semantic search', 'Zero-hallucination guardrails'],
+            'Fast, responsive websites and web applications built to convert — clean interfaces, solid performance, and a codebase that stays maintainable as you grow.',
+        deliverables: ['Business & portfolio sites', 'Web applications & dashboards', 'Performance & SEO tuning'],
     },
     {
-        title: 'Workflow Automation',
-        icon: 'automation',
+        title: 'App Development',
+        icon: 'app',
         description:
-            'End-to-end operational automation across n8n, Power Automate, and custom FastAPI services — connecting business tools to AI models without brittle glue code.',
-        deliverables: ['n8n & Power Platform', 'FastAPI microservices', 'Scheduled agent pipelines'],
+            'Cross-platform applications with a considered interface and a reliable backend, designed around what your users actually do rather than a feature checklist.',
+        deliverables: ['Cross-platform builds', 'API & database design', 'Ongoing iteration'],
+    },
+    {
+        title: 'Chatbots & AI Assistants',
+        icon: 'chat',
+        description:
+            'Assistants trained on your own documents, products, and policies — so customers get accurate answers instantly instead of waiting on your inbox.',
+        deliverables: ['Document-trained assistants', 'Support & sales chatbots', 'Multi-channel deployment'],
+    },
+    {
+        title: 'AI Calling Agents',
+        icon: 'call',
+        description:
+            'Voice agents that handle inbound and outbound calls naturally — qualifying leads, booking appointments, and following up without adding headcount.',
+        deliverables: ['Inbound call handling', 'Outbound follow-up campaigns', 'CRM & calendar sync'],
+    },
+    {
+        title: 'AI Integration',
+        icon: 'integration',
+        description:
+            'Bringing chatbots and custom AI agents into the website and tools you already run, so intelligence sits inside your existing workflow instead of beside it.',
+        deliverables: ['Website chatbot embedding', 'Custom agents in your product', 'CRM & SaaS connections'],
     },
 ];
 
 export const process = [
     {
         step: '01',
-        title: 'Discovery',
+        title: 'Discover',
         description:
-            'Map the actual operational bottleneck, the data available, and where an agent genuinely beats a script. We define the blueprint before a line of code.',
+            'We start with the bottleneck, not the technology. What is eating your team’s hours, what data already exists, and what a good outcome actually looks like.',
     },
     {
         step: '02',
-        title: 'Architecture',
+        title: 'Design',
         description:
-            'Design the agent graph, retrieval strategy, and evaluation criteria. Every agent has to justify its cost in latency and tokens.',
+            'I map the solution end to end — the interface, the logic, and where automation genuinely beats doing it by hand — and agree it with you before building.',
     },
     {
         step: '03',
-        title: 'Engineering',
+        title: 'Build',
         description:
-            'Build the system on FastAPI with typed contracts, vector-grounded retrieval, and observability wired in from the first commit — not bolted on later.',
+            'Development in short, visible increments. You see working software early and often, so feedback shapes the result instead of arriving at the end.',
     },
     {
         step: '04',
-        title: 'Deployment',
+        title: 'Deploy & Optimise',
         description:
-            'Containerise, load-test, and ship. Then monitor grounding accuracy and response latency so regressions surface before your users find them.',
+            'Tested, launched, and monitored. Once it is live I keep tuning accuracy, speed, and cost so the system gets better the longer it runs.',
     },
 ];

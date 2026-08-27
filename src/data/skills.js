@@ -1,47 +1,51 @@
 export const skills = [
     {
-        category: 'Agentic AI & LLM Systems',
+        category: 'AI & Intelligent Systems',
         items: [
-            { name: 'LangGraph', level: 'Expert' },
-            { name: 'LangChain', level: 'Expert' },
-            { name: 'CrewAI', level: 'Advanced' },
-            { name: 'RAG Architecture', level: 'Expert' },
-            { name: 'Prompt Engineering', level: 'Expert' },
-            { name: 'Multi-Agent Systems', level: 'Expert' },
-            { name: 'Groq / Cerebras', level: 'Advanced' }
+            { name: 'ChatGPT (OpenAI)', level: 'Expert' },
+            { name: 'Claude (Anthropic)', level: 'Expert' },
+            { name: 'Gemini (Google)', level: 'Advanced' },
+            { name: 'AI Agent Development', level: 'Expert' },
+            { name: 'Chatbot Development', level: 'Expert' },
+            { name: 'AI Calling Agents', level: 'Advanced' },
+            { name: 'Knowledge & RAG Systems', level: 'Expert' },
+            { name: 'Prompt Engineering', level: 'Expert' }
         ]
     },
     {
-        category: 'Backend & Cloud',
+        category: 'Web & App Development',
         items: [
-            { name: 'FastAPI', level: 'Expert' },
-            { name: 'Python', level: 'Expert' },
-            { name: 'Docker', level: 'Advanced' },
-            { name: 'PostgreSQL', level: 'Advanced' },
-            { name: 'Supabase', level: 'Advanced' },
-            { name: 'Redis', level: 'Proficient' },
-            { name: 'Pinecone', level: 'Advanced' }
-        ]
-    },
-    {
-        category: 'Automation & ML',
-        items: [
-            { name: 'N8N Workflows', level: 'Expert' },
-            { name: 'Web Scraping', level: 'Expert' },
-            { name: 'Selenium', level: 'Advanced' },
-            { name: 'Data Pipelines', level: 'Advanced' },
-            { name: 'Scikit-learn', level: 'Proficient' },
-            { name: 'TensorFlow', level: 'Proficient' }
-        ]
-    },
-    {
-        category: 'Development',
-        items: [
-            { name: 'JavaScript', level: 'Advanced' },
-            { name: 'Git / GitHub', level: 'Expert' },
-            { name: 'REST APIs', level: 'Expert' },
+            { name: 'Web Development', level: 'Expert' },
+            { name: 'App Development', level: 'Advanced' },
+            { name: 'React / Next.js', level: 'Advanced' },
+            { name: 'JavaScript / TypeScript', level: 'Advanced' },
             { name: 'TailwindCSS', level: 'Advanced' },
-            { name: 'Streamlit', level: 'Advanced' }
+            { name: 'Responsive UI Design', level: 'Advanced' },
+            { name: 'REST APIs', level: 'Expert' }
+        ]
+    },
+    {
+        category: 'Integration & Automation',
+        items: [
+            { name: 'Chatbot Integration in Websites', level: 'Expert' },
+            { name: 'Custom AI Agents in Websites', level: 'Expert' },
+            { name: 'Workflow Automation', level: 'Expert' },
+            { name: 'n8n / Zapier / Make', level: 'Expert' },
+            { name: 'Power Automate', level: 'Advanced' },
+            { name: 'Third-Party API Integration', level: 'Expert' },
+            { name: 'Web Scraping', level: 'Advanced' }
+        ]
+    },
+    {
+        category: 'Backend, Cloud & Data',
+        items: [
+            { name: 'Python', level: 'Expert' },
+            { name: 'FastAPI', level: 'Expert' },
+            { name: 'PostgreSQL / Supabase', level: 'Advanced' },
+            { name: 'Vector Databases', level: 'Advanced' },
+            { name: 'Docker', level: 'Advanced' },
+            { name: 'Microsoft Azure', level: 'Advanced' },
+            { name: 'Git / GitHub', level: 'Expert' }
         ]
     }
 ];

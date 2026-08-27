@@ -28,7 +28,7 @@ const Projects = () => {
                     >
                         <span className="eyebrow block">Selected Works</span>
                         <h1 className="display text-[48px] leading-none lg:text-[84px]">
-                            Applied <br /> Agentic AI
+                            Selected <br /> Work
                         </h1>
                     </motion.div>
 
@@ -39,9 +39,9 @@ const Projects = () => {
                         className="flex flex-col gap-8 lg:col-span-4 lg:col-start-9 lg:pt-4"
                     >
                         <p className="text-[17px] leading-[1.7] text-muted">
-                            A curated set of production systems spanning legal document intelligence,
-                            sales automation, supply chain agents, and voice interfaces. Each one
-                            solves a concrete operational problem end to end.
+A selection of systems built for real businesses — document intelligence,
+                            sales and support automation, inventory management, and voice assistants.
+                            Each one replaced hours of manual work.
                         </p>
                         <ArrowDown className="h-8 w-8 text-primary" />
                     </motion.div>

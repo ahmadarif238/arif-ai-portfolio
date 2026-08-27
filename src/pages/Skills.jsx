@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Brain, Server, Zap, Terminal } from 'lucide-react';
+import { ArrowUpRight, Brain, Code2, Puzzle, Server, Terminal } from 'lucide-react';
 import { skills as skillCategories } from '../data/skills';
 import Capabilities from '../components/sections/Capabilities';
 import Workflow from '../components/sections/Workflow';
 
 const iconMap = {
-    'Agentic AI & LLM Systems': Brain,
-    'Backend & Cloud': Server,
-    'Automation & ML': Zap,
-    Development: Terminal,
+    'AI & Intelligent Systems': Brain,
+    'Web & App Development': Code2,
+    'Integration & Automation': Puzzle,
+    'Backend, Cloud & Data': Server,
 };
 
 const levelWidth = {
@@ -32,11 +32,11 @@ const Skills = () => {
                     >
                         <span className="eyebrow block">Capabilities</span>
                         <h1 className="display text-[48px] leading-none lg:text-[84px]">
-                            What I <span className="text-primary">Build</span>
+                            Services &amp; <span className="text-primary">Expertise</span>
                         </h1>
                         <p className="max-w-2xl text-[18px] leading-[1.7] text-muted">
-                            The stack I use to take agentic AI from an idea in a notebook to a
-                            service running in front of real users.
+From websites and apps to AI agents and automations — the full range of
+                            what I can build for your business, and the tools I use to do it.
                         </p>
                     </motion.div>
 
@@ -60,7 +60,7 @@ const Skills = () => {
                 <div className="mb-14 max-w-2xl space-y-5">
                     <span className="eyebrow block">The Stack</span>
                     <h2 className="headline text-[38px] leading-none lg:text-[56px]">
-                        Technical Depth
+                        Tools &amp; Skills
                     </h2>
                 </div>
 
