@@ -18,7 +18,7 @@ const experience = [
     {
         role: 'Software Engineer & AI Developer',
         company: 'Freelance / Independent Projects',
-        period: '2024 — Present',
+        period: '2024 to Present',
         points: [
             'Built websites, web applications, and AI assistants for clients across several industries.',
             'Developed chatbots and voice-based calling agents, integrated directly into client websites and CRMs.',
@@ -28,7 +28,7 @@ const experience = [
     {
         role: 'Computer Vision Intern',
         company: 'ITSOLERA Pvt. Ltd',
-        period: 'Jul 2024 — Oct 2024',
+        period: 'Jul 2024 to Oct 2024',
         points: [
             'Developed real-time pedestrian detection systems using Python and OpenCV.',
             'Built object detection pipelines robust to low-light, rain, and fog conditions.',
@@ -37,8 +37,8 @@ const experience = [
 ];
 
 const certifications = [
-    { name: 'Machine Learning Specialization', issuer: 'Andrew Ng — Coursera' },
-    { name: 'Deep Learning Specialization', issuer: 'Andrew Ng — Coursera' },
+    { name: 'Machine Learning Specialization', issuer: 'Andrew Ng, Coursera' },
+    { name: 'Deep Learning Specialization', issuer: 'Andrew Ng, Coursera' },
     { name: 'Understanding Agentic AI', issuer: 'AgentAcademy' },
     { name: 'Fundamentals of Agents', issuer: 'Hugging Face (2025)' },
 ];
@@ -68,8 +68,8 @@ const About = () => {
                                 and calling agents that handle enquiries around the clock.
                             </p>
                             <p>
-                                I work across the whole build — interface, backend, and the
-                                automation that ties it together — so you get one person accountable
+                                I work across the whole build, from the interface to the backend to the
+                                automation that ties it together, so you get one person accountable
                                 for the result rather than a handoff between three.
                             </p>
                         </div>
@@ -169,7 +169,7 @@ const About = () => {
                             <p className="text-[15px] text-muted">University of Malakand</p>
                             <div className="mt-6 flex items-center justify-between border-t border-border pt-6">
                                 <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-                                    2021 — 2025
+                                    2021 to 2025
                                 </span>
                                 <span className="font-display text-[22px] font-semibold text-primary">
                                     3.65 / 4.0

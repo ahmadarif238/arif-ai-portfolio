@@ -98,8 +98,8 @@ Tell me what you&apos;re trying to build or automate, and I&apos;ll show you the
                 </div>
 
                 <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-                    <span className="font-display text-[18px] font-bold uppercase tracking-[0.14em] text-primary">
-                        Arif<span className="text-bright">.AK</span>
+                    <span className="font-display text-[18px] font-bold uppercase tracking-[0.1em] text-primary">
+                        Arif <span className="text-bright">Ahmad Khan</span>
                     </span>
                     <p className="font-sans text-[12px] uppercase tracking-[0.16em] text-muted">
                         &copy; {currentYear} Arif Ahmad Khan. All rights reserved.

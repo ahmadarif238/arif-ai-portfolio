@@ -25,7 +25,7 @@ const Hero = () => {
                         transition={{ duration: 0.5 }}
                         className="eyebrow"
                     >
-                        Software Engineer / AI &amp; Automation
+                        Software Engineer, AI and Automation
                     </motion.span>
 
                     <motion.h1
@@ -46,7 +46,7 @@ const Hero = () => {
                         className="max-w-2xl text-[18px] leading-[1.65] text-muted lg:text-[20px]"
                     >
                         I&apos;m a Software Engineer building websites, apps, and AI systems that
-                        take the repetitive work off your team — chatbots, calling agents, and
+                        take the repetitive work off your team. Chatbots, calling agents, and
                         automations that run quietly in the background while you focus on growth.
                     </motion.p>
 

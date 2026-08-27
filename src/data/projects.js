@@ -3,8 +3,8 @@ export const projects = [
         id: 'contract-iq',
         title: 'ContractIQ',
         tagline: 'Contract Review, Handled Automatically',
-        description: 'An AI system that reads, checks, and compares legal agreements so legal teams stop searching through files by hand. It flags risky clauses, pulls out key dates, and puts contracts side by side — and every answer links back to the exact paragraph it came from, so nothing is ever invented.',
-        problem: 'Lawyers waste hours searching for specific clauses across thousands of files. Comparing vendor drafts against company standards is manual and error-prone, and LLMs often hallucinate numbers and dates.',
+        description: 'An AI system that reads, checks, and compares legal agreements so legal teams stop searching through files by hand. It flags risky clauses, pulls out key dates, and puts contracts side by side. Every answer links back to the exact paragraph it came from, so nothing is ever invented.',
+        problem: 'Lawyers waste hours searching for specific clauses across thousands of files. Comparing vendor drafts against company standards is manual and error-prone, and AI tools often invent numbers and dates.',
         solution: 'A multi-agent system with Vault Intelligence for global semantic search, Intelligent Benchmarking for side-by-side comparison, and a custom "Factual Enforcer" layer that prevents the agent from inventing data.',
         metrics: [
             { value: '100%', label: 'Sourced Answers' },
@@ -41,7 +41,7 @@ export const projects = [
         id: 'vivagraph-ai',
         title: 'VivaGraph AI',
         tagline: 'Practice Interviews That Feel Real',
-        description: 'A voice-based practice platform that recreates the pressure of a real oral exam or interview. The AI examiner changes character on the fly — from encouraging coach to demanding professor — while listening for hesitation, filler words, and confidence, then hands back a full performance report.',
+        description: 'A voice-based practice platform that recreates the pressure of a real oral exam or interview. The AI examiner changes character on the fly, from encouraging coach to demanding professor, while listening for hesitation, filler words, and confidence. It then hands back a full performance report.',
         problem: 'Most students fail oral exams not because they don\'t know the material, but because they panic under questioning. Current AI tools like ChatGPT are too nice and don\'t simulate real examiner pressure.',
         solution: 'A multi-agent system with 7 specialized agents (Chief Examiner, Researcher, Personality, Psychology, Teacher) that simulates realistic exam pressure with voice analysis and adaptive difficulty.',
         metrics: [
@@ -79,7 +79,7 @@ export const projects = [
         id: 'ai-sales-automation-agent',
         title: 'SalesAI: B2B Sales Automation',
         tagline: 'From Search Query to Qualified Lead',
-        description: 'A sales system that turns one search into a finished pipeline. It finds prospects, verifies and scores them, then writes personalised outreach — cutting roughly 60% of the manual research a sales team would otherwise do by hand.',
+        description: 'A sales system that turns one search into a finished pipeline. It finds prospects, verifies and scores them, then writes personalised outreach. That cuts roughly 60% of the manual research a sales team would otherwise do by hand.',
         problem: 'Sales teams spend 60% of their time on manual research, finding emails, and qualifying leads instead of actually selling.',
         solution: 'An agent-of-agents architecture where a single search query triggers a deterministic pipeline of specialized sub-agents that deliver a qualified, scored, and engaged list of prospects.',
         metrics: [
@@ -117,7 +117,7 @@ export const projects = [
         id: 'smart-supply-chain-agent',
         title: 'Smart Supply Chain Management Agent',
         tagline: 'Inventory That Manages Itself',
-        description: 'A system that watches stock levels around the clock, predicts what will run out and when, and places purchase orders on its own — negotiating within the budget limits you set, without anyone having to check a spreadsheet.',
+        description: 'A system that watches stock levels around the clock, predicts what will run out and when, and places purchase orders on its own, negotiating within the budget limits you set, without anyone having to check a spreadsheet.',
         problem: 'Manual inventory management is prone to human error, leading to overstocking or stockouts and inefficient procurement processes.',
         solution: 'A 24/7 autonomous agent that forecasts demand using LLMs and Linear Programming, and automates negotiation and purchasing.',
         metrics: [
@@ -155,7 +155,7 @@ export const projects = [
         id: 'stock-news-alert-agent',
         title: 'Stock News Alert Agent',
         tagline: 'Market News, Filtered and Delivered',
-        description: 'An assistant that reads financial news as it breaks, judges whether the sentiment is positive or negative, summarises what it means for the market, and pushes the alert straight to Telegram — so nothing important gets buried in the noise.',
+        description: 'An assistant that reads financial news as it breaks, judges whether the sentiment is positive or negative, summarises what it means for the market, and pushes the alert straight to Telegram, so nothing important gets buried in the noise.',
         problem: 'Traders miss critical market movements due to the sheer volume of financial news and delayed analysis.',
         solution: 'An agent that filters noise, analyzes sentiment instantly, and pushes alerts directly to Telegram.',
         metrics: [
@@ -229,7 +229,7 @@ export const projects = [
         id: 'voice-enabled-executive-agent',
         title: 'Voice-Enabled Executive Agent',
         tagline: 'Run Your Day by Voice',
-        description: 'A voice assistant that handles email, calendar bookings, and web lookups through ordinary spoken requests. Ask it to clear your inbox or move a meeting and it does it — no clicking through menus, no switching between apps.',
+        description: 'A voice assistant that handles email, calendar bookings, and web lookups through ordinary spoken requests. Ask it to clear your inbox or move a meeting and it does it, with no clicking through menus and no switching between apps.',
         problem: 'Executives need a hands-free, efficient way to manage their digital workspace while on the move.',
         solution: 'A voice-first agent that executes complex tasks like scheduling and emailing through natural conversation.',
         metrics: [

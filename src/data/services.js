@@ -3,14 +3,14 @@ export const services = [
         title: 'AI Agents & Automation',
         icon: 'agents',
         description:
-            'Custom AI agents that carry out real business workflows on their own — researching, deciding, and acting instead of waiting for a human at every step.',
+            'Custom AI agents that carry out real business workflows on their own. They research, decide, and act instead of waiting for a human at every step.',
         deliverables: ['Autonomous task agents', 'Multi-step workflow logic', 'Human-in-the-loop controls'],
     },
     {
         title: 'Web Development',
         icon: 'web',
         description:
-            'Fast, responsive websites and web applications built to convert — clean interfaces, solid performance, and a codebase that stays maintainable as you grow.',
+            'Fast, responsive websites and web applications built to convert, with clean interfaces, solid performance, and a codebase that stays maintainable as you grow.',
         deliverables: ['Business & portfolio sites', 'Web applications & dashboards', 'Performance & SEO tuning'],
     },
     {
@@ -24,14 +24,14 @@ export const services = [
         title: 'Chatbots & AI Assistants',
         icon: 'chat',
         description:
-            'Assistants trained on your own documents, products, and policies — so customers get accurate answers instantly instead of waiting on your inbox.',
+            'Assistants trained on your own documents, products, and policies, so customers get accurate answers instantly instead of waiting on your inbox.',
         deliverables: ['Document-trained assistants', 'Support & sales chatbots', 'Multi-channel deployment'],
     },
     {
         title: 'AI Calling Agents',
         icon: 'call',
         description:
-            'Voice agents that handle inbound and outbound calls naturally — qualifying leads, booking appointments, and following up without adding headcount.',
+            'Voice agents that handle inbound and outbound calls naturally. They qualify leads, book appointments, and follow up without adding headcount.',
         deliverables: ['Inbound call handling', 'Outbound follow-up campaigns', 'CRM & calendar sync'],
     },
     {
@@ -54,7 +54,7 @@ export const process = [
         step: '02',
         title: 'Design',
         description:
-            'I map the solution end to end — the interface, the logic, and where automation genuinely beats doing it by hand — and agree it with you before building.',
+            'I map the solution end to end, covering the interface, the logic, and where automation genuinely beats doing it by hand, then agree it with you before building.',
     },
     {
         step: '03',
@@ -64,7 +64,7 @@ export const process = [
     },
     {
         step: '04',
-        title: 'Deploy & Optimise',
+        title: 'Deploy and Improve',
         description:
             'Tested, launched, and monitored. Once it is live I keep tuning accuracy, speed, and cost so the system gets better the longer it runs.',
     },

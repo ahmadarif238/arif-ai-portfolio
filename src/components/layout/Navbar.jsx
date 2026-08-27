@@ -33,13 +33,13 @@ const Navbar = () => {
                 <div className="shell flex h-20 items-center justify-between">
                     <Link
                         to="/"
-                        className="font-display text-[24px] font-bold uppercase tracking-[0.14em] text-primary transition-opacity hover:opacity-75"
+                        className="font-display text-[20px] font-bold uppercase tracking-[0.1em] text-primary transition-opacity hover:opacity-75 lg:text-[22px]"
                     >
-                        Arif<span className="text-bright">.AK</span>
+                        Arif <span className="text-bright">Ahmad Khan</span>
                     </Link>
 
                     {/* Desktop navigation */}
-                    <nav className="hidden items-center gap-9 lg:flex">
+                    <nav className="hidden items-center gap-7 xl:flex">
                         {navLinks.map((link) => {
                             const isActive = location.pathname === link.path;
                             return (
@@ -77,7 +77,7 @@ const Navbar = () => {
                         </a>
                         <Link
                             to="/contact"
-                            className="hidden border border-white/25 px-6 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.16em] text-bright transition-all hover:border-bright hover:bg-bright hover:text-background lg:block"
+                            className="hidden border border-white/25 px-6 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.16em] text-bright transition-all hover:border-bright hover:bg-bright hover:text-background xl:block"
                         >
                             Let&apos;s Talk
                         </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
                         />
 
                         <button
-                            className="p-1 text-bright lg:hidden"
+                            className="p-1 text-bright xl:hidden"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
@@ -112,7 +112,7 @@ const Navbar = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-40 flex flex-col justify-center bg-background px-8 pt-20 lg:hidden"
+                        className="fixed inset-0 z-40 flex flex-col justify-center bg-background px-8 pt-20 xl:hidden"
                     >
                         <nav className="flex flex-col gap-6">
                             {navLinks.map((link, i) => (

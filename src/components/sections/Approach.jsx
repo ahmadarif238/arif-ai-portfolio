@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const coreStack = ['ChatGPT / Claude / Gemini', 'React / Next.js', 'Python / FastAPI', 'Cloud & Databases'];
+const coreStack = ['ChatGPT, Claude, Gemini', 'React and Next.js', 'Python and FastAPI', 'Cloud & Databases'];
 const focusAreas = ['Web & App Development', 'AI Agents & Chatbots', 'AI Calling Agents', 'Workflow Automation'];
 
 const Approach = () => {
@@ -52,7 +52,7 @@ const Approach = () => {
                                 I&apos;m a Software Engineer who builds the websites, apps, and AI systems
                                 businesses actually run on. Whether it&apos;s a site that converts, an app your
                                 team relies on, or an assistant that answers customers at 2am, the goal is the
-                                same — remove the friction between your business and the people it serves.
+                                same. Remove the friction between your business and the people it serves.
                             </p>
                             <p>
                                 Every hour spent on repetitive work is an hour taken from growth. So I focus on
@@ -66,10 +66,10 @@ const Approach = () => {
                                 <h4 className="mb-4 font-display text-[20px] font-semibold uppercase text-bright">
                                     Core Stack
                                 </h4>
-                                <ul className="space-y-2 font-mono text-[13px] text-muted">
+                                <ul className="space-y-3 text-[15px] text-muted">
                                     {coreStack.map((item) => (
-                                        <li key={item}>
-                                            <span className="mr-2 text-primary">&gt;</span>
+                                        <li key={item} className="flex items-center gap-3">
+                                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                                             {item}
                                         </li>
                                     ))}
@@ -79,10 +79,10 @@ const Approach = () => {
                                 <h4 className="mb-4 font-display text-[20px] font-semibold uppercase text-bright">
                                     Focus Areas
                                 </h4>
-                                <ul className="space-y-2 font-mono text-[13px] text-muted">
+                                <ul className="space-y-3 text-[15px] text-muted">
                                     {focusAreas.map((item) => (
-                                        <li key={item}>
-                                            <span className="mr-2 text-primary">&gt;</span>
+                                        <li key={item} className="flex items-center gap-3">
+                                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                                             {item}
                                         </li>
                                     ))}

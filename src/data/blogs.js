@@ -4,15 +4,15 @@ export const blogPosts = [
         title: 'How I Built a Zero-Hallucination Legal AI Agent',
         date: '2026-02-10',
         readTime: '8 min read',
-        excerpt: 'LLMs hallucinate. In legal contracts, that\'s a lawsuit waiting to happen. Here\'s how I engineered a multi-agent system that never invents data — every insight is backed by clickable citations.',
+        excerpt: 'LLMs hallucinate. In legal contracts, that\'s a lawsuit waiting to happen. Here\'s how I engineered a system that never invents data, where every insight is backed by a clickable citation.',
         tags: ['Agentic AI', 'RAG', 'LangGraph'],
         relatedProject: 'contract-iq',
         content: [
             { type: 'heading', text: 'The Problem with LLMs in Legal' },
-            { type: 'paragraph', text: 'Large Language Models are incredibly powerful at understanding and generating text. But they have a fatal flaw when applied to legal documents: they hallucinate. They confidently state things that aren\'t in the source material. In a courtroom, this isn\'t just wrong — it\'s dangerous.' },
+            { type: 'paragraph', text: 'Large Language Models are incredibly powerful at understanding and generating text. But they have a fatal flaw when applied to legal documents: they hallucinate. They confidently state things that aren\'t in the source material. In a courtroom, this isn\'t just wrong. It\'s dangerous.' },
             { type: 'paragraph', text: 'When I set out to build ContractIQ, the core requirement was absolute: zero hallucinations. Every single piece of information the system outputs must be directly traceable to a source document. No exceptions.' },
             { type: 'heading', text: 'The Factual Enforcer Architecture' },
-            { type: 'paragraph', text: 'The solution was a multi-agent architecture built on LangGraph, where one of the agents — the "Factual Enforcer" — has a single job: validate every claim against the source. Here\'s how it works:' },
+            { type: 'paragraph', text: 'The solution was a multi-agent architecture built on LangGraph, where one component, the Factual Enforcer, has a single job: validate every claim against the source. Here\'s how it works:' },
             {
                 type: 'list', items: [
                     'The Vault Intelligence agent performs semantic search across all indexed contracts using Pinecone',
@@ -40,7 +40,7 @@ export const blogPosts = [
         relatedProject: null,
         content: [
             { type: 'heading', text: 'Why Multi-Agent?' },
-            { type: 'paragraph', text: 'A single LLM call can answer a question. But real-world problems — processing contracts, automating sales pipelines, simulating exams — require systems that can plan, execute, validate, and recover from errors. That\'s where multi-agent architectures shine.' },
+            { type: 'paragraph', text: 'A single LLM call can answer a question. But real problems like processing contracts, automating sales pipelines, or simulating exams need systems that can plan, execute, validate, and recover from errors. That\'s where multi-agent architectures shine.' },
             { type: 'paragraph', text: 'After building 8+ production systems, I\'ve found three patterns that cover 90% of use cases:' },
             { type: 'heading', text: 'Pattern 1: The Pipeline' },
             { type: 'paragraph', text: 'The simplest pattern. Agents execute in a fixed sequence, each one transforming the output of the previous. I used this in the Stock News Alert Agent: RSS Parser → Sentiment Analyzer → Summarizer → Telegram Bot.' },
@@ -54,10 +54,10 @@ export const blogPosts = [
             { type: 'heading', text: 'Implementation Tips' },
             {
                 type: 'list', items: [
-                    'Always define clear state schemas — agents break when state contracts are ambiguous',
+                    'Always define clear state schemas, because agents break when state contracts are ambiguous',
                     'Use LangGraph\'s conditional edges for dynamic routing instead of complex if/else chains',
                     'Implement timeout and retry logic at the graph level, not within individual agents',
-                    'Log every state transition — debugging multi-agent systems is hard without observability'
+                    'Log every state transition, because debugging these systems is hard without it'
                 ]
             },
             { type: 'paragraph', text: 'Each pattern has its place. Start with the pipeline, graduate to orchestrator when you need flexibility, and reach for the cognitive core when you need multiple specialized perspectives working together.' }
@@ -73,8 +73,8 @@ export const blogPosts = [
         relatedProject: 'vivagraph-ai',
         content: [
             { type: 'heading', text: 'The Problem: AI Is Too Nice' },
-            { type: 'paragraph', text: 'Students who prepare with ChatGPT for oral exams are in for a shock. ChatGPT is endlessly patient, always encouraging, and never interrupts. Real examiners? They push back. They challenge. They create pressure — and that pressure is exactly what makes oral exams so difficult.' },
-            { type: 'paragraph', text: 'VivaGraph AI was born from a simple observation: students fail oral exams not because they lack knowledge, but because they crack under pressure. The solution wasn\'t better study tools — it was a more realistic simulation.' },
+            { type: 'paragraph', text: 'Students who prepare with ChatGPT for oral exams are in for a shock. ChatGPT is endlessly patient, always encouraging, and never interrupts. Real examiners? They push back. They challenge. They create pressure, and that pressure is exactly what makes oral exams so difficult.' },
+            { type: 'paragraph', text: 'VivaGraph AI was born from a simple observation: students fail oral exams not because they lack knowledge, but because they crack under pressure. The solution wasn\'t better study tools. It was a more realistic simulation.' },
             { type: 'heading', text: 'The 7-Agent Cognitive Core' },
             { type: 'paragraph', text: 'The system uses 7 specialized agents, each with a distinct role:' },
             {
@@ -89,10 +89,10 @@ export const blogPosts = [
                 ]
             },
             { type: 'heading', text: 'The Voice Challenge' },
-            { type: 'paragraph', text: 'The hardest technical challenge was real-time voice analysis on mobile devices. Browser-based speech recognition is unreliable on Android — it often stops listening mid-sentence. We implemented a server-side transcription fallback using Groq\'s Whisper API that processes audio chunks in under 200ms.' },
+            { type: 'paragraph', text: 'The hardest technical challenge was real-time voice analysis on mobile devices. Browser-based speech recognition is unreliable on Android, where it often stops listening mid-sentence. We implemented a server-side transcription fallback using Groq\'s Whisper API that processes audio chunks in under 200ms.' },
             { type: 'paragraph', text: 'Another challenge: making the AI voice sound human. A robotic examiner breaks immersion. We explored ElevenLabs and OpenAI TTS to achieve natural intonation with emotional delivery that matches the current exam mood.' },
             { type: 'heading', text: 'What I Learned' },
-            { type: 'paragraph', text: 'Building an AI system that intentionally creates pressure — while remaining ethical and educational — is a fascinating design challenge. The key insight: the value of AI isn\'t always in being helpful. Sometimes it\'s in being realistically challenging.' }
+            { type: 'paragraph', text: 'Building an AI system that intentionally creates pressure while staying ethical and educational is a fascinating design challenge. The key insight: the value of AI isn\'t always in being helpful. Sometimes it\'s in being realistically challenging.' }
         ]
     },
     {
@@ -111,16 +111,16 @@ export const blogPosts = [
             {
                 type: 'list', items: [
                     'Lead Generation Agent: Takes a search query and scrapes multiple data sources for prospects',
-                    'Scoring Agent: Evaluates each lead on fit, intent, and reachability — producing a composite score',
+                    'Scoring Agent: evaluates each lead on fit, intent, and reachability, producing a composite score',
                     'Engagement Agent: Crafts personalized outreach copy using the prospect\'s public information',
                     'Analytics Agent: Tracks pipeline metrics and suggests optimization strategies'
                 ]
             },
             { type: 'paragraph', text: 'The key design decision: the pipeline is deterministic. Unlike chat-based AI tools, SalesAI follows a strict sequence: Search → Generate → Score → Engage. This makes it predictable, testable, and reliable.' },
             { type: 'heading', text: 'Technical Stack Choices' },
-            { type: 'paragraph', text: 'FastAPI for the backend was a natural choice — async support is critical when making parallel API calls to data sources. LLaMA 3 via Groq Cloud handles the generation tasks, keeping costs low while maintaining quality. The React 19 frontend provides a real-time analytics dashboard.' },
+            { type: 'paragraph', text: 'FastAPI for the backend was a natural choice, because async support is critical when making parallel API calls to data sources. LLaMA 3 via Groq Cloud handles the generation tasks, keeping costs low while maintaining quality. The React 19 frontend provides a real-time analytics dashboard.' },
             { type: 'heading', text: 'Results & Lessons' },
-            { type: 'paragraph', text: 'The system processes an entire pipeline — from search query to personalized outreach — in under 30 seconds. The biggest lesson: in B2B automation, reliability beats intelligence. A system that works perfectly 95% of the time is worth more than one that\'s brilliant 60% of the time.' }
+            { type: 'paragraph', text: 'The system processes an entire pipeline, from search query to personalised outreach, in under 30 seconds. The biggest lesson: in B2B automation, reliability beats intelligence. A system that works perfectly 95% of the time is worth more than one that\'s brilliant 60% of the time.' }
         ]
     }
 ];

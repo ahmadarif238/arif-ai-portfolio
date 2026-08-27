@@ -22,8 +22,8 @@ const Capabilities = ({ withHeading = true }) => {
                         What I <span className="text-primary">Build</span>
                     </h2>
                     <p className="text-[18px] leading-relaxed text-muted">
-                        From websites and apps to the AI that runs inside them — everything I build
-                        is aimed at the same thing: fewer manual hours, faster answers, better
+                        From websites and apps to the AI that runs inside them, everything I build
+                        aims at the same thing. Fewer manual hours, faster answers, and better
                         outcomes for the people using it.
                     </p>
                 </div>

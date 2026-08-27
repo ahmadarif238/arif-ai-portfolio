@@ -39,7 +39,7 @@ const Projects = () => {
                         className="flex flex-col gap-8 lg:col-span-4 lg:col-start-9 lg:pt-4"
                     >
                         <p className="text-[17px] leading-[1.7] text-muted">
-A selection of systems built for real businesses — document intelligence,
+A selection of systems built for real businesses, covering document intelligence,
                             sales and support automation, inventory management, and voice assistants.
                             Each one replaced hours of manual work.
                         </p>

@@ -17,8 +17,8 @@ export const skills = [
         items: [
             { name: 'Web Development', level: 'Expert' },
             { name: 'App Development', level: 'Advanced' },
-            { name: 'React / Next.js', level: 'Advanced' },
-            { name: 'JavaScript / TypeScript', level: 'Advanced' },
+            { name: 'React and Next.js', level: 'Advanced' },
+            { name: 'JavaScript and TypeScript', level: 'Advanced' },
             { name: 'TailwindCSS', level: 'Advanced' },
             { name: 'Responsive UI Design', level: 'Advanced' },
             { name: 'REST APIs', level: 'Expert' }
@@ -30,7 +30,7 @@ export const skills = [
             { name: 'Chatbot Integration in Websites', level: 'Expert' },
             { name: 'Custom AI Agents in Websites', level: 'Expert' },
             { name: 'Workflow Automation', level: 'Expert' },
-            { name: 'n8n / Zapier / Make', level: 'Expert' },
+            { name: 'n8n, Zapier and Make', level: 'Expert' },
             { name: 'Power Automate', level: 'Advanced' },
             { name: 'Third-Party API Integration', level: 'Expert' },
             { name: 'Web Scraping', level: 'Advanced' }
@@ -41,11 +41,11 @@ export const skills = [
         items: [
             { name: 'Python', level: 'Expert' },
             { name: 'FastAPI', level: 'Expert' },
-            { name: 'PostgreSQL / Supabase', level: 'Advanced' },
+            { name: 'PostgreSQL and Supabase', level: 'Advanced' },
             { name: 'Vector Databases', level: 'Advanced' },
             { name: 'Docker', level: 'Advanced' },
             { name: 'Microsoft Azure', level: 'Advanced' },
-            { name: 'Git / GitHub', level: 'Expert' }
+            { name: 'Git and GitHub', level: 'Expert' }
         ]
     }
 ];

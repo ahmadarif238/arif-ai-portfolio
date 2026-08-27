@@ -35,8 +35,8 @@ const Skills = () => {
                             Services &amp; <span className="text-primary">Expertise</span>
                         </h1>
                         <p className="max-w-2xl text-[18px] leading-[1.7] text-muted">
-From websites and apps to AI agents and automations — the full range of
-                            what I can build for your business, and the tools I use to do it.
+From websites and apps to AI agents and automations. This is the full range
+                            of what I can build for your business, and the tools I use to do it.
                         </p>
                     </motion.div>
 
