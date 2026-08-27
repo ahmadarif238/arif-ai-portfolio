@@ -1,84 +1,96 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '../components/ui/Card';
-import { Badge } from '../components/ui/Badge';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { ArrowUpRight, Calendar, Clock } from 'lucide-react';
 import { blogPosts } from '../data/blogs';
 
 const Blog = () => {
     return (
-        <div className="min-h-screen pt-32 pb-20 relative overflow-hidden">
-            {/* Background Decorations */}
-            <div className="absolute top-20 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-40 left-0 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px] -z-10" />
+        <div className="min-h-screen">
+            {/* Head */}
+            <section className="shell pb-14 pt-24 lg:pb-20 lg:pt-32">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-5 lg:col-span-7"
+                    >
+                        <span className="eyebrow block">Insights</span>
+                        <h1 className="display text-[48px] leading-none lg:text-[80px]">
+                            Field <br /> Notes
+                        </h1>
+                    </motion.div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="max-w-3xl mb-16"
-                >
-                    <Badge variant="outline" className="mb-6 border-indigo-500/30 text-indigo-400">Insights</Badge>
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white font-display">
-                        Technical <span className="text-gradient-primary">Blog</span>
-                    </h1>
-                    <p className="text-xl text-gray-400 leading-relaxed font-sans font-light">
-                        Deep dives into multi-agent architectures, production challenges, and lessons learned from building real-world AI systems.
-                    </p>
-                </motion.div>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-[17px] leading-[1.7] text-muted lg:col-span-4 lg:col-start-9 lg:pt-4"
+                    >
+                        Deep dives into multi-agent architectures, retrieval grounding, and the
+                        production failures that taught me more than the successes did.
+                    </motion.p>
+                </div>
+            </section>
 
-                <div className="grid gap-8 max-w-4xl">
+            {/* Post list — editorial rows */}
+            <section className="shell pb-20 lg:pb-28">
+                <div className="border-t border-border">
                     {blogPosts.map((post, index) => (
-                        <motion.div
+                        <motion.article
                             key={post.slug}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true, margin: '-60px' }}
+                            transition={{ duration: 0.5, delay: (index % 4) * 0.06 }}
+                            className="border-b border-border"
                         >
-                            <Link to={`/blog/${post.slug}`}>
-                                <Card className="bg-[#1F2937] border border-gray-800 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-xl hover:shadow-indigo-900/10">
-                                    <CardContent className="p-8">
-                                        <div className="flex flex-wrap items-center gap-4 mb-4">
-                                            <div className="flex items-center gap-2 text-sm text-gray-400">
-                                                <Calendar className="w-4 h-4" />
-                                                {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-400">
-                                                <Clock className="w-4 h-4" />
-                                                {post.readTime}
-                                            </div>
-                                        </div>
+                            <Link
+                                to={`/blog/${post.slug}`}
+                                className="group grid grid-cols-1 gap-6 py-10 transition-colors duration-300 lg:grid-cols-12 lg:gap-8 lg:py-12"
+                            >
+                                <div className="flex flex-wrap items-center gap-5 lg:col-span-3">
+                                    <span className="flex items-center gap-2 font-sans text-[12px] uppercase tracking-[0.14em] text-muted">
+                                        <Calendar className="h-3.5 w-3.5" />
+                                        {new Date(post.date).toLocaleDateString('en-US', {
+                                            month: 'short',
+                                            day: 'numeric',
+                                            year: 'numeric',
+                                        })}
+                                    </span>
+                                    <span className="flex items-center gap-2 font-sans text-[12px] uppercase tracking-[0.14em] text-muted">
+                                        <Clock className="h-3.5 w-3.5" />
+                                        {post.readTime}
+                                    </span>
+                                </div>
 
-                                        <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
-                                            {post.title}
-                                        </h2>
-
-                                        <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                                            {post.excerpt}
-                                        </p>
-
-                                        <div className="flex flex-wrap items-center justify-between gap-4">
-                                            <div className="flex flex-wrap gap-2">
-                                                {post.tags.map(tag => (
-                                                    <Badge key={tag} variant="secondary" className="bg-[#111827] border border-gray-700 text-gray-300 text-xs">
-                                                        {tag}
-                                                    </Badge>
-                                                ))}
-                                            </div>
-
-                                            <span className="text-indigo-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                                                Read More <ArrowRight className="w-4 h-4" />
+                                <div className="space-y-4 lg:col-span-8">
+                                    <h2 className="headline text-[26px] leading-tight transition-colors duration-300 group-hover:text-primary lg:text-[34px]">
+                                        {post.title}
+                                    </h2>
+                                    <p className="max-w-2xl text-[16px] leading-relaxed text-muted">
+                                        {post.excerpt}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 pt-1">
+                                        {post.tags.map((tag) => (
+                                            <span key={tag} className="chip">
+                                                {tag}
                                             </span>
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="lg:col-span-1 lg:flex lg:justify-end">
+                                    <span className="inline-flex h-11 w-11 items-center justify-center border border-border text-muted transition-all duration-300 group-hover:border-primary group-hover:text-primary">
+                                        <ArrowUpRight className="h-4 w-4" />
+                                    </span>
+                                </div>
                             </Link>
-                        </motion.div>
+                        </motion.article>
                     ))}
                 </div>
-            </div>
+            </section>
         </div>
     );
 };

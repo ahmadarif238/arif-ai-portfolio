@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github, Layers, Zap, CheckCircle2, TrendingUp } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Check } from 'lucide-react';
 import { projects } from '../data/projects';
-import { Button } from '../components/ui/Button';
-import { Badge } from '../components/ui/Badge';
 import ArchitectureDiagram from '../components/ui/ArchitectureDiagram';
+import ProjectIcon from '../components/ui/ProjectIcons';
 
 const ProjectDetail = () => {
     const { id } = useParams();
@@ -17,209 +16,232 @@ const ProjectDetail = () => {
 
     if (!project) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#0B0F19] text-white">
+            <div className="flex min-h-[70vh] items-center justify-center">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold mb-4">Project not found</h2>
-                    <Button asChild>
-                        <Link to="/projects">Back to Projects</Link>
-                    </Button>
+                    <h2 className="headline mb-6 text-[28px]">Project not found</h2>
+                    <Link
+                        to="/projects"
+                        className="inline-flex items-center gap-2 bg-primary px-7 py-3.5 font-display text-[14px] font-bold uppercase tracking-[0.12em] text-on-primary"
+                    >
+                        Back to Portfolio
+                    </Link>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-[#0B0F19] text-white">
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-20 bg-[#0B0F19]">
-                <div className="container mx-auto px-6 relative z-10">
-                    <Button variant="ghost" asChild className="mb-8 hover:bg-white/10 text-gray-300">
-                        <Link to="/projects"><ArrowLeft className="mr-2 w-4 h-4" /> Back to Projects</Link>
-                    </Button>
+        <div className="min-h-screen">
+            {/* Hero */}
+            <section className="shell pb-16 pt-24 lg:pt-32">
+                <Link
+                    to="/projects"
+                    className="mb-12 inline-flex items-center gap-2 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-primary"
+                >
+                    <ArrowLeft className="h-4 w-4" />
+                    Back to Portfolio
+                </Link>
 
-                    <div className="max-w-4xl">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
-                            <Badge variant="secondary" className="mb-6 bg-indigo-900/50 text-indigo-300 border border-indigo-500/30 px-3 py-1 font-bold">
-                                {project.type || "AI Engineering"}
-                            </Badge>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight text-white">
-                                {project.title}
-                            </h1>
-                            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 max-w-3xl font-medium">
-                                {project.description}
-                            </p>
+                <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-7 lg:col-span-7"
+                    >
+                        <span className="eyebrow block">{project.type}</span>
 
-                            <div className="flex flex-wrap gap-4">
-                                {project.liveUrl && (
-                                    <Button size="lg" className="rounded-full px-8 shadow-lg shadow-indigo-600/20 bg-white text-black hover:bg-gray-200 font-bold" asChild>
-                                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                            Visit Live Site <ExternalLink className="ml-2 w-4 h-4" />
-                                        </a>
-                                    </Button>
-                                )}
-                                {project.githubUrl && (
-                                    <Button size="lg" variant="outline" className="rounded-full px-8 border-gray-600 text-white hover:bg-white/10 font-bold" asChild>
-                                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                            View Source <Github className="ml-2 w-4 h-4" />
-                                        </a>
-                                    </Button>
-                                )}
-                            </div>
-                        </motion.div>
-                    </div>
+                        <h1 className="display text-[42px] leading-none lg:text-[72px]">
+                            {project.title}
+                        </h1>
+
+                        <p className="max-w-2xl text-[18px] leading-[1.7] text-secondary lg:text-[21px]">
+                            {project.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-4 pt-2">
+                            {project.liveUrl && (
+                                <a
+                                    href={project.liveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-[15px] font-bold uppercase tracking-[0.1em] text-on-primary transition-all hover:bg-primary-bright"
+                                >
+                                    Live Demo
+                                    <ExternalLink className="h-4 w-4" />
+                                </a>
+                            )}
+                            {project.githubUrl && (
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-3 border border-white/25 px-8 py-4 font-display text-[15px] font-bold uppercase tracking-[0.1em] text-bright transition-all hover:border-bright hover:bg-bright hover:text-background"
+                                >
+                                    Source
+                                    <Github className="h-4 w-4" />
+                                </a>
+                            )}
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.7, delay: 0.1 }}
+                        className="relative lg:col-span-4 lg:col-start-9"
+                    >
+                        <div className="relative flex aspect-square items-center justify-center overflow-hidden border border-border bg-elev-1">
+                            <div className="grid-lines absolute inset-0 opacity-40" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+                            <ProjectIcon
+                                projectId={project.id}
+                                className="relative h-28 w-28 text-primary lg:h-32 lg:w-32"
+                            />
+                        </div>
+                        <div className="absolute -bottom-5 -right-5 -z-10 h-24 w-24 border border-primary/40" />
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Metrics Banner */}
-            {project.metrics && project.metrics.length > 0 && (
-                <section className="py-8 border-t border-gray-800 bg-[#111827]">
-                    <div className="container mx-auto px-6">
-                        <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-                            {project.metrics.map((metric, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3 + i * 0.1 }}
-                                    className="text-center"
-                                >
-                                    <div className="text-3xl md:text-4xl font-bold text-indigo-400 mb-1">{metric.value}</div>
-                                    <div className="text-sm text-gray-400 font-medium">{metric.label}</div>
-                                </motion.div>
-                            ))}
-                        </div>
+            {/* Metrics band */}
+            {project.metrics?.length > 0 && (
+                <section className="border-y border-border bg-surface">
+                    <div className="shell grid grid-cols-1 gap-px bg-border sm:grid-cols-3">
+                        {project.metrics.map((metric) => (
+                            <div key={metric.label} className="bg-surface px-6 py-10 text-center">
+                                <div className="font-display text-[40px] font-bold leading-none text-primary lg:text-[52px]">
+                                    {metric.value}
+                                </div>
+                                <div className="mt-3 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+                                    {metric.label}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </section>
             )}
 
-            {/* Problem & Solution */}
-            <section className="py-20 border-t border-gray-800 bg-[#111827]">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-16">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="space-y-6"
-                        >
-                            <div className="w-12 h-12 rounded-lg bg-red-900/20 flex items-center justify-center mb-4 border border-red-900/30">
-                                <Zap className="w-6 h-6 text-red-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-white">The Challenge</h3>
-                            <p className="text-lg text-gray-300 leading-relaxed font-medium">
-                                {project.problem}
-                            </p>
-                        </motion.div>
+            {/* Challenge & Solution */}
+            <section className="shell section-y">
+                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.5 }}
+                        className="space-y-5 border-t-2 border-white/20 pt-8"
+                    >
+                        <span className="eyebrow-muted block">The Challenge</span>
+                        <h3 className="headline text-[26px] lg:text-[32px]">What was broken</h3>
+                        <p className="text-[17px] leading-[1.75] text-secondary">{project.problem}</p>
+                    </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="space-y-6"
-                        >
-                            <div className="w-12 h-12 rounded-lg bg-green-900/20 flex items-center justify-center mb-4 border border-green-900/30">
-                                <CheckCircle2 className="w-6 h-6 text-green-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-white">The Solution</h3>
-                            <p className="text-lg text-gray-300 leading-relaxed font-medium">
-                                {project.solution}
-                            </p>
-                        </motion.div>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="space-y-5 border-t-2 border-primary pt-8"
+                    >
+                        <span className="eyebrow block">The Solution</span>
+                        <h3 className="headline text-[26px] lg:text-[32px]">What I built</h3>
+                        <p className="text-[17px] leading-[1.75] text-secondary">{project.solution}</p>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Architecture Diagram */}
-            {project.architecture && project.architecture.length > 0 && (
-                <section className="py-24 bg-[#0B0F19]">
-                    <div className="container mx-auto px-6">
-                        <div className="bg-[#1F2937] border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
-                            <div className="max-w-3xl mx-auto text-center mb-12">
-                                <h2 className="text-3xl font-bold mb-4 text-white">System Architecture</h2>
-                                <p className="text-gray-300 font-medium">The multi-agent architecture and data flow powering this system.</p>
-                            </div>
+            {/* Architecture */}
+            {project.architecture?.length > 0 && (
+                <section className="border-y border-border bg-surface">
+                    <div className="shell section-y">
+                        <div className="mb-14 max-w-2xl space-y-5">
+                            <span className="eyebrow block">System Design</span>
+                            <h2 className="headline text-[34px] leading-none lg:text-[48px]">
+                                Architecture
+                            </h2>
+                            <p className="text-[16px] leading-relaxed text-muted">
+                                The agent graph and data flow powering this system.
+                            </p>
+                        </div>
+                        <div className="border border-border bg-background p-6 lg:p-12">
                             <ArchitectureDiagram nodes={project.architecture} />
                         </div>
                     </div>
                 </section>
             )}
 
-            {/* Workflow Steps (fallback if no architecture) */}
-            {(!project.architecture || project.architecture.length === 0) && project.workflow && (
-                <section className="py-24 bg-[#0B0F19]">
-                    <div className="container mx-auto px-6">
-                        <div className="bg-[#1F2937] border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
-                            <div className="max-w-3xl mx-auto text-center mb-12">
-                                <h2 className="text-3xl font-bold mb-4 text-white">How It Works</h2>
-                                <p className="text-gray-300 font-medium">A breakdown of the system architecture and data flow.</p>
-                            </div>
-                            <div className="grid md:grid-cols-3 gap-8 relative items-center">
-                                {project.workflow.slice(0, 3).map((step, i) => (
-                                    <div key={i} className="bg-[#111827] border border-gray-700 p-6 rounded-2xl relative h-full flex flex-col items-center text-center shadow-lg hover:-translate-y-1 transition-transform">
-                                        <div className="w-10 h-10 rounded-full bg-indigo-600 border border-indigo-400 flex items-center justify-center absolute -top-5 left-1/2 -translate-x-1/2 text-sm font-bold text-white z-10 shadow-lg">
-                                            {i + 1}
-                                        </div>
-                                        <div className="mt-6">
-                                            <p className="text-gray-200 font-medium leading-relaxed">{step}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+            {/* Workflow steps */}
+            {project.workflow?.length > 0 && (
+                <section className="shell section-y">
+                    <div className="mb-14 max-w-2xl space-y-5">
+                        <span className="eyebrow block">Execution</span>
+                        <h2 className="headline text-[34px] leading-none lg:text-[48px]">
+                            How it runs
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+                        {project.workflow.map((step, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.45, delay: i * 0.07 }}
+                                className="bg-elev-1 p-8 transition-colors duration-300 hover:bg-elev-2"
+                            >
+                                <span className="mb-5 block font-display text-[32px] font-bold leading-none text-primary/40">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <p className="text-[15px] leading-relaxed text-secondary">{step}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </section>
             )}
 
-            {/* Features Grid */}
-            <section className="py-20 bg-[#0B0F19] border-y border-gray-800">
-                <div className="container mx-auto px-6">
-                    <div className="mb-12">
-                        <h2 className="text-3xl font-bold mb-4 text-white">Key Features</h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {project.features && project.features.map((feature, index) => (
-                            <div key={index} className="p-6 rounded-xl bg-[#111827] border border-gray-700 hover:border-indigo-600 transition-colors shadow-md">
-                                <div className="w-8 h-8 rounded bg-indigo-900/30 flex items-center justify-center mb-4 text-indigo-400 border border-indigo-700">
-                                    <Layers className="w-4 h-4" />
-                                </div>
-                                <h4 className="font-bold mb-2 text-white">{feature}</h4>
-                                <p className="text-sm text-gray-400">
-                                    Optimized for performance and scalability.
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Tech Stack */}
-            <section className="py-20 bg-[#111827] border-t border-gray-800">
-                <div className="container mx-auto px-6">
-                    <div className="mb-10 text-center">
-                        <h2 className="text-3xl font-bold mb-4 text-white">Tech Stack</h2>
-                        <p className="text-gray-400">Built with modern, production-grade technologies.</p>
+            {/* Features + stack */}
+            <section className="border-t border-border bg-surface">
+                <div className="shell section-y grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-8">
+                    <div className="lg:col-span-7">
+                        <span className="eyebrow mb-6 block">Key Features</span>
+                        <ul className="space-y-px border border-border bg-border">
+                            {project.features?.map((feature) => (
+                                <li
+                                    key={feature}
+                                    className="flex items-center gap-4 bg-elev-1 p-5 transition-colors duration-300 hover:bg-elev-2"
+                                >
+                                    <Check className="h-4 w-4 shrink-0 text-primary" />
+                                    <span className="font-sans text-[16px] text-bright">{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-3">
-                        {project.techStack.map((tech) => (
-                            <Badge key={tech} variant="secondary" className="text-base px-4 py-2 bg-[#1F2937] border border-gray-700 text-white shadow-sm">
-                                {tech}
-                            </Badge>
-                        ))}
-                    </div>
-                </div>
-            </section>
+                    <div className="lg:col-span-4 lg:col-start-9">
+                        <span className="eyebrow mb-6 block">Tech Stack</span>
+                        <div className="flex flex-wrap gap-2">
+                            {project.techStack.map((tech) => (
+                                <span key={tech} className="chip">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
 
-            {/* Bottom CTA */}
-            <section className="py-24 border-t border-gray-800 text-center bg-[#0B0F19]">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-3xl font-bold mb-8 text-white">Ready to build something similar?</h2>
-                    <Button size="lg" className="px-8 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-lg shadow-indigo-600/30" asChild>
-                        <Link to="/contact">Hire Me for Your Project</Link>
-                    </Button>
+                        <div className="mt-10 border-t border-border pt-8">
+                            <p className="mb-6 text-[15px] leading-relaxed text-muted">
+                                Want a system like this for your own operation?
+                            </p>
+                            <Link
+                                to="/contact"
+                                className="group inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-[14px] font-bold uppercase tracking-[0.12em] text-on-primary transition-all hover:bg-primary-bright"
+                            >
+                                Start a Project
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

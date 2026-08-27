@@ -1,93 +1,117 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '../components/ui/Card';
-import { Badge } from '../components/ui/Badge';
-import { Brain, Cloud, Database, Terminal, Zap, Server } from 'lucide-react';
+import { ArrowUpRight, Brain, Server, Zap, Terminal } from 'lucide-react';
 import { skills as skillCategories } from '../data/skills';
+import Capabilities from '../components/sections/Capabilities';
+import Workflow from '../components/sections/Workflow';
 
 const iconMap = {
-    'Agentic AI & LLM Systems': <Brain className="w-6 h-6 text-indigo-400" />,
-    'Backend & Cloud': <Server className="w-6 h-6 text-blue-400" />,
-    'Databases': <Database className="w-6 h-6 text-purple-400" />,
-    'Automation & ML': <Zap className="w-6 h-6 text-yellow-400" />,
-    'Development': <Terminal className="w-6 h-6 text-green-400" />
+    'Agentic AI & LLM Systems': Brain,
+    'Backend & Cloud': Server,
+    'Automation & ML': Zap,
+    Development: Terminal,
 };
 
-const levelColors = {
-    Expert: 'bg-indigo-500',
-    Advanced: 'bg-purple-500',
-    Proficient: 'bg-cyan-500'
+const levelWidth = {
+    Expert: 'w-full',
+    Advanced: 'w-4/5',
+    Proficient: 'w-3/5',
 };
 
 const Skills = () => {
     return (
-        <div className="min-h-screen pt-32 pb-20 bg-[#0B0F19]">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="max-w-3xl mb-12"
-                >
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">Technical Expertise</h1>
-                    <p className="text-xl text-gray-300 leading-relaxed">
-                        A deep dive into the technologies I use to build scalable, intelligent systems.
-                    </p>
-                </motion.div>
+        <div className="min-h-screen">
+            {/* Head */}
+            <section className="shell pb-8 pt-24 lg:pt-32">
+                <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-6 lg:col-span-8"
+                    >
+                        <span className="eyebrow block">Capabilities</span>
+                        <h1 className="display text-[48px] leading-none lg:text-[84px]">
+                            What I <span className="text-primary">Build</span>
+                        </h1>
+                        <p className="max-w-2xl text-[18px] leading-[1.7] text-muted">
+                            The stack I use to take agentic AI from an idea in a notebook to a
+                            service running in front of real users.
+                        </p>
+                    </motion.div>
 
-                {/* Legend */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex flex-wrap gap-6 mb-12"
-                >
-                    {Object.entries(levelColors).map(([level, color]) => (
-                        <div key={level} className="flex items-center gap-2 text-sm text-gray-400">
-                            <span className={`w-2.5 h-2.5 rounded-full ${color}`} />
-                            {level}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                        className="hidden lg:col-span-3 lg:col-start-10 lg:flex lg:justify-end"
+                    >
+                        <div className="flex h-32 w-32 rotate-45 items-center justify-center border border-primary/40">
+                            <ArrowUpRight className="h-8 w-8 -rotate-45 text-primary" />
                         </div>
-                    ))}
-                </motion.div>
+                    </motion.div>
+                </div>
+            </section>
 
-                <div className="grid md:grid-cols-2 gap-8">
+            <Capabilities withHeading={false} />
+
+            {/* Detailed stack */}
+            <section className="shell section-y border-t border-border">
+                <div className="mb-14 max-w-2xl space-y-5">
+                    <span className="eyebrow block">The Stack</span>
+                    <h2 className="headline text-[38px] leading-none lg:text-[56px]">
+                        Technical Depth
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                     {skillCategories.map((category, index) => {
-                        const icon = iconMap[category.category] || <Terminal className="w-6 h-6 text-gray-400" />;
+                        const Icon = iconMap[category.category] || Terminal;
 
                         return (
                             <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
+                                key={category.category}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
+                                className="border border-border bg-elev-1 p-8 transition-colors duration-300 hover:border-primary/40 lg:p-10"
                             >
-                                <Card className="h-full bg-[#1F2937] border border-gray-800 hover:border-indigo-600 transition-colors shadow-lg">
-                                    <CardContent className="p-8">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="p-3 rounded-lg bg-[#111827] border border-gray-700 shadow-sm">
-                                                {icon}
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-white">{category.category}</h3>
-                                        </div>
-                                        <div className="flex flex-wrap gap-3">
-                                            {category.items.map(skill => (
-                                                <Badge
-                                                    key={skill.name}
-                                                    variant="secondary"
-                                                    className="px-3 py-1.5 text-sm bg-[#111827] border border-gray-700 text-gray-200 hover:text-white hover:border-gray-500 transition-colors flex items-center gap-2"
-                                                >
-                                                    <span className={`w-2 h-2 rounded-full ${levelColors[skill.level] || 'bg-gray-500'}`} />
+                                <div className="mb-8 flex items-center gap-4 border-b border-border pb-6">
+                                    <span className="flex h-11 w-11 items-center justify-center border border-border bg-background text-primary">
+                                        <Icon className="h-5 w-5" />
+                                    </span>
+                                    <h3 className="headline text-[22px] lg:text-[26px]">
+                                        {category.category}
+                                    </h3>
+                                </div>
+
+                                <ul className="space-y-5">
+                                    {category.items.map((skill) => (
+                                        <li key={skill.name}>
+                                            <div className="mb-2 flex items-baseline justify-between gap-4">
+                                                <span className="font-sans text-[15px] text-bright">
                                                     {skill.name}
-                                                </Badge>
-                                            ))}
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                                </span>
+                                                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                                                    {skill.level}
+                                                </span>
+                                            </div>
+                                            <div className="h-[3px] w-full bg-elev-3">
+                                                <div
+                                                    className={`h-full bg-primary ${levelWidth[skill.level] || 'w-1/2'}`}
+                                                />
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
                             </motion.div>
                         );
                     })}
                 </div>
-            </div>
+            </section>
+
+            <Workflow />
         </div>
     );
 };

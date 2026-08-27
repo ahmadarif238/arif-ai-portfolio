@@ -13,40 +13,39 @@ import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
-  return null;
+    return null;
 };
 
 function App() {
-  return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 relative">
-        <div className="bg-noise" />
-        <Navbar />
-        <main className="flex-grow pt-16 relative z-10">
-          <AnimatePresence mode="wait">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/:id" element={<ProjectDetail />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </AnimatePresence>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <ScrollToTop />
+            <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+                <Navbar />
+                <main className="relative z-10 flex-grow pt-20">
+                    <AnimatePresence mode="wait">
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/projects" element={<Projects />} />
+                            <Route path="/projects/:id" element={<ProjectDetail />} />
+                            <Route path="/skills" element={<Skills />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/blog" element={<Blog />} />
+                            <Route path="/blog/:slug" element={<BlogPost />} />
+                            <Route path="/contact" element={<Contact />} />
+                        </Routes>
+                    </AnimatePresence>
+                </main>
+                <Footer />
+            </div>
+        </Router>
+    );
 }
 
 export default App;
