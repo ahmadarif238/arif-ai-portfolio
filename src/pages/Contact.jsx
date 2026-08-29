@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import {
-    Mail,
-    Github,
-    Linkedin,
-    MessageCircle,
-    ArrowRight,
-    CheckCircle,
-    AlertCircle,
-} from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import WhatsAppIcon from '../components/ui/WhatsAppIcon';
+import { WHATSAPP_URL, WHATSAPP_DISPLAY } from '../lib/contact';
 
 const channels = [
     {
@@ -20,9 +14,9 @@ const channels = [
     },
     {
         label: 'WhatsApp',
-        value: '+92 343 8992587',
-        href: 'https://wa.me/923438992587',
-        icon: MessageCircle,
+        value: WHATSAPP_DISPLAY,
+        href: WHATSAPP_URL,
+        icon: WhatsAppIcon,
     },
     {
         label: 'GitHub',

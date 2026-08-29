@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import WhatsAppButton from './components/layout/WhatsAppButton';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
@@ -43,6 +44,7 @@ function App() {
                     </AnimatePresence>
                 </main>
                 <Footer />
+                <WhatsAppButton />
             </div>
         </Router>
     );

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import WhatsAppIcon from '../ui/WhatsAppIcon';
+import { WHATSAPP_URL, WHATSAPP_DISPLAY } from '../../lib/contact';
 import { Link } from 'react-router-dom';
 
 const socials = [
     { name: 'GitHub', href: 'https://github.com/ahmadarif238', icon: Github },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/arif-a-0b853580', icon: Linkedin },
     { name: 'Email', href: 'mailto:ahmadarif238@gmail.com', icon: Mail },
-    { name: 'WhatsApp', href: 'https://wa.me/923438992587', icon: MessageCircle },
+    { name: 'WhatsApp', href: WHATSAPP_URL, icon: WhatsAppIcon },
 ];
 
 const Footer = () => {
@@ -57,8 +59,8 @@ Tell me what you&apos;re trying to build or automate, and I&apos;ll show you the
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/923438992587" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
-                                    +92 343 8992587
+                                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
+                                    {WHATSAPP_DISPLAY}
                                 </a>
                             </li>
                             <li>
