@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUp, Github, Linkedin, Mail, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, ArrowRight, CheckCircle2, AlertCircle, Download } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import WhatsAppIcon from '../../components/ui/WhatsAppIcon';
@@ -121,6 +121,16 @@ export const Footer: React.FC = () => {
                     <Link to="/blog" className="hover:text-[#0bd1d1] transition-colors">
                       Journal
                     </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="/resume.pdf"
+                      download
+                      className="inline-flex items-center gap-1.5 hover:text-[#0bd1d1] transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#0bd1d1]" />
+                      <span>Download CV</span>
+                    </a>
                   </li>
                   <li>
                     <a href={sectionHref("#contact")} className="hover:text-[#0bd1d1] transition-colors">

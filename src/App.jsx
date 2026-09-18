@@ -32,7 +32,7 @@ const ScrollToTop = () => {
 /** The single-page portfolio: every section in the order the design lays them out. */
 const HomePage = ({ onOpenResumeModal, onSelectProject, preselectedService, onPreselectService }) => (
     <main id="main-content" className="pt-20">
-        <Hero onOpenResumeModal={onOpenResumeModal} />
+        <Hero />
         <MarqueeTicker />
         <SelectedWorks onSelectProject={onSelectProject} />
         <ServicesSection onSelectServiceForContact={onPreselectService} />

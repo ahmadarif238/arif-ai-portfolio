@@ -135,16 +135,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="sr-only">Toggle theme</span>
             </button>
 
-            {/* Resume CV Button */}
-            <button
-              onClick={onOpenResumeModal}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#222f43] bg-[#131c31] text-xs font-bold text-[#94a9c9] hover:text-white hover:border-[#0ea5ea] transition-all"
-              title="View CV & Certifications"
-            >
-              <FileText className="w-3.5 h-3.5 text-[#0bd1d1]" />
-              <span>Resume</span>
-            </button>
-
             {/* GenZ Signature Linear CTA Button */}
             {/* Wrapped, because .btn-linear-small sets display:inline-flex in
                 plain CSS and would win over the `hidden` utility. */}

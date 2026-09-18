@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Download, Zap, Bot, PhoneCall, Database, Globe } from 'lucide-react';
+import { ArrowRight, Zap, Bot, PhoneCall, Database, Globe } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-interface HeroProps {
-  onOpenResumeModal: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
+export const Hero: React.FC = () => {
   const titles = [
     'Software Engineer',
     'AI Agents Architect',
@@ -172,14 +168,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              <button
-                type="button"
-                onClick={onOpenResumeModal}
-                className="btn-border-linear"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download CV</span>
-              </button>
+              <a href="#services" className="btn-border-linear">
+                <span>What I Do</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
