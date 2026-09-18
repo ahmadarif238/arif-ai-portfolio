@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
 import { blogPosts } from '../data/blogs';
 
@@ -14,136 +13,114 @@ const BlogPost = () => {
 
     if (!post) {
         return (
-            <div className="flex min-h-[70vh] items-center justify-center">
-                <div className="text-center">
-                    <h2 className="headline mb-6 text-[28px]">Post not found</h2>
-                    <Link
-                        to="/blog"
-                        className="inline-flex items-center gap-2 bg-primary px-7 py-3.5 font-display text-[14px] font-bold uppercase tracking-[0.12em] text-on-primary"
-                    >
-                        Back to Journal
+            <section className="py-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+                    <h1 className="text-2xl font-bold text-white">Post not found</h1>
+                    <Link to="/blog" className="btn-linear">
+                        <span>Back to Journal</span>
+                        <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
-            </div>
+            </section>
         );
     }
 
     return (
-        <div className="min-h-screen">
-            <article className="shell pb-20 pt-24 lg:pt-32">
+        <section className="relative py-20">
+            <div className="absolute top-10 right-10 w-96 h-96 bg-[#0bd1d1]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Link
                     to="/blog"
-                    className="mb-12 inline-flex items-center gap-2 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-primary"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#94a9c9] hover:text-[#0bd1d1] transition-colors mb-8"
                 >
-                    <ArrowLeft className="h-4 w-4" />
-                    All Posts
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>All Posts</span>
                 </Link>
 
-                <motion.header
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-4xl border-b border-border pb-12"
-                >
-                    <div className="mb-6 flex flex-wrap items-center gap-6">
-                        <span className="flex items-center gap-2 font-sans text-[12px] uppercase tracking-[0.16em] text-muted">
-                            <Calendar className="h-3.5 w-3.5" />
+                <article className="card-hover-border bg-[#131c31] border-[#222f43] p-6 sm:p-10 rounded-3xl">
+                    <div className="flex flex-wrap items-center gap-5 text-[11px] font-bold text-[#7f92b0] uppercase tracking-wider">
+                        <span className="flex items-center gap-1.5">
+                            <Calendar className="w-3.5 h-3.5 text-[#0bd1d1]" />
                             {new Date(post.date).toLocaleDateString('en-US', {
                                 month: 'long',
                                 day: 'numeric',
                                 year: 'numeric',
                             })}
                         </span>
-                        <span className="flex items-center gap-2 font-sans text-[12px] uppercase tracking-[0.16em] text-muted">
-                            <Clock className="h-3.5 w-3.5" />
+                        <span className="flex items-center gap-1.5">
+                            <Clock className="w-3.5 h-3.5 text-[#0bd1d1]" />
                             {post.readTime}
                         </span>
                     </div>
 
-                    <h1 className="display text-[36px] leading-[1.1] lg:text-[58px]">{post.title}</h1>
+                    <h1 className="mt-4 text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                        {post.title}
+                    </h1>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
+                    <div className="mt-5 flex flex-wrap gap-2">
                         {post.tags.map((tag) => (
-                            <span key={tag} className="chip">
+                            <span key={tag} className="tag-badge">
                                 {tag}
                             </span>
                         ))}
                     </div>
-                </motion.header>
 
-                {/* Body */}
-                <div className="mt-14 max-w-3xl">
-                    {post.content.map((block, index) => {
-                        switch (block.type) {
-                            case 'heading':
-                                return (
-                                    <h2
-                                        key={index}
-                                        className="headline mb-5 mt-14 text-[24px] first:mt-0 lg:text-[30px]"
-                                    >
-                                        {block.text}
-                                    </h2>
-                                );
-                            case 'paragraph':
-                                return (
-                                    <p
-                                        key={index}
-                                        className="mb-6 text-[17px] leading-[1.8] text-secondary lg:text-[19px]"
-                                    >
-                                        {block.text}
-                                    </p>
-                                );
-                            case 'list':
-                                return (
-                                    <ul key={index} className="mb-8 space-y-4 border-l border-border pl-6">
-                                        {block.items.map((item, i) => (
-                                            <li
-                                                key={i}
-                                                className="flex gap-4 text-[17px] leading-[1.7] text-secondary"
-                                            >
-                                                <span className="mt-[11px] h-1 w-1 shrink-0 bg-primary" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                );
-                            default:
-                                return null;
-                        }
-                    })}
+                    <div className="mt-10 article-body">
+                        {post.content.map((block, index) => {
+                            switch (block.type) {
+                                case 'heading':
+                                    return (
+                                        <h2
+                                            key={index}
+                                            className="text-xl sm:text-2xl font-bold text-white mt-10 mb-4 first:mt-0"
+                                        >
+                                            {block.text}
+                                        </h2>
+                                    );
+                                case 'paragraph':
+                                    return (
+                                        <p key={index} className="text-[15px] sm:text-base text-[#94a9c9]">
+                                            {block.text}
+                                        </p>
+                                    );
+                                case 'list':
+                                    return (
+                                        <ul key={index} className="mb-6 space-y-3 pl-1">
+                                            {block.items.map((item, i) => (
+                                                <li
+                                                    key={i}
+                                                    className="flex gap-3 text-[15px] sm:text-base text-[#94a9c9] leading-relaxed"
+                                                >
+                                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0bd1d1]" />
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    );
+                                default:
+                                    return null;
+                            }
+                        })}
+                    </div>
 
-                    {post.relatedProject && (
-                        <div className="mt-16 border border-border bg-elev-1 p-8">
-                            <span className="eyebrow mb-3 block">Related Case Study</span>
-                            <Link
-                                to={`/projects/${post.relatedProject}`}
-                                className="group inline-flex items-center gap-3 font-display text-[22px] font-semibold uppercase text-bright transition-colors hover:text-primary"
-                            >
-                                View the full breakdown
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </div>
-                    )}
-
-                    <div className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-border pt-10">
+                    <div className="mt-10 pt-6 border-t border-[#222f43] flex flex-col sm:flex-row items-center justify-between gap-4">
                         <Link
                             to="/blog"
-                            className="inline-flex items-center gap-2 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-primary"
+                            className="inline-flex items-center gap-2 text-xs font-bold text-[#94a9c9] hover:text-[#0bd1d1] transition-colors"
                         >
-                            <ArrowLeft className="h-4 w-4" />
-                            All Posts
+                            <ArrowLeft className="w-3.5 h-3.5" />
+                            <span>All Posts</span>
                         </Link>
-                        <Link
-                            to="/contact"
-                            className="inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-[14px] font-bold uppercase tracking-[0.12em] text-on-primary transition-all hover:bg-primary-bright"
-                        >
-                            Let&apos;s Talk
-                            <ArrowRight className="h-4 w-4" />
-                        </Link>
+
+                        <a href="/#contact" className="btn-linear">
+                            <span>Start a Project</span>
+                            <ArrowRight className="w-4 h-4" />
+                        </a>
                     </div>
-                </div>
-            </article>
-        </div>
+                </article>
+            </div>
+        </section>
     );
 };
 

@@ -1,153 +1,331 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Glint: Pure Dark foundation ───────────────────────────── */
-  --color-background: #0B0B0B;   /* strict canvas */
-  --color-surface: #131313;      /* base surface */
-  --color-elev-1: #1A1A1A;       /* raised container */
-  --color-elev-2: #242424;       /* card / chip */
-  --color-elev-3: #2A2A2A;
-  --color-lowest: #0E0E0E;       /* footer well */
+  --font-sans: 'Noto Sans', sans-serif;
+  --font-heading: 'Noto Sans', sans-serif;
+  --color-primary: #0ea5ea;
+  --color-secondary: #0bd1d1;
+  --color-gray-850: #131c31;
+  --color-gray-800: #222f43;
+  --color-gray-700: #66768f;
+  --color-gray-600: #7f92b0;
+  --color-gray-500: #94a9c9;
+  --color-gray-400: #a7bddd;
+  --color-gray-50: #f0f5fd;
+}
 
-  /* Signal green — used sparingly, decisively */
-  --color-primary: #19CE67;
-  --color-primary-bright: #48EB80;
-  --color-primary-dim: #3CE278;
-  --color-on-primary: #00210B;
+:root {
+  --theme-bg: #0b1220;
+  --theme-box: #131c31;
+  --theme-border: #222f43;
+  --theme-card: #131c31;
+  --theme-inner: #222f43;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #94a9c9;
+  --theme-text-muted: #66768f;
+  --primary-linear: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea);
+  --primary-linear-2: linear-gradient(82.19deg, #0ea5ea 5.2%, #0bd1d1 100.36%);
+}
 
-  /* Type */
-  --color-foreground: #E2E2E2;
-  --color-bright: #FFFFFF;
-  --color-secondary: #C8C6C5;
-  --color-muted: #A0A0A0;
-  --color-outline: #869585;
-  --color-outline-variant: #3C4A3D;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-strong: rgba(255, 255, 255, 0.22);
+.theme-day {
+  --theme-bg: #f5f8fc;
+  --theme-box: #ffffff;
+  --theme-border: #e2e8f0;
+  --theme-card: #ffffff;
+  --theme-inner: #f1f5f9;
+  --theme-text-title: #0f172a;
+  --theme-text-body: #475569;
+  --theme-text-muted: #64748b;
+}
 
-  /* Soft-Industrial shape language */
-  --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
+body {
+  font-family: 'Noto Sans', sans-serif;
+  background-color: var(--theme-bg);
+  color: var(--theme-text-body);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  /* Typography — condensed display vs. geometric body */
-  --font-display: "Oswald", "Arial Narrow", ui-sans-serif, sans-serif;
-  --font-sans: "Rubik", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1220;
+}
+::-webkit-scrollbar-thumb {
+  background: #222f43;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0ea5ea;
+}
 
-  /* Layout rhythm */
-  --spacing-gutter: 32px;
-  --spacing-section: 120px;
+/* GenZ Signature Linear Gradient Text */
+.color-linear {
+  background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) 0/200%;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  transition: background-position 0.5s ease;
+}
 
-  --animate-marquee: marquee 28s linear infinite;
-  --animate-slow-spin: slow-spin 24s linear infinite;
+.color-linear:hover {
+  background-position: 100% 0;
+}
 
-  @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* GenZ Linear Gradient Buttons */
+.btn-linear {
+  background: #0ea5ea;
+  background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) 0/200%;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 14px;
+  line-height: 20px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 15px rgba(14, 165, 234, 0.25);
+  white-space: nowrap;
+}
+
+.btn-linear:hover {
+  background-position: 100% 0;
+  box-shadow: 0 6px 22px rgba(11, 209, 209, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
+.btn-linear:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-linear-small {
+  background: #0ea5ea;
+  background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) 0/200%;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-linear-small:hover {
+  background-position: 100% 0;
+  box-shadow: 0 4px 15px rgba(11, 209, 209, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-border-linear {
+  border: 2px solid #0ea5ea;
+  border-radius: 50px;
+  color: #ffffff;
+  background: transparent;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-border-linear:hover {
+  background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) 0/200%;
+  border-color: transparent;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(14, 165, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+/* GenZ Card Styles & Hover Borders */
+.card-hover-border {
+  background: #131c31;
+  border: 1px solid #222f43;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.card-hover-border:hover {
+  background: linear-gradient(#131c31, #131c31) padding-box,
+              linear-gradient(90deg, #0ea5ea, #0bd1d1) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 24px rgba(11, 209, 209, 0.16);
+  transform: translateY(-3px);
+}
+
+.hover-up {
+  transition: all 0.3s ease;
+}
+
+.hover-up:hover {
+  transform: translateY(-3px);
+}
+
+/* GenZ Subscriber Input Container */
+.inner-subscriber {
+  display: flex;
+  align-items: center;
+  padding: 6px 6px 6px 18px;
+  background: linear-gradient(#222f43, #222f43) padding-box,
+              linear-gradient(90deg, #0ea5ea, #0bd1d1) border-box;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.inner-subscriber:focus-within {
+  box-shadow: 0 0 20px rgba(11, 209, 209, 0.3);
+}
+
+/* Category & Tag Badges */
+.tag-badge {
+  background: #222f43;
+  color: #94a9c9;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.tag-badge:hover, .tag-badge.active {
+  background: #131c31;
+  color: #0bd1d1;
+  border-color: #0ea5ea;
+  box-shadow: 0 2px 10px rgba(14, 165, 234, 0.2);
+}
+
+/* GenZ Marquee ribbon */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
   }
-
-  @keyframes slow-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-  }
-
-  ::selection {
-    background: var(--color-primary);
-    color: var(--color-on-primary);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-bright;
-  }
-
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #0B0B0B; }
-  ::-webkit-scrollbar-thumb { background: #2A2A2A; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
 }
 
-@layer components {
-  /* Section shell — fixed grid, fluid insets */
-  .shell {
-    @apply w-full max-w-[1440px] mx-auto px-6 lg:px-8;
-  }
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
 
-  .section-y {
-    @apply py-16 lg:py-[120px];
-  }
+/* Pulse indicator */
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #0bd1d1;
+  box-shadow: 0 0 10px #0bd1d1;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
 
-  /* Eyebrow label above every section heading */
-  .eyebrow {
-    @apply font-sans text-[13px] font-semibold uppercase tracking-[0.24em] text-primary;
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(0.85);
   }
+  50% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
 
-  .eyebrow-muted {
-    @apply font-sans text-[13px] font-semibold uppercase tracking-[0.24em] text-muted;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-  /* Condensed display headline */
-  .display {
-    @apply font-display font-bold uppercase leading-[1.05] tracking-[-0.01em] text-bright;
-  }
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
 
-  .headline {
-    @apply font-display font-semibold uppercase leading-[1.1] text-bright;
-  }
+/*
+ * Day mode.
+ * The design's components hard-code their hex colours in utility classes, so
+ * flipping the CSS variables alone would leave every card dark. These rules
+ * remap the palette's hex utilities when .theme-day is active, which makes the
+ * header's night/day switch actually change the page.
+ */
+.theme-day ::-webkit-scrollbar-track { background: #e2e8f0; }
+.theme-day ::-webkit-scrollbar-thumb { background: #cbd5e1; }
 
-  /* Tonal layering, not shadows */
-  .panel {
-    @apply bg-elev-1 border border-border;
-  }
+.theme-day .bg-\[\#0b1220\],
+.theme-day .bg-\[\#0b1220\]\/70,
+.theme-day .bg-\[\#0b1220\]\/80,
+.theme-day .bg-\[\#0b1220\]\/95 { background-color: #f5f8fc !important; }
 
-  .panel-hover {
-    @apply transition-all duration-300 hover:border-primary/40 hover:bg-elev-2;
-  }
+.theme-day .bg-\[\#131c31\],
+.theme-day .bg-\[\#131c31\]\/50,
+.theme-day .bg-\[\#131c31\]\/60,
+.theme-day .bg-\[\#131c31\]\/95 { background-color: #ffffff !important; }
 
-  /* Chips & tags — full pill, low contrast */
-  .chip {
-    @apply inline-flex items-center gap-2 rounded-full bg-elev-2 border border-border
-           px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-secondary;
-  }
+.theme-day .bg-\[\#222f43\],
+.theme-day .bg-\[\#222f43\]\/60 { background-color: #eef2f7 !important; }
 
-  /* Structured, bottom-bordered inputs */
-  .field {
-    @apply w-full bg-transparent border-0 border-b-2 border-white/15 px-0 py-3
-           font-sans text-[15px] text-bright placeholder:text-muted/70
-           focus:outline-none focus:border-primary transition-colors duration-300;
-  }
+.theme-day .border-\[\#222f43\],
+.theme-day .border-\[\#222f43\]\/50 { border-color: #e2e8f0 !important; }
 
-  .field-label {
-    @apply block font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-muted mb-1;
-  }
+.theme-day .text-white,
+.theme-day .text-\[\#f0f5fd\] { color: #0f172a !important; }
 
-  /* Faint blueprint grid used behind dark sections */
-  .grid-lines {
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
+.theme-day .text-\[\#94a9c9\] { color: #475569 !important; }
+.theme-day .text-\[\#7f92b0\],
+.theme-day .text-\[\#66768f\] { color: #64748b !important; }
 
-  .glow-primary {
-    box-shadow: 0 0 24px rgba(25, 206, 103, 0.28);
-  }
+.theme-day .card-hover-border {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-day .card-hover-border:hover {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(90deg, #0ea5ea, #0bd1d1) border-box;
+}
+
+.theme-day .inner-subscriber {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(90deg, #0ea5ea, #0bd1d1) border-box;
+}
+
+.theme-day .tag-badge { background: #eef2f7; color: #475569; }
+.theme-day .tag-badge:hover,
+.theme-day .tag-badge.active { background: #ffffff; color: #0891b2; }
+
+.theme-day .btn-border-linear { color: #0f172a; }
+.theme-day .btn-border-linear:hover { color: #ffffff !important; }
+
+/* Long-form article body, used by the Journal pages */
+.article-body p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
 }
