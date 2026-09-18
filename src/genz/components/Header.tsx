@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, FileText, ArrowRight, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { Logo } from './Logo';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeaderProps {
@@ -74,14 +75,12 @@ export const Header: React.FC<HeaderProps> = ({
             to="/"
             className="flex items-center gap-2.5 text-left focus:outline-hidden group"
           >
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#0ea5ea] to-[#0bd1d1] flex items-center justify-center shadow-[0_0_15px_rgba(11,209,209,0.35)] group-hover:scale-105 transition-transform">
-              <span className="text-white font-extrabold text-lg tracking-wider">AK</span>
-            </div>
+            <Logo className="h-8 w-8 sm:h-9 sm:w-9 shrink-0 transition-transform group-hover:scale-105 drop-shadow-[0_0_10px_rgba(11,209,209,0.35)]" />
             <div className="flex flex-col min-w-0">
-              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white whitespace-nowrap">
+              <span className="text-[15px] sm:text-lg md:text-xl font-extrabold tracking-tight text-white whitespace-nowrap">
                 Arif <span className="color-linear">Ahmad Khan</span>
               </span>
-              <span className="text-[10px] text-[#94a9c9] tracking-wider uppercase font-medium -mt-1">
+              <span className="hidden sm:block text-[10px] text-[#94a9c9] tracking-wider uppercase font-medium -mt-1">
                 Software Engineer
               </span>
             </div>
@@ -111,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Header Right Actions */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
             {/* GenZ Night / Day Switch */}
             <button
               onClick={onToggleTheme}
@@ -147,13 +146,14 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {/* GenZ Signature Linear CTA Button */}
-            <a
-              href={sectionHref('#contact')}
-              className="btn-linear-small"
-            >
-              <span>Get in Touch</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            {/* Wrapped, because .btn-linear-small sets display:inline-flex in
+                plain CSS and would win over the `hidden` utility. */}
+            <span className="hidden sm:block">
+              <a href={sectionHref('#contact')} className="btn-linear-small">
+                <span>Get in Touch</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </span>
 
             {/* Mobile Menu Toggle Button */}
             <button

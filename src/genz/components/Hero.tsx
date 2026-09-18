@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, Download, CheckCircle, ShieldCheck, Zap, Bot, Layers, PhoneCall, Database, Globe } from 'lucide-react';
+import { ArrowRight, Download, Zap, Bot, PhoneCall, Database, Globe } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -57,6 +57,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
       setQuickInput('');
     }, 800);
   };
+
+  // Bubbles seated on the portrait ring, one per core domain.
+  const skillOrbit = [
+    { Icon: Bot, label: 'AI Agents', pos: 'top-[12%] -left-[3%] sm:top-[13%] sm:-left-[2%]' },
+    { Icon: Globe, label: 'Web & App Development', pos: 'top-[12%] -right-[3%] sm:top-[13%] sm:-right-[2%]' },
+    { Icon: PhoneCall, label: 'AI Calling Agents', pos: 'bottom-[18%] -left-[6%] sm:bottom-[19%] sm:-left-[5%]' },
+    { Icon: Zap, label: 'Workflow Automation', pos: 'bottom-[18%] -right-[6%] sm:bottom-[19%] sm:-right-[5%]' }
+  ];
 
   const domainCategories = [
     {
@@ -175,91 +183,34 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
             </div>
           </div>
 
-          {/* Right Column: GenZ Featured Profile & Badges */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            {/* Ambient pattern decorations */}
-            <div className="relative w-full max-w-md">
-              {/* Profile Card Container */}
-              <div className="card-hover-border p-6 bg-[#131c31] border-[#222f43] rounded-3xl relative overflow-hidden shadow-2xl">
-                {/* Decorative neon corner glow */}
-                <div className="absolute -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-[#0ea5ea]/40 to-[#0bd1d1]/20 rounded-full blur-2xl" />
+          {/* Right Column: portrait ringed by the domains he works in */}
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+            <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px]">
+              {/* Ambient glow */}
+              <div className="absolute inset-6 -z-10 rounded-full bg-gradient-to-tr from-[#0ea5ea]/30 to-[#0bd1d1]/15 blur-[70px]" />
 
-                <div className="relative z-10 space-y-6">
-                  {/* Photo with gradient frame */}
-                  <div className="relative mx-auto w-48 h-48 sm:w-56 sm:h-56 rounded-2xl p-1 bg-gradient-to-tr from-[#0ea5ea] via-[#0bd1d1] to-[#0ea5ea] shadow-xl">
-                    <img
-                      src={PERSONAL_INFO.avatarUrl}
-                      alt={PERSONAL_INFO.name}
-                      className="w-full h-full object-cover object-top rounded-xl"
-                    />
-                  </div>
-
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-white tracking-tight">
-                      {PERSONAL_INFO.name}
-                    </h3>
-                    <p className="text-sm font-semibold color-linear mt-1">
-                      Software Engineer • AI & Web Specialist
-                    </p>
-                    <p className="text-xs text-[#7f92b0] mt-1 font-mono">
-                      BSc Software Engineering • CGPA 3.65 • {PERSONAL_INFO.location}
-                    </p>
-                  </div>
-
-                  {/* Highlights Grid */}
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-[#222f43]/60 border border-[#222f43] text-center">
-                      <div className="text-2xl font-black color-linear">{PERSONAL_INFO.completedProjects}</div>
-                      <div className="text-[11px] font-bold text-[#94a9c9] uppercase tracking-wider mt-0.5">
-                        Systems Delivered
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#222f43]/60 border border-[#222f43] text-center">
-                      <div className="text-2xl font-black text-white">{PERSONAL_INFO.caseStudies}</div>
-                      <div className="text-[11px] font-bold text-[#94a9c9] uppercase tracking-wider mt-0.5">
-                        Case Studies
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#222f43]/60 border border-[#222f43] text-center">
-                      <div className="text-2xl font-black color-linear">{PERSONAL_INFO.hoursSavedWeekly}</div>
-                      <div className="text-[11px] font-bold text-[#94a9c9] uppercase tracking-wider mt-0.5">
-                        Hours Saved Weekly
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#222f43]/60 border border-[#222f43] text-center">
-                      <div className="text-2xl font-black text-white">{PERSONAL_INFO.automationUptime}</div>
-                      <div className="text-[11px] font-bold text-[#94a9c9] uppercase tracking-wider mt-0.5">
-                        Automation Uptime
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              {/* Gradient ring: outer gradient disc with the page colour punched out */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#0bd1d1] via-[#0ea5ea] to-[#0ea5ea]/30 p-[14px] sm:p-[18px]">
+                <div className="h-full w-full rounded-full" style={{ backgroundColor: "var(--theme-bg)" }} />
               </div>
 
-              {/* Floating Badge 1: Left */}
-              <div className="absolute -left-6 xl:-left-16 top-10 bg-[#131c31]/95 border border-[#222f43] p-3 rounded-2xl shadow-xl backdrop-blur-md items-center gap-3 hidden xl:flex hover-up">
-                <div className="w-9 h-9 rounded-xl bg-[#0ea5ea]/20 flex items-center justify-center text-[#0ea5ea]">
-                  <Bot className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-white">AI Agent Architect</div>
-                  <div className="text-[10px] text-[#94a9c9]">Autonomous Pipelines</div>
-                </div>
-              </div>
+              {/* Portrait sits inside the ring */}
+              <img
+                src={PERSONAL_INFO.avatarUrl}
+                alt={PERSONAL_INFO.name}
+                className="absolute inset-[26px] sm:inset-[34px] h-[calc(100%-52px)] w-[calc(100%-52px)] sm:h-[calc(100%-68px)] sm:w-[calc(100%-68px)] rounded-full object-cover object-top select-none"
+              />
 
-              {/* Floating Badge 2: Right Bottom */}
-              <div className="absolute -right-6 xl:-right-16 -bottom-6 bg-[#131c31]/95 border border-[#222f43] p-3 rounded-2xl shadow-xl backdrop-blur-md items-center gap-3 hidden xl:flex hover-up">
-                <div className="w-9 h-9 rounded-xl bg-[#0bd1d1]/20 flex items-center justify-center text-[#0bd1d1]">
-                  <ShieldCheck className="w-5 h-5" />
+              {/* Skill bubbles seated on the ring */}
+              {skillOrbit.map(({ Icon, label, pos }) => (
+                <div
+                  key={label}
+                  title={label}
+                  className={`absolute z-20 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-[#222f43] bg-[#131c31] text-[#0bd1d1] shadow-xl hover-up ${pos}`}
+                >
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <div>
-                  <div className="text-xs font-bold text-white">Production Ready</div>
-                  <div className="text-[10px] text-[#94a9c9]">Zero Hallucinations</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

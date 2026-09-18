@@ -3,6 +3,7 @@ import { ArrowUp, Github, Linkedin, Mail, ArrowRight, CheckCircle2, AlertCircle 
 import { Link, useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import WhatsAppIcon from '../../components/ui/WhatsAppIcon';
+import { Logo } from './Logo';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -51,9 +52,7 @@ export const Footer: React.FC = () => {
             {/* Col 1: Brand & Address */}
             <div className="lg:col-span-4 space-y-4">
               <a href={sectionHref("#home")} className="flex items-center gap-2.5">
-                <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#0ea5ea] to-[#0bd1d1] flex items-center justify-center shadow-[0_0_15px_rgba(11,209,209,0.35)]">
-                  <span className="text-white font-extrabold text-lg">AK</span>
-                </div>
+                <Logo className="h-9 w-9 shrink-0 drop-shadow-[0_0_10px_rgba(11,209,209,0.35)]" />
                 <span className="text-xl font-extrabold text-white whitespace-nowrap">
                   Arif <span className="color-linear">Ahmad Khan</span>
                 </span>
