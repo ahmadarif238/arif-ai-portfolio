@@ -46,14 +46,14 @@ export function ProcessSection() {
             return (
               <Reveal as="li" key={s.step} delay={0.05}>
                 <div className="flex items-center gap-3">
-                  <Icon className="h-6 w-6 shrink-0 text-white/80" strokeWidth={1.5} />
+                  <Icon className="h-6 w-6 shrink-0 text-white/70" strokeWidth={1.5} />
                   <h3 className="text-[length:var(--text-fluid-xs)] tracking-[-0.03em]">{s.title}</h3>
                   <span className="text-label-sm ml-auto shrink-0 text-pink-300">{s.duration}</span>
                 </div>
                 <p className="mt-3 max-w-[36rem] text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white/70">{s.summary}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.keyPoints.slice(0, 3).map((k) => (
-                    <li key={k} className="text-label-sm rounded-[5px] bg-charcoal/70 px-2.5 py-1.5 text-white/75">
+                    <li key={k} className="rounded-[var(--radius-sm)] bg-charcoal/70 px-2.5 py-1.5 text-[14px] text-white/70">
                       {k}
                     </li>
                   ))}

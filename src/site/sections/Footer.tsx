@@ -10,6 +10,10 @@ import { scrollToHash } from '../lib/scroll';
 export function Footer({ onOpenResume }: { onOpenResume: () => void }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const openResume = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onOpenResume();
+  };
   const go = (hash: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname !== '/') {
@@ -43,7 +47,7 @@ export function Footer({ onOpenResume }: { onOpenResume: () => void }) {
           </div>
           <div className="grid grid-cols-2 gap-8 md:col-span-6">
             <div>
-              <p className="text-[14px] text-white/55">Services</p>
+              <p className="text-[14px] text-white/70">Services</p>
               <ul className="mt-4 space-y-2.5">
                 {SERVICES.slice(0, 5).map((s) => (
                   <li key={s.number}>
@@ -55,7 +59,7 @@ export function Footer({ onOpenResume }: { onOpenResume: () => void }) {
               </ul>
             </div>
             <div>
-              <p className="text-[14px] text-white/55">{PERSONAL_INFO.shortName}</p>
+              <p className="text-[14px] text-white/70">{PERSONAL_INFO.name}</p>
               <ul className="mt-4 space-y-2.5">
                 {NAV_LINKS.map((l) => (
                   <li key={l.label}>
@@ -71,9 +75,9 @@ export function Footer({ onOpenResume }: { onOpenResume: () => void }) {
                   </li>
                 ))}
                 <li>
-                  <button onClick={onOpenResume} className="text-[14px] hover:text-pink-300">
+                  <a href="/resume.pdf" onClick={openResume} className="text-[14px] hover:text-pink-300">
                     Resume / CV
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -102,9 +106,9 @@ export function Footer({ onOpenResume }: { onOpenResume: () => void }) {
             {PERSONAL_INFO.year} © {PERSONAL_INFO.name}
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <button onClick={onOpenResume} className="text-label-sm hover:text-pink-300">
+            <a href="/resume.pdf" onClick={openResume} className="text-label-sm hover:text-pink-300">
               Resume
-            </button>
+            </a>
             <a href="/resume.pdf" download className="text-label-sm hover:text-pink-300">
               Download CV
             </a>

@@ -7,7 +7,7 @@ import { PERSONAL_INFO } from '../../genz/data/portfolioData';
 import { SERVICE_OPTIONS } from '../data/siteContent';
 
 const field =
-  'w-full rounded-[var(--radius-sm)] bg-slate-50 px-4 py-3.5 text-[15px] text-navy-900 placeholder:text-navy-500/60 outline-none ring-1 ring-transparent transition focus:bg-white focus:ring-pink-500';
+  'w-full rounded-[var(--radius-sm)] bg-slate-50 px-4 py-3.5 text-[16px] text-navy-900 placeholder:text-navy-500/60 outline-none ring-1 ring-transparent transition focus:bg-white focus:ring-pink-500';
 
 export function Contact({ preselected }: { preselected?: string }) {
   const [form, setForm] = useState({ name: '', email: '', service: preselected || SERVICE_OPTIONS[0], message: '' });
@@ -90,9 +90,9 @@ export function Contact({ preselected }: { preselected?: string }) {
         <div className="rounded-[var(--radius-lg)] bg-white p-6 sm:p-10">
           {sent ? (
             <div className="flex min-h-[420px] flex-col items-start justify-center">
-              <CheckCircle2 className="h-10 w-10 text-pink-500" strokeWidth={1.5} />
+              <CheckCircle2 className="h-10 w-10 text-pink-600" strokeWidth={1.5} />
               <p className="mt-6 text-[length:var(--text-fluid-xs)] tracking-[-0.03em] text-navy-900">Message received.</p>
-              <p className="mt-3 text-[15px] text-navy-500">Thanks {form.name.split(' ')[0] || 'for reaching out'}. I will reply to {form.email} within a day.</p>
+              <p className="mt-3 text-[16px] text-navy-500">Thanks {form.name.split(' ')[0] || 'for reaching out'}. I will reply to {form.email} within a day.</p>
               <Button variant="slate" className="mt-8" onClick={() => setSent(false)}>
                 Send another
               </Button>

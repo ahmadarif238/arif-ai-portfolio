@@ -13,7 +13,7 @@ const BlogPost = () => {
         return (
             <main>
                 <section data-stage="ribbons" className="container-grid flex min-h-[80vh] flex-col items-start justify-center gap-8 pb-40 pt-44">
-                    <h1 className="heading text-[length:var(--text-fluid-xl)]">Post not found</h1>
+                    <h1 className="heading text-[length:var(--text-fluid-lg)]">Post not found</h1>
                     <Button variant="pink" to="/blog">Back to journal</Button>
                 </section>
             </main>
@@ -25,7 +25,7 @@ const BlogPost = () => {
     return (
         <main>
             <section data-stage="ribbons" className="container-grid pb-[calc(var(--radius-xl)+4rem)] pt-40">
-                <Button variant="ghost" small to="/blog" icon={<ArrowLeft className="h-4 w-4" />}>
+                <Button variant="ghost" to="/blog" icon={<ArrowLeft className="h-4 w-4" />}>
                     All posts
                 </Button>
                 <p className="text-label-sm mt-12 flex flex-wrap gap-x-4 gap-y-2 text-white/70">
@@ -59,7 +59,7 @@ const BlogPost = () => {
                             return null;
                         })}
                         <div className="mt-14 flex flex-col items-start gap-5 rounded-[var(--radius-lg)] bg-slate-100 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-                            <p className="text-[19px] tracking-[-0.02em] text-navy-900">Want something like this built for you?</p>
+                            <p className="text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900">Want something like this built for you?</p>
                             <Button variant="pink" to="/#contact">Start a project</Button>
                         </div>
                     </article>

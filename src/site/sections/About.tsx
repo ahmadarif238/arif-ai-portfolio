@@ -12,7 +12,7 @@ function Stat({ value, label }: { value: string; label: string }) {
       <p className="text-[length:var(--text-fluid-md)] leading-none tracking-[-0.05em] text-navy-900">
         {isNaN(num) || !m ? value : `${m[1]}${Math.round(v)}${m[3]}`}
       </p>
-      <p className="text-label-sm mt-3 text-navy-500">{label}</p>
+      <p className="mt-3 text-[14px] leading-snug text-navy-500">{label}</p>
     </div>
   );
 }
@@ -40,11 +40,11 @@ export function About() {
             <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 text-white sm:p-8">
               <div>
                 <p className="text-[length:var(--text-fluid-xs)] leading-none tracking-[-0.03em]">{PERSONAL_INFO.name}</p>
-                <p className="text-label-sm mt-3 text-white/75">
+                <p className="text-label-sm mt-3 text-white/70">
                   {PERSONAL_INFO.role} · {PERSONAL_INFO.location}
                 </p>
               </div>
-              <span className="text-label-sm shrink-0 rounded-[5px] bg-pink-500 px-2 py-1 text-charcoal">Available</span>
+              <span className="text-label-sm shrink-0 rounded-[var(--radius-sm)] bg-pink-500 px-2 py-1 text-charcoal">Available</span>
             </figcaption>
           </figure>
         </Reveal>
@@ -74,7 +74,7 @@ export function About() {
                   {e.isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-pink-500" />}
                   {e.period}
                 </p>
-                <p className="mt-3 text-[19px] tracking-[-0.02em] text-navy-900">{e.role}</p>
+                <p className="mt-3 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900">{e.role}</p>
                 <p className="mt-1 text-[14px] text-navy-500">
                   {e.company}
                   {e.location ? ` · ${e.location}` : ''}
@@ -83,7 +83,7 @@ export function About() {
               <ul className="space-y-2">
                 {e.points.slice(0, 3).map((p) => (
                   <li key={p} className="flex gap-3 text-[14px] leading-relaxed text-navy-500">
-                    <span className="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-[2px] bg-pink-500" />
+                    <span className="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-full bg-pink-500" />
                     {p}
                   </li>
                 ))}
@@ -100,8 +100,8 @@ export function About() {
               <GraduationCap className="h-6 w-6 shrink-0 text-navy-900" strokeWidth={1.5} />
               <div>
                 <p className="text-[16px] text-navy-900">{ed.degree}</p>
-                <p className="mt-1 text-[13px] text-navy-500">{ed.institution}</p>
-                <p className="text-label-sm mt-3 text-navy-500">
+                <p className="mt-1 text-[14px] text-navy-500">{ed.institution}</p>
+                <p className="mt-3 text-[14px] text-navy-500">
                   {ed.period} · GPA {ed.gpa}
                 </p>
               </div>
@@ -113,7 +113,7 @@ export function About() {
               {CERTIFICATIONS.map((c) => (
                 <li key={c.name}>
                   <p className="text-[14px] text-navy-900">{c.name}</p>
-                  <p className="text-label-sm mt-0.5 text-navy-500">
+                  <p className="mt-0.5 text-[14px] text-navy-500">
                     {c.issuer} · {c.year}
                   </p>
                 </li>

@@ -37,7 +37,7 @@ export function UseCases({ onOpenProject, onEnquire }: { onOpenProject: (p: Proj
                     <Icon className="h-9 w-9" strokeWidth={1.4} />
                   </span>
                   <span className="flex flex-col py-1 pr-2">
-                    <span className="text-[17px] leading-tight tracking-[-0.02em] text-navy-900 sm:text-[19px]">{u.title}</span>
+                    <span className="text-[16px] leading-tight tracking-[-0.02em] text-navy-900 sm:text-[length:var(--text-fluid-2xs)]">{u.title}</span>
                     <span className="mt-1.5 text-[14px] leading-snug text-navy-500">{u.description}</span>
                     <span className="text-label-sm mt-auto pt-3 text-navy-900 underline decoration-navy-900/30 underline-offset-4 group-hover:decoration-pink-500">
                       {project ? 'View case study' : 'Discuss this'}

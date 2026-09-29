@@ -10,7 +10,7 @@ const Blog = () => (
             <div className="mt-10 grid gap-8 md:grid-cols-12 md:items-end">
                 <SplitTitle as="h1" text={'Field *notes*'} className="heading text-[length:var(--text-fluid-2xl)] md:col-span-7" />
                 <Reveal delay={0.2} className="md:col-span-4 md:col-start-9">
-                    <p className="text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white/75">
+                    <p className="text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white/70">
                         Practical write-ups on building with AI, automating real workflows, and the lessons that only show up once
                         something is running in production.
                     </p>

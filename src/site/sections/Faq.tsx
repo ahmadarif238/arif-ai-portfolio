@@ -21,7 +21,7 @@ export function Faq() {
                 <Plus className={`h-5 w-5 shrink-0 text-navy-900 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} />
               </button>
               <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.645,.045,.355,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-                <p className="overflow-hidden text-[15px] leading-relaxed text-navy-500">
+                <p className="overflow-hidden text-[16px] leading-relaxed text-navy-500">
                   <span className="block max-w-[44rem] pb-7">{f.answer}</span>
                 </p>
               </div>

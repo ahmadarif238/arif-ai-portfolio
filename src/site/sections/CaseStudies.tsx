@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Eyebrow, Reveal, SplitTitle } from '../ui/primitives';
+import { Button, Eyebrow, Reveal, SplitTitle } from '../ui/primitives';
 import { PROJECTS } from '../../genz/data/portfolioData';
 import type { Project } from '../../genz/types';
 import { coverUrl } from '../data/covers';
@@ -25,17 +25,18 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
       </div>
 
       <div className="container-grid mt-16 flex items-center justify-between">
-        <p className="text-label-sm text-navy-500">{PROJECTS.length} projects · production agents, demos & source</p>
+        <p className="text-[14px] text-navy-500">{PROJECTS.length} projects: production agents, live demos and source</p>
         <div className="flex gap-2">
           {[-1, 1].map((d) => (
-            <button
+            <Button
               key={d}
+              variant="slate"
+              iconOnly
               onClick={() => nudge(d as 1 | -1)}
-              aria-label={d < 0 ? 'Previous case study' : 'Next case study'}
-              className="grid h-11 w-11 place-items-center rounded-[var(--radius-sm)] bg-white text-navy-900 transition-colors hover:bg-navy-900 hover:text-white"
+              icon={d < 0 ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
             >
-              {d < 0 ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
-            </button>
+              {d < 0 ? 'Previous case study' : 'Next case study'}
+            </Button>
           ))}
         </div>
       </div>
@@ -59,23 +60,23 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.19,1,.22,1)] group-hover:scale-[1.06]"
                 />
-                <span className="text-label-sm absolute left-3 top-3 rounded-[5px] bg-charcoal/60 px-2 py-1 text-white backdrop-blur">
+                <span className="absolute left-3 top-3 rounded-[var(--radius-sm)] bg-charcoal/70 px-2 py-1 text-[14px] text-white">
                   {p.stats}
                 </span>
               </div>
               <div className="flex flex-1 flex-col px-2 pb-2 pt-6">
                 <h3 className="text-[length:var(--text-fluid-2xs)] leading-[1.25] tracking-[-0.02em] text-navy-900">{p.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-snug text-navy-500">{p.tagline}</p>
+                <p className="mt-1.5 text-[16px] leading-snug text-navy-500">{p.tagline}</p>
                 <div className="mt-auto flex items-end justify-between gap-4 pt-10">
                   <div className="flex gap-6">
                     {p.metrics.slice(0, 2).map((m) => (
                       <div key={m.label}>
-                        <p className="text-[22px] leading-none tracking-[-0.03em] text-navy-900">{m.value}</p>
-                        <p className="text-label-sm mt-1.5 text-navy-500">{m.label}</p>
+                        <p className="text-[length:var(--text-fluid-2xs)] leading-none tracking-[-0.03em] text-navy-900">{m.value}</p>
+                        <p className="mt-1.5 text-[14px] leading-snug text-navy-500">{m.label}</p>
                       </div>
                     ))}
                   </div>
-                  <span className="text-[13px] text-navy-500 transition-colors group-hover:text-pink-600">Read case study</span>
+                  <span className="text-[14px] text-navy-500 transition-colors group-hover:text-pink-600">Read case study</span>
                 </div>
               </div>
             </button>

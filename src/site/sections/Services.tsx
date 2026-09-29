@@ -14,7 +14,7 @@ export function Services({ onEnquire }: { onEnquire: (service: string) => void }
           <Eyebrow className="text-navy-900">Services</Eyebrow>
           <SplitTitle text={'Everything you need\nto *ship AI*'} className="heading mt-10 text-[length:var(--text-fluid-md)] text-navy-900" />
           <Reveal delay={0.15}>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-navy-500">
+            <p className="mt-6 max-w-sm text-[16px] leading-relaxed text-navy-500">
               One engineer across the whole build: interface, backend, and the automation that ties it together. No handoffs between three
               vendors.
             </p>
@@ -47,18 +47,18 @@ export function Services({ onEnquire }: { onEnquire: (service: string) => void }
                 <div className="overflow-hidden">
                   <div className="grid gap-6 pb-8 pl-[52px] sm:grid-cols-[1fr_auto]">
                     <div>
-                      <p className="text-[15px] leading-relaxed text-navy-500">{s.description}</p>
+                      <p className="text-[16px] leading-relaxed text-navy-500">{s.description}</p>
                       <ul className="mt-5 space-y-2">
                         {s.deliverables.map((d) => (
                           <li key={d} className="flex gap-3 text-[14px] text-navy-900">
-                            <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-[2px] bg-pink-500" />
+                            <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-pink-500" />
                             {d}
                           </li>
                         ))}
                       </ul>
                       <div className="mt-5 flex flex-wrap gap-2">
                         {s.technologies.map((t) => (
-                          <span key={t} className="text-label-sm rounded-[5px] bg-slate-100 px-2 py-1 text-navy-500">
+                          <span key={t} className="text-label-sm rounded-[var(--radius-sm)] bg-slate-100 px-2 py-1 text-navy-500">
                             {t}
                           </span>
                         ))}
@@ -68,7 +68,7 @@ export function Services({ onEnquire }: { onEnquire: (service: string) => void }
                       <span className="grid h-14 w-14 place-items-center rounded-[var(--radius-sm)] bg-slate-100 text-navy-900">
                         <Icon className="h-6 w-6" strokeWidth={1.5} />
                       </span>
-                      <Button variant="navy" small onClick={() => onEnquire(s.title)}>
+                      <Button variant="slate" onClick={() => onEnquire(s.title)}>
                         Start this
                       </Button>
                     </div>

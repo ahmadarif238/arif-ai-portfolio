@@ -77,11 +77,11 @@ export function Header() {
           >
             <Logo className="h-9 w-9 shrink-0" />
             <span
-              className={`text-[26px] leading-none tracking-[-0.03em] transition-[opacity,transform] duration-300 ${
+              className={`whitespace-nowrap text-[length:var(--text-fluid-2xs)] leading-none tracking-[-0.03em] transition-[opacity,transform] duration-300 sm:text-[length:var(--text-fluid-xs)] ${
                 scrolled ? 'pointer-events-none -translate-x-2 opacity-0' : 'opacity-100'
               }`}
             >
-              {PERSONAL_INFO.shortName}
+              {PERSONAL_INFO.name}
             </span>
           </Link>
 
@@ -135,7 +135,7 @@ export function Header() {
                     </span>
                     <span>
                       <span className="text-label block">{label}</span>
-                      <span className="mt-1 block text-[13px] text-white/60">{sub}</span>
+                      <span className="mt-1 block text-[14px] text-white/70">{sub}</span>
                     </span>
                   </a>
                 ))}
@@ -145,16 +145,12 @@ export function Header() {
             <Button variant="slate" href="#contact" onClick={go('#contact')} className="hidden sm:inline-flex">
               Contact
             </Button>
-            <Button variant="pink" href="#contact" onClick={go('#contact')}>
+            <Button variant="pink" href="#contact" onClick={go('#contact')} className="max-[419px]:!hidden">
               Hire me
             </Button>
-            <button
-              className={`btn text-label md:hidden ${onLight ? 'bg-navy-500/60 text-white' : 'bg-charcoal/90 text-white'}`}
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-            >
+            <Button variant={onLight ? 'slate' : 'ghost'} className="md:!hidden" onClick={() => setMenuOpen(true)}>
               Menu
-            </button>
+            </Button>
           </div>
         </div>
       </header>
@@ -171,11 +167,11 @@ export function Header() {
         <div className="container-grid flex items-center justify-between py-[14px]">
           <span className="flex items-center gap-3 text-white">
             <Logo className="h-9 w-9" />
-            <span className="text-[24px] tracking-[-0.03em]">{PERSONAL_INFO.shortName}</span>
+            <span className="text-[length:var(--text-fluid-xs)] tracking-[-0.03em]">{PERSONAL_INFO.name}</span>
           </span>
-          <button className="btn bg-white/10 text-white" onClick={() => setMenuOpen(false)} aria-label="Close menu">
-            <X className="h-5 w-5" />
-          </button>
+          <Button variant="ghost" iconOnly label="Close menu" onClick={() => setMenuOpen(false)} icon={<X className="h-5 w-5" />}>
+            Close menu
+          </Button>
         </div>
         <nav className="container-grid mt-6 flex flex-col">
           {NAV_LINKS.map((l, i) =>
@@ -183,13 +179,13 @@ export function Header() {
               <Link
                 key={l.label}
                 to={l.to}
-                className="border-b border-white/10 py-4 text-[34px] tracking-[-0.03em] text-white"
+                className="border-b border-white/10 py-4 text-[length:var(--text-fluid-md)] tracking-[-0.03em] text-white"
                 style={{ transitionDelay: `${i * 0.04}s` }}
               >
                 {l.label}
               </Link>
             ) : (
-              <a key={l.label} href={l.href} onClick={go(l.href)} className="border-b border-white/10 py-4 text-[34px] tracking-[-0.03em] text-white">
+              <a key={l.label} href={l.href} onClick={go(l.href)} className="border-b border-white/10 py-4 text-[length:var(--text-fluid-md)] tracking-[-0.03em] text-white">
                 {l.label}
               </a>
             )

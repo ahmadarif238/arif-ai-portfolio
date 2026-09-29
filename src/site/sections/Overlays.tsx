@@ -46,13 +46,9 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
           shown ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
-        <button
-          onClick={onClose}
-          aria-label="Close"
-          className="sticky top-4 z-10 float-right mr-4 mt-4 grid h-11 w-11 place-items-center rounded-[var(--radius-sm)] bg-navy-900 text-white transition-colors hover:bg-pink-500 hover:text-charcoal"
-        >
-          <X className="h-5 w-5" />
-        </button>
+        <Button variant="slate" iconOnly onClick={onClose} className="sticky top-4 z-10 float-right mr-4 mt-4" icon={<X className="h-5 w-5" />}>
+          Close
+        </Button>
         {children}
       </div>
     </div>
@@ -89,7 +85,7 @@ export function ProjectOverlay({
               <Eyebrow className="text-navy-900">Case study · {p.category}</Eyebrow>
               <h2 className="heading mt-8 text-[length:var(--text-fluid-lg)] text-navy-900">{p.title}</h2>
               <p className="mt-4 text-[length:var(--text-fluid-xs)] tracking-[-0.02em] text-gradient inline-block">{p.tagline}</p>
-              <p className="mt-8 max-w-2xl text-[17px] leading-relaxed text-navy-500">{p.description}</p>
+              <p className="mt-8 max-w-2xl text-[16px] leading-relaxed text-navy-500">{p.description}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {p.liveUrl && (
                   <Button variant="pink" href={p.liveUrl} external icon={<ExternalLink className="h-4 w-4" />}>
@@ -97,12 +93,12 @@ export function ProjectOverlay({
                   </Button>
                 )}
                 {!p.liveUrl && !p.githubUrl && (
-                  <span className="text-label-sm inline-flex min-h-[3.375rem] items-center rounded-[var(--radius-sm)] bg-navy-900 px-4 text-white">
-                    In production · private repository
+                  <span className="inline-flex min-h-[3.375rem] items-center rounded-[var(--radius-sm)] bg-slate-100 px-4 text-[14px] text-navy-900">
+                    In production, private repository
                   </span>
                 )}
                 {p.githubUrl && (
-                  <Button variant="navy" href={p.githubUrl} external icon={<Github className="h-4 w-4" />}>
+                  <Button variant="slate" href={p.githubUrl} external icon={<Github className="h-4 w-4" />}>
                     Source
                   </Button>
                 )}
@@ -128,7 +124,7 @@ export function ProjectOverlay({
             {p.metrics.map((m) => (
               <div key={m.label} className="card-slate p-6">
                 <p className="text-[length:var(--text-fluid-md)] leading-none tracking-[-0.05em] text-navy-900">{m.value}</p>
-                <p className="text-label-sm mt-3 text-navy-500">{m.label}</p>
+                <p className="mt-3 text-[14px] text-navy-500">{m.label}</p>
               </div>
             ))}
           </div>
@@ -146,7 +142,7 @@ export function ProjectOverlay({
 
           {/* Architecture flow */}
           <div className="mt-16 rounded-[var(--radius-lg)] bg-charcoal p-6 sm:p-10">
-            <p className="text-label-sm text-white/60">Architecture</p>
+            <p className="text-label-sm text-white/70">Architecture</p>
             <ol className="mt-6 flex flex-wrap items-center gap-2">
               {p.architecture.map((n, i) => (
                 <li key={n.id} className="flex items-center gap-2">
@@ -157,18 +153,18 @@ export function ProjectOverlay({
                   >
                     {n.label}
                   </span>
-                  {i < p.architecture.length - 1 && <ArrowRight className="h-4 w-4 text-white/40" />}
+                  {i < p.architecture.length - 1 && <ArrowRight className="h-4 w-4 text-white/70" />}
                 </li>
               ))}
             </ol>
-            <div className="mt-6 flex gap-4 text-white/60">
+            <div className="mt-6 flex gap-4 text-white/70">
               {[
                 ['bg-white/10', 'Input / process'],
                 ['bg-pink-500', 'Agent'],
                 ['bg-white', 'Output']
               ].map(([c, l]) => (
                 <span key={l} className="text-label-sm flex items-center gap-2">
-                  <span className={`h-2.5 w-2.5 rounded-[2px] ${c}`} />
+                  <span className={`h-2.5 w-2.5 rounded-full ${c}`} />
                   {l}
                 </span>
               ))}
@@ -191,8 +187,8 @@ export function ProjectOverlay({
               <Eyebrow className="text-navy-900">Key features</Eyebrow>
               <ul className="mt-6 grid gap-2">
                 {p.features.map((f) => (
-                  <li key={f} className="card-slate flex items-center gap-3 px-4 py-3.5 text-[15px] text-navy-900">
-                    <span className="h-[6px] w-[6px] rounded-[2px] bg-pink-500" />
+                  <li key={f} className="card-slate flex items-center gap-3 px-4 py-3.5 text-[16px] text-navy-900">
+                    <span className="h-[6px] w-[6px] rounded-full bg-pink-500" />
                     {f}
                   </li>
                 ))}
@@ -200,7 +196,7 @@ export function ProjectOverlay({
               <p className="text-label-sm mt-8 text-navy-500">Stack</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {p.techStack.map((t) => (
-                  <span key={t} className="text-label-sm rounded-[5px] bg-navy-900 px-2.5 py-1.5 text-white">
+                  <span key={t} className="text-label-sm rounded-[var(--radius-sm)] bg-navy-900 px-2.5 py-1.5 text-white">
                     {t}
                   </span>
                 ))}
@@ -214,7 +210,7 @@ export function ProjectOverlay({
           >
             <span>
               <span className="text-label-sm text-navy-500">Next case study</span>
-              <span className="mt-2 block text-[length:var(--text-fluid-sm)] tracking-[-0.03em] text-navy-900 group-hover:text-pink-600">{next.title}</span>
+              <span className="mt-2 block text-[length:var(--text-fluid-md)] tracking-[-0.03em] text-navy-900 group-hover:text-pink-600">{next.title}</span>
             </span>
             <img src={coverUrl(next.id)} alt="" className="hidden h-24 w-40 rounded-[var(--radius-sm)] object-cover sm:block" />
           </button>
@@ -234,7 +230,7 @@ export function ResumeOverlay({ open, onClose }: { open: boolean; onClose: () =>
         <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="heading text-[length:var(--text-fluid-lg)] text-navy-900">{PERSONAL_INFO.name}</h2>
-            <p className="mt-3 text-[17px] text-navy-500">{PERSONAL_INFO.tagline}</p>
+            <p className="mt-3 text-[16px] text-navy-500">{PERSONAL_INFO.tagline}</p>
           </div>
           <div className="flex gap-2 print:hidden">
             <Button variant="pink" href="/resume.pdf" external icon={<Download className="h-4 w-4" />}>
@@ -258,7 +254,7 @@ export function ResumeOverlay({ open, onClose }: { open: boolean; onClose: () =>
           {EXPERIENCES.map((e) => (
             <li key={e.role} className="border-t hairline py-6">
               <div className="flex flex-wrap justify-between gap-2">
-                <p className="text-[18px] text-navy-900">
+                <p className="text-[length:var(--text-fluid-2xs)] text-navy-900">
                   {e.role} <span className="text-navy-500">· {e.company}</span>
                 </p>
                 <p className="text-label-sm text-navy-500">{e.period}</p>
@@ -266,7 +262,7 @@ export function ResumeOverlay({ open, onClose }: { open: boolean; onClose: () =>
               <ul className="mt-3 space-y-1.5">
                 {e.points.map((pt) => (
                   <li key={pt} className="flex gap-3 text-[14px] leading-relaxed text-navy-500">
-                    <span className="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-[2px] bg-pink-500" />
+                    <span className="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-full bg-pink-500" />
                     {pt}
                   </li>
                 ))}
@@ -301,7 +297,7 @@ export function ResumeOverlay({ open, onClose }: { open: boolean; onClose: () =>
               {TECH_CATEGORIES.map((c) => (
                 <div key={c.category}>
                   <p className="text-[14px] text-navy-900">{c.category}</p>
-                  <p className="mt-1 text-[13px] leading-relaxed text-navy-500">{c.skills.map((s) => s.name).join(' · ')}</p>
+                  <p className="mt-1 text-[14px] leading-relaxed text-navy-500">{c.skills.map((s) => s.name).join(' · ')}</p>
                 </div>
               ))}
             </div>

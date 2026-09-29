@@ -64,7 +64,7 @@ export function ScrambleText({ text, active }: { text: string; active: boolean }
 
 /* --------------------------------------------------------------- button */
 
-type Variant = 'pink' | 'ghost' | 'slate' | 'white' | 'navy';
+type Variant = 'pink' | 'ghost' | 'slate';
 
 interface ButtonProps {
   children: string;
@@ -76,21 +76,26 @@ interface ButtonProps {
   className?: string;
   type?: 'button' | 'submit';
   disabled?: boolean;
-  small?: boolean;
+  iconOnly?: boolean;
+  label?: string;
   external?: boolean;
 }
 
-export function Button({ children, variant = 'pink', href, to, onClick, icon, className = '', type = 'button', disabled, small, external }: ButtonProps) {
+export function Button({ children, variant = 'pink', href, to, onClick, icon, className = '', type = 'button', disabled, external, iconOnly, label }: ButtonProps) {
   const [hover, setHover] = useState(false);
-  const cls = `btn btn-${variant} ${small ? 'btn-sm' : ''} ${className}`;
+  const cls = `btn btn-${variant} ${iconOnly ? 'btn-icon' : ''} ${className}`;
   const inner = (
     <>
       <span aria-hidden="true" className="btn-fill" />
-      <ScrambleText text={children} active={hover} />
+      {!iconOnly && <ScrambleText text={children} active={hover} />}
       {icon && <span className="relative z-[2] inline-flex">{icon}</span>}
     </>
   );
-  const handlers = { onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) };
+  const handlers = {
+    onMouseEnter: () => setHover(true),
+    onMouseLeave: () => setHover(false),
+    ...(iconOnly ? { 'aria-label': label ?? children } : {})
+  };
   if (to) {
     return (
       <Link to={to} className={cls} onClick={onClick} {...handlers}>
@@ -215,7 +220,7 @@ export function Segmented<T extends string>({
           role="tab"
           aria-selected={value === o.value}
           onClick={() => onChange(o.value)}
-          className={`rounded-[5px] px-3 py-2 text-[15px] transition-colors duration-200 sm:px-5 ${
+          className={`rounded-[var(--radius-sm)] px-3 py-2 text-[16px] transition-colors duration-200 sm:px-5 ${
             value === o.value ? 'bg-navy-500 text-white' : 'text-navy-900 hover:bg-slate-100'
           }`}
         >

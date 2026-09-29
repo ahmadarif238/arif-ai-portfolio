@@ -35,21 +35,21 @@ export function Pricing({ onEnquire }: { onEnquire: (tier: string) => void }) {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-label-sm">{t.periodLabel}</p>
-                    {t.badge && <span className="text-label-sm rounded-[5px] bg-charcoal px-2 py-1 text-pink-300">{t.badge}</span>}
+                    {t.badge && <span className="text-label-sm rounded-[var(--radius-sm)] bg-charcoal px-2 py-1 text-pink-300">{t.badge}</span>}
                   </div>
                   <h3 className="mt-8 text-[length:var(--text-fluid-xs)] leading-tight tracking-[-0.03em]">{t.name}</h3>
-                  <p className="mt-2 text-[length:var(--text-fluid-sm)] tracking-[-0.04em]">{t.monthlyPrice}</p>
-                  <p className={`mt-4 text-[15px] leading-relaxed ${hot ? 'text-charcoal/80' : 'text-white/65'}`}>{t.description}</p>
+                  <p className="mt-2 text-[length:var(--text-fluid-md)] tracking-[-0.04em]">{t.monthlyPrice}</p>
+                  <p className={`mt-4 text-[16px] leading-relaxed ${hot ? 'text-charcoal' : 'text-white/70'}`}>{t.description}</p>
                   <ul className={`mt-8 space-y-3 border-t pt-8 ${hot ? 'border-charcoal/15' : 'border-white/10'}`}>
                     {t.features.map((f) => (
                       <li key={f} className="flex gap-3 text-[14px] leading-snug">
-                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${hot ? 'text-charcoal' : 'text-pink-500'}`} />
+                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${hot ? 'text-charcoal' : 'text-pink-300'}`} />
                         {f}
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto pt-10">
-                    <Button variant={hot ? 'navy' : 'pink'} className="w-full" onClick={() => onEnquire(t.name)}>
+                    <Button variant={hot ? 'ghost' : 'pink'} className="w-full" onClick={() => onEnquire(t.name)}>
                       {t.ctaText}
                     </Button>
                   </div>

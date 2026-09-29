@@ -138,12 +138,12 @@ export function Hero() {
           stagger={0.08}
         />
         <div className="md:col-span-4 md:col-start-9" data-no-cursor>
-          <p className="text-label-sm mb-5 flex items-center gap-2 text-pink-300 hero-fade" style={{ animationDelay: '.7s' }}>
+          <p className="mb-5 flex items-center gap-2 text-[14px] text-pink-300 hero-fade" style={{ animationDelay: '.7s' }}>
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />
             </span>
-            {PERSONAL_INFO.status} · {PERSONAL_INFO.location} / Remote
+            Available for work · {PERSONAL_INFO.location} / Remote
           </p>
           <p className="hero-fade text-[length:var(--text-fluid-2xs)] leading-[1.35] text-white" style={{ animationDelay: '.8s' }}>
             {PERSONAL_INFO.shortBio}
