@@ -23,8 +23,31 @@ import WhatsAppButton from './components/layout/WhatsAppButton';
 // same CSS gradient standing in until it arrives.
 const BackgroundStage = lazy(() => import('./site/three/BackgroundStage'));
 
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
+// Blog routes carry the long article text; only fetch them when visited.
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+
+/** Mount the 3D stage once the browser is idle, so text and layout paint first. */
+const DeferredStage = () => {
+    const [ready, setReady] = useState(false);
+    useEffect(() => {
+        const go = () => setReady(true);
+        if ('requestIdleCallback' in window) {
+            const id = window.requestIdleCallback(go, { timeout: 1200 });
+            return () => window.cancelIdleCallback(id);
+        }
+        const id = setTimeout(go, 300);
+        return () => clearTimeout(id);
+    }, []);
+    const fallback = <div className="stage" aria-hidden="true" />;
+    return ready ? (
+        <Suspense fallback={fallback}>
+            <BackgroundStage />
+        </Suspense>
+    ) : (
+        fallback
+    );
+};
 
 const ScrollManager = () => {
     const { pathname, hash } = useLocation();
@@ -76,9 +99,7 @@ function App() {
     return (
         <Router>
             <ScrollManager />
-            <Suspense fallback={<div className="stage" aria-hidden="true" />}>
-                <BackgroundStage />
-            </Suspense>
+            <DeferredStage />
             <div className="site">
                 <WhatsAppButton />
                 <Header />
@@ -87,8 +108,8 @@ function App() {
                         path="/"
                         element={<HomePage onOpenProject={setProject} onEnquire={enquire} preselected={preselected} />}
                     />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/blog" element={<Suspense fallback={<main className="min-h-screen" />}><Blog /></Suspense>} />
+                    <Route path="/blog/:slug" element={<Suspense fallback={<main className="min-h-screen" />}><BlogPost /></Suspense>} />
                 </Routes>
                 <Footer onOpenResume={() => setResumeOpen(true)} />
             </div>

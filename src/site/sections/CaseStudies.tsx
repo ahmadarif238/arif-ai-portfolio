@@ -25,7 +25,7 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
       </div>
 
       <div className="container-grid mt-16 flex items-center justify-between">
-        <p className="text-label-sm text-navy-500">{PROJECTS.length} projects · live demos & source</p>
+        <p className="text-label-sm text-navy-500">{PROJECTS.length} projects · production agents, demos & source</p>
         <div className="flex gap-2">
           {[-1, 1].map((d) => (
             <button
@@ -64,9 +64,8 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
                 </span>
               </div>
               <div className="flex flex-1 flex-col px-2 pb-2 pt-6">
-                <h3 className="text-[length:var(--text-fluid-2xs)] leading-[1.25] tracking-[-0.02em] text-navy-900">
-                  How {p.title.split(':')[0]} delivers {p.tagline.charAt(0).toLowerCase() + p.tagline.slice(1)}
-                </h3>
+                <h3 className="text-[length:var(--text-fluid-2xs)] leading-[1.25] tracking-[-0.02em] text-navy-900">{p.title}</h3>
+                <p className="mt-1.5 text-[15px] leading-snug text-navy-500">{p.tagline}</p>
                 <div className="mt-auto flex items-end justify-between gap-4 pt-10">
                   <div className="flex gap-6">
                     {p.metrics.slice(0, 2).map((m) => (

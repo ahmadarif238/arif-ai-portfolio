@@ -103,7 +103,7 @@ function PipelineCard() {
           tone="dark"
           value={tab}
           onChange={setTab}
-          options={FEATURED.map((p) => ({ value: p.id, label: p.title.split(':')[0] }))}
+          options={FEATURED.map((p) => ({ value: p.id, label: p.title.split(/[: ]/)[0] }))}
         />
         <div className="mt-24 w-full rounded-[var(--radius-md)] bg-slate-50/95 p-5 backdrop-blur sm:mt-32 sm:p-7" key={runKey}>
           <p className="text-label-sm text-navy-500">Pipeline · {project.title}</p>

@@ -146,7 +146,7 @@ export function Hero() {
             {PERSONAL_INFO.status} · {PERSONAL_INFO.location} / Remote
           </p>
           <p className="hero-fade text-[length:var(--text-fluid-2xs)] leading-[1.35] text-white" style={{ animationDelay: '.8s' }}>
-            {PERSONAL_INFO.shortBio.split('. ')[0]}.
+            {PERSONAL_INFO.shortBio}
           </p>
           <div className="hero-fade mt-8 flex flex-wrap gap-3" style={{ animationDelay: '.95s' }}>
             <Button

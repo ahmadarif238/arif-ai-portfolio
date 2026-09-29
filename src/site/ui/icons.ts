@@ -25,6 +25,7 @@ import {
   Database,
   PhoneCall,
   Layers,
+  Radar,
   type LucideIcon
 } from 'lucide-react';
 
@@ -55,7 +56,8 @@ export const ICONS: Record<string, LucideIcon> = {
   Bot,
   Database,
   PhoneCall,
-  Layers
+  Layers,
+  Radar
 };
 
 export const iconFor = (name: string): LucideIcon => ICONS[name] ?? Bot;

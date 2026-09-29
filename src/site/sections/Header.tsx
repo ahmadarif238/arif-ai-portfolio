@@ -24,7 +24,10 @@ export function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => {
+    // Batched into one rAF per frame: elementFromPoint forces layout, so never run it per scroll event.
+    let queued = false;
+    const update = () => {
+      queued = false;
       const y = window.scrollY;
       setHidden(y > 240 && y > lastY.current + 2 && !menuOpen);
       if (y < lastY.current - 2 || y < 240) setHidden(false);
@@ -33,7 +36,13 @@ export function Header() {
       const probe = document.elementFromPoint(window.innerWidth / 2, 44);
       setOnLight(!!probe?.closest('.sheet'));
     };
-    onScroll();
+    const onScroll = () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [menuOpen, location.pathname]);
@@ -104,7 +113,7 @@ export function Header() {
 
               {/* "More" dropdown */}
               <div
-                className={`absolute right-0 top-[calc(100%+8px)] w-[300px] origin-top-right rounded-[var(--radius-md)] bg-charcoal/95 p-2 backdrop-blur-xl transition-[opacity,transform] duration-300 ${
+                className={`absolute right-0 top-[calc(100%+8px)] w-[300px] origin-top-right rounded-[var(--radius-md)] bg-charcoal p-2 transition-[opacity,transform] duration-300 ${
                   moreOpen ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
                 }`}
               >

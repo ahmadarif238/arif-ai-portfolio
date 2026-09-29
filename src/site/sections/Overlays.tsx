@@ -38,7 +38,7 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
     <div className="fixed inset-0 z-[200]" role="dialog" aria-modal="true" aria-label={label}>
       <div
         onClick={onClose}
-        className={`absolute inset-0 bg-ink/70 backdrop-blur-md transition-opacity duration-500 ${shown ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 bg-ink/85 transition-opacity duration-500 ${shown ? 'opacity-100' : 'opacity-0'}`}
       />
       <div
         data-lenis-prevent
@@ -95,6 +95,11 @@ export function ProjectOverlay({
                   <Button variant="pink" href={p.liveUrl} external icon={<ExternalLink className="h-4 w-4" />}>
                     Live demo
                   </Button>
+                )}
+                {!p.liveUrl && !p.githubUrl && (
+                  <span className="text-label-sm inline-flex min-h-[3.375rem] items-center rounded-[var(--radius-sm)] bg-navy-900 px-4 text-white">
+                    In production · private repository
+                  </span>
                 )}
                 {p.githubUrl && (
                   <Button variant="navy" href={p.githubUrl} external icon={<Github className="h-4 w-4" />}>

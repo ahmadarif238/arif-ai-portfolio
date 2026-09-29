@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
 /**
  * The two 3D "sets" the fixed stage cycles between, plus the pieces they share.
@@ -12,7 +11,7 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 export const PALETTE = {
   clear: 0x050003,
   glow: '#2D0B23',
-  ribbon: '#841862',
+  ribbon: '#8c2f82',
   ribbonEdge: '#ff5cbb',
   shield: '#d676bc',
   shieldHover: '#d68ac0',
@@ -31,9 +30,9 @@ export function makeGlowTexture(cx = 0.2, cy = 0.23, w = 1024, h = 1024) {
   g.fillStyle = '#050003';
   g.fillRect(0, 0, w, h);
   const grad = g.createRadialGradient(cx * w, cy * h, 0, cx * w, cy * h, Math.max(w, h) * 0.95);
-  grad.addColorStop(0, PALETTE.glow);
-  grad.addColorStop(0.55, '#12040f');
-  grad.addColorStop(1, '#000000');
+  grad.addColorStop(0, '#3a0f31');
+  grad.addColorStop(0.45, '#1f0719');
+  grad.addColorStop(1, '#060106');
   g.fillStyle = grad;
   g.fillRect(0, 0, w, h);
   // Dither so the gradient never bands on 8-bit displays.
@@ -107,6 +106,18 @@ function ribbonGeometry(curve: THREE.Curve<THREE.Vector3>, width: number, thickn
   return geo;
 }
 
+/** Falloff toward the floor: bands glow at the crown and sink into shadow below. */
+function shadeByHeight(geo: THREE.BufferGeometry) {
+  const p = geo.attributes.position as THREE.BufferAttribute;
+  const col = new Float32Array(p.count * 3);
+  for (let i = 0; i < p.count; i++) {
+    const t = THREE.MathUtils.smoothstep(p.getY(i), -9, 3);
+    const v = 0.38 + 0.62 * t;
+    col[i * 3] = col[i * 3 + 1] = col[i * 3 + 2] = v;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+}
+
 export interface RibbonSet {
   group: THREE.Group;
   materials: THREE.Material[];
@@ -114,71 +125,71 @@ export interface RibbonSet {
 }
 
 /**
- * Wide lacquered bands that rise from the lower left and arc away to the right,
- * the same silhouette as the reference hero. Faces sit in shadow while the
- * grazing key light catches the edges, which is what gives them their glow.
+ * Thick satin slabs that rise from the bottom of the frame and arc away to the
+ * upper right, the same silhouette as the reference hero. Broad faces take a
+ * soft violet key light, the slab sides fall into shadow, and only a grazing
+ * specular line catches white.
  */
 export function createRibbons(opts: { seed?: number; count?: number; steps?: number } = {}): RibbonSet {
   const rand = rng(opts.seed ?? 7);
-  const count = opts.count ?? 6;
-  const steps = opts.steps ?? 220;
+  const count = opts.count ?? 4;
+  const steps = opts.steps ?? 160;
   const group = new THREE.Group();
 
-  const faceMat = new THREE.MeshPhysicalMaterial({
+  // Phong rather than PBR: the bands cover much of the screen, and this keeps
+  // the satin look and specular glint at a fraction of the per-pixel cost.
+  const faceMat = new THREE.MeshPhongMaterial({
     color: PALETTE.ribbon,
-    metalness: 0.1,
-    roughness: 0.36,
-    specularColor: new THREE.Color('#ff7fcf'),
-    specularIntensity: 1,
-    envMapIntensity: 0,
+    vertexColors: true,
+    specular: new THREE.Color('#8a3c80'),
+    shininess: 30,
     side: THREE.DoubleSide,
     transparent: true
   });
 
   const ribbons: { mesh: THREE.Mesh; phase: number; speed: number; baseRot: number }[] = [];
   for (let i = 0; i < count; i++) {
-    const spread = i / Math.max(1, count - 1);
-    const x0 = -8 + spread * 7 + rand() * 1.2;
-    const lift = 2.2 + rand() * 1.6 + spread * 1.6;
-    const reach = 6 + rand() * 3;
+    const x0 = -3.2 + i * 2.3 + (rand() - 0.5) * 0.6;
+    const lift = 1.1 + i * 0.8 + rand() * 0.4;
+    const reach = 3.4 + rand() * 1.0;
     const pts = [
-      new THREE.Vector3(x0 - 5, -12, 0),
-      new THREE.Vector3(x0 - 0.5, -4, 0),
-      new THREE.Vector3(x0 + 2.4, lift * 0.8, 0),
-      new THREE.Vector3(x0 + 2.4 + reach * 0.45, lift, 0),
-      new THREE.Vector3(x0 + 2.4 + reach * 0.9, lift * 0.3, 0),
-      new THREE.Vector3(x0 + 2.4 + reach * 1.15, -12, 0)
+      new THREE.Vector3(x0 - 2.6, -11, 0),
+      new THREE.Vector3(x0 - 0.4, -4, 0),
+      new THREE.Vector3(x0 + 0.9, lift * 0.8, 0),
+      new THREE.Vector3(x0 + 0.9 + reach * 0.5, lift + 0.6, 0),
+      new THREE.Vector3(x0 + 0.9 + reach, lift * 0.75, 0),
+      new THREE.Vector3(x0 + 1.4 + reach * 1.15, -4, 0),
+      new THREE.Vector3(x0 + 1.8 + reach * 1.25, -11, 0)
     ];
     const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
-    const width = 3.4 + rand() * 2.4;
-    const geo = ribbonGeometry(curve, width, 0.07 + rand() * 0.05, steps);
+    const width = 2.1 + rand() * 0.6;
+    const geo = ribbonGeometry(curve, width, 0.75 + rand() * 0.2, steps);
+    shadeByHeight(geo);
     const mesh = new THREE.Mesh(geo, faceMat);
-    mesh.position.z = -i * 1.6;
-    const baseRot = (rand() - 0.5) * 0.25;
+    mesh.position.z = -i * 1.9;
+    const baseRot = (rand() - 0.5) * 0.15;
     group.add(mesh);
-    ribbons.push({ mesh, phase: rand() * Math.PI * 2, speed: 0.12 + rand() * 0.12, baseRot });
+    ribbons.push({ mesh, phase: rand() * Math.PI * 2, speed: 0.1 + rand() * 0.1, baseRot });
   }
 
-  group.rotation.set(0.1, -0.55, -0.08);
-  group.position.set(3.8, -0.8, 0);
+  group.rotation.set(0.08, -0.72, -0.04);
+  group.position.set(2.4, -2.1, 0);
 
-  // Lighting rig: faces stay in plum shadow, a grazing key catches the edges.
-  const key = new THREE.DirectionalLight('#ff9ad8', 2.4);
-  key.position.set(4, 6, 5);
-  const rim = new THREE.DirectionalLight('#ff4fb4', 3);
-  rim.position.set(-6, 3, -6);
-  const fill = new THREE.PointLight('#ff4fb4', 38, 40, 2);
-  fill.position.set(-4, -1, 6);
-  const ambient = new THREE.AmbientLight('#3a0a2c', 2);
-  group.add(key, rim, fill, ambient);
+  // Soft violet sky/ground wash, a cool key from upper left, a pink kicker behind.
+  const hemi = new THREE.HemisphereLight('#d88ad6', '#1a0415', 2.2);
+  const key = new THREE.DirectionalLight('#f7c9f1', 2.6);
+  key.position.set(-3, 8, 5);
+  const rim = new THREE.DirectionalLight('#ff4fb4', 1.4);
+  rim.position.set(6, 2, -8);
+  group.add(hemi, key, rim);
 
   return {
     group,
     materials: [faceMat],
     update: (t) => {
       ribbons.forEach((r) => {
-        r.mesh.rotation.y = r.baseRot + Math.sin(t * r.speed + r.phase) * 0.06;
-        r.mesh.rotation.z = Math.cos(t * r.speed * 0.8 + r.phase) * 0.03;
+        r.mesh.rotation.y = r.baseRot + Math.sin(t * r.speed + r.phase) * 0.05;
+        r.mesh.rotation.z = Math.cos(t * r.speed * 0.8 + r.phase) * 0.02;
       });
     }
   };
@@ -285,11 +296,10 @@ export function createShield(opts: { segments?: number } = {}): ShieldSet {
   const shield = new THREE.Mesh(new THREE.SphereGeometry(4.5, seg, seg), shieldMaterial);
   group.add(shield);
 
-  const coreMat = new THREE.MeshStandardMaterial({
+  const coreMat = new THREE.MeshPhongMaterial({
     color: '#5e1449',
-    metalness: 0.6,
-    roughness: 0.42,
-    envMapIntensity: 0.35,
+    specular: new THREE.Color('#ff9ad8'),
+    shininess: 60,
     transparent: true
   });
 
@@ -348,59 +358,91 @@ export function createShield(opts: { segments?: number } = {}): ShieldSet {
 /* Floating particles                                                        */
 /* ------------------------------------------------------------------------ */
 
-function dotSprite() {
-  const c = document.createElement('canvas');
-  c.width = c.height = 64;
-  const g = c.getContext('2d')!;
-  const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-  grad.addColorStop(0, 'rgba(255,255,255,1)');
-  grad.addColorStop(0.35, 'rgba(255,255,255,0.5)');
-  grad.addColorStop(1, 'rgba(255,255,255,0)');
-  g.fillStyle = grad;
-  g.fillRect(0, 0, 64, 64);
-  return new THREE.CanvasTexture(c);
-}
-
-export function createParticles(count = 1000, box = new THREE.Vector3(16, 10, 8)) {
+/**
+ * Soft pink motes drifting upward. All motion runs in the vertex shader, so
+ * nothing is recomputed or re-uploaded on the CPU each frame.
+ */
+export function createParticles(count = 260, box = new THREE.Vector3(18, 11, 8)) {
   const pos = new Float32Array(count * 3);
-  const seeds = new Float32Array(count);
+  const seed = new Float32Array(count);
   for (let i = 0; i < count; i++) {
     pos[i * 3] = (Math.random() - 0.5) * box.x;
     pos[i * 3 + 1] = (Math.random() - 0.5) * box.y;
     pos[i * 3 + 2] = (Math.random() - 0.5) * box.z;
-    seeds[i] = Math.random();
+    seed[i] = Math.random();
   }
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({
-    color: PALETTE.particle,
-    size: 0.06,
-    map: dotSprite(),
+  geo.setAttribute('seed', new THREE.BufferAttribute(seed, 1));
+  const material = new THREE.ShaderMaterial({
     transparent: true,
-    opacity: 0.35,
     depthWrite: false,
-    blending: THREE.AdditiveBlending
+    blending: THREE.AdditiveBlending,
+    uniforms: {
+      uTime: { value: 0 },
+      uHeight: { value: box.y },
+      uOpacity: { value: 1 },
+      uScale: { value: window.devicePixelRatio || 1 },
+      uColor: { value: new THREE.Color(PALETTE.particle) }
+    },
+    vertexShader: /* glsl */ `
+      attribute float seed;
+      uniform float uTime, uHeight, uScale;
+      varying float vAlpha;
+      void main() {
+        vec3 p = position;
+        p.y = mod(p.y + uHeight * 0.5 + uTime * (0.08 + seed * 0.18), uHeight) - uHeight * 0.5;
+        p.x += sin(p.y * 1.7 + seed * 6.283) * 0.12;
+        vec4 mv = modelViewMatrix * vec4(p, 1.0);
+        gl_Position = projectionMatrix * mv;
+        float big = step(0.975, seed);
+        gl_PointSize = (big * 26.0 + 3.0 + seed * 3.0) * uScale * (10.0 / -mv.z);
+        float edge = 1.0 - smoothstep(0.35, 0.5, abs(p.y / uHeight));
+        vAlpha = edge * (big * 0.2 + 0.4);
+      }
+    `,
+    fragmentShader: /* glsl */ `
+      uniform vec3 uColor;
+      uniform float uOpacity;
+      varying float vAlpha;
+      void main() {
+        float d = length(gl_PointCoord - 0.5);
+        float a = smoothstep(0.5, 0.0, d);
+        gl_FragColor = vec4(uColor, a * a * vAlpha * uOpacity);
+      }
+    `
   });
-  const points = new THREE.Points(geo, mat);
+  const points = new THREE.Points(geo, material);
+  points.frustumCulled = false;
   return {
     points,
-    material: mat,
-    update: (dt: number, speed = 1) => {
-      const a = geo.attributes.position as THREE.BufferAttribute;
-      for (let i = 0; i < count; i++) {
-        let y = a.getY(i) + dt * (0.08 + seeds[i] * 0.18) * speed;
-        if (y > box.y / 2) y = -box.y / 2;
-        a.setY(i, y);
-        a.setX(i, a.getX(i) + Math.sin(y * 2 + seeds[i] * 6) * 0.0006 * speed);
-      }
-      a.needsUpdate = true;
+    material,
+    update: (t: number) => {
+      material.uniforms.uTime.value = t;
     }
   };
 }
 
-/** Neutral studio reflections so the lacquer reads as glossy, not flat. */
-export function applyStudioEnvironment(renderer: THREE.WebGLRenderer, scene: THREE.Scene) {
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  pmrem.dispose();
-}
+/* ------------------------------------------------------------------------ */
+/* Final pass: film grain + dither, in the same draw as tone output          */
+/* ------------------------------------------------------------------------ */
+
+export const GrainShader = {
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uAmount: { value: 0.07 } },
+  vertexShader: /* glsl */ `
+    varying vec2 vUv;
+    void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }
+  `,
+  fragmentShader: /* glsl */ `
+    uniform sampler2D tDiffuse;
+    uniform float uTime, uAmount;
+    varying vec2 vUv;
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233)) + uTime) * 43758.5453); }
+    void main() {
+      vec4 c = texture2D(tDiffuse, vUv);
+      float n = hash(gl_FragCoord.xy) - 0.5;
+      c.rgb += n * uAmount;
+      gl_FragColor = c;
+    }
+  `
+};

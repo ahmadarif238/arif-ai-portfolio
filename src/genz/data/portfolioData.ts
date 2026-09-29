@@ -15,10 +15,11 @@ export const PERSONAL_INFO = {
   name: 'Arif Ahmad Khan',
   shortName: 'Arif Khan',
   monogram: 'AK',
-  tagline: 'Software Engineer for Web, Apps and AI Automation',
-  headline: 'Building Intelligent Software That Works For You',
-  shortBio: 'I build websites, web apps, AI chatbots, and calling agents that take repetitive work off your team so you can focus on growth. Each detail balances robust architecture and real business impact.',
-  extendedBio: "I'm a Software Engineer who builds websites, applications, and AI systems for businesses. That covers everything from a site that brings in customers, to an app your team works in daily, to chatbots and calling agents that handle enquiries around the clock. I work across the whole build, from the interface to the backend to the automation that ties it together, so you get one person accountable for the result rather than a handoff between three.",
+  role: 'AI Engineer',
+  tagline: 'AI Engineer | Agentic AI & RAG Systems',
+  headline: 'Intelligent software that works for you',
+  shortBio: 'I build production AI agents, RAG systems and the apps around them, so repetitive work runs itself and your team can focus on growth.',
+  extendedBio: "I'm an AI Engineer specialising in agentic AI and Retrieval-Augmented Generation (RAG). I build production multi-agent workflows with LangGraph and LangChain, scalable APIs with FastAPI, and enterprise process automation on Microsoft Power Platform and Azure. I have independently designed, shipped and operated autonomous agents that solve real operational problems, from sales lead generation and customer ordering to legal document review and internal tax and finance workflows, and I build the React, Node.js and TypeScript dashboards teams use to run them.",
   location: 'Pakistan',
   status: 'AVAILABLE FOR WORK',
   year: '2026',
@@ -28,12 +29,18 @@ export const PERSONAL_INFO = {
   whatsappUrl: 'https://wa.me/923438992587?text=Hi%20Arif,%20I%20found%20you%20through%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.',
   githubUrl: 'https://github.com/ahmadarif238',
   linkedinUrl: 'https://www.linkedin.com/in/arif-a-0b853580',
-  avatarUrl: '/profile.jpg',
-  caseStudies: '7',
-  completedProjects: '10+',
-  hoursSavedWeekly: '10+',
-  automationUptime: '24/7'
+  avatarUrl: '/portrait.webp',
+  avatarSmallUrl: '/portrait-sm.webp',
+  avatarFallbackUrl: '/portrait.jpg'
 };
+
+/** Headline numbers for the About section. Every one traces back to a line in the resume. */
+export const ABOUT_STATS = [
+  { value: '2', label: 'Agents live in daily production' },
+  { value: '~80', label: 'Personalised emails sent / day' },
+  { value: '60%', label: 'Sales research time cut' },
+  { value: '3', label: 'Languages one agent speaks' }
+];
 
 export const THEME_COLOR_PRESETS: ThemeColorPreset[] = [
   {
@@ -109,11 +116,88 @@ export const MARQUEE_ITEMS = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 'agentcraft-lead-agent',
+    title: 'Client-Hunting Agent',
+    tagline: 'Finding, Qualifying and Emailing Prospects on Autopilot',
+    category: 'Automation',
+    description: 'A production agent built for AgentCraft AI Automations. It scrapes Google Maps for US businesses such as dentists, law firms and real estate agencies, reads each website, and judges where AI automation, a chatbot, an AI receptionist or a new website would help. It then writes and sends personalised cold emails and follow-ups, and alerts the decision-makers the moment a prospect replies.',
+    problem: 'Finding the right small businesses to pitch, working out what each one actually needs, and writing a relevant email to every one of them is slow manual work that a small agency cannot keep up with.',
+    solution: 'An autonomous pipeline that discovers businesses, audits each website for specific automation and web gaps, drafts a personalised email around that gap, handles follow-ups, stores every contact detail, and escalates replies straight to a human.',
+    metrics: [
+      { value: '~80', label: 'Personalised emails / day' },
+      { value: 'Daily', label: 'Production use' },
+      { value: 'Instant', label: 'Reply escalation' }
+    ],
+    workflow: [
+      'Scrape Google Maps for US businesses in target niches.',
+      'Pull each website and evaluate it for automation, chatbot, AI receptionist or web gaps.',
+      'Draft and send a personalised cold email and follow-ups around that specific gap.',
+      'Store contact details and email the decision-makers the moment a prospect replies.'
+    ],
+    architecture: [
+      { id: 'maps', label: 'Google Maps Scraper', type: 'input', color: '#ff488b' },
+      { id: 'site', label: 'Website Fetcher', type: 'process', color: '#ff488b' },
+      { id: 'audit', label: 'Gap Evaluator', type: 'agent', color: '#ff488b' },
+      { id: 'writer', label: 'Email Writer', type: 'agent', color: '#ff488b' },
+      { id: 'crm', label: 'Contact Store', type: 'process', color: '#ff488b' },
+      { id: 'alert', label: 'Reply Alerts', type: 'output', color: '#ff488b' }
+    ],
+    features: [
+      'Niche-targeted Google Maps prospecting',
+      'Per-website opportunity analysis',
+      'LLM-personalised outreach and follow-ups',
+      'Instant reply alerts to decision-makers'
+    ],
+    techStack: ['Python', 'Web Scraping', 'LLM Personalisation', 'Email Automation'],
+    liveUrl: null,
+    githubUrl: null,
+    stats: 'Primary client-acquisition channel',
+    featured: true
+  },
+  {
+    id: 'whatsapp-ordering-agent',
+    title: 'WhatsApp Ordering Agent',
+    tagline: 'Taking Food Orders in English, Urdu and Roman Urdu',
+    category: 'Chatbots',
+    description: 'A production WhatsApp agent for a local fast-food business. It knows the full menu, prices, images and videos, chats with customers in English, Urdu and Roman Urdu, transcribes voice-note orders, and takes each order through to placement. Staff confirm orders into the kitchen from a companion dashboard, and customers get live status updates back on WhatsApp.',
+    problem: 'Orders arrived as a flood of WhatsApp texts and voice notes in mixed languages, and staff had to read, reply to and relay every one by hand during the busiest hours.',
+    solution: 'An LLM agent on the WhatsApp API that understands text and voice in three languages and places complete orders, paired with a React and Node.js dashboard for the kitchen that pushes real-time status back to the customer.',
+    metrics: [
+      { value: '3', label: 'Languages understood' },
+      { value: 'Voice', label: 'Notes turned into orders' },
+      { value: 'Live', label: 'Order status to customers' }
+    ],
+    workflow: [
+      'Customer messages or sends a voice note on WhatsApp.',
+      'Speech-to-text transcribes voice orders; the agent answers from the full menu.',
+      'The agent confirms items and prices and places the order.',
+      'Staff accept it on the dashboard and status updates flow back to the customer.'
+    ],
+    architecture: [
+      { id: 'wa', label: 'WhatsApp API', type: 'input', color: '#ff488b' },
+      { id: 'stt', label: 'Speech-to-Text', type: 'process', color: '#ff488b' },
+      { id: 'agent', label: 'Ordering Agent', type: 'agent', color: '#ff488b' },
+      { id: 'menu', label: 'Menu Knowledge', type: 'process', color: '#ff488b' },
+      { id: 'dash', label: 'Kitchen Dashboard', type: 'output', color: '#ff488b' }
+    ],
+    features: [
+      'English, Urdu and Roman Urdu conversations',
+      'Voice-note order transcription',
+      'Menu, pricing, image and video knowledge',
+      'Real-time status updates on WhatsApp'
+    ],
+    techStack: ['WhatsApp API', 'LLM', 'Speech-to-Text', 'React', 'Node.js'],
+    liveUrl: null,
+    githubUrl: null,
+    stats: 'Live orders handled daily',
+    featured: true
+  },
+  {
     id: 'contract-iq',
     title: 'ContractIQ',
     tagline: 'Contract Review, Handled Automatically',
     category: 'AI Agents',
-    description: 'An AI system that reads, checks, and compares legal agreements so legal teams stop searching through files by hand. It flags risky clauses, pulls out key dates, and puts contracts side by side. Every answer links back to the exact paragraph it came from, so nothing is ever invented.',
+    description: 'An autonomous multi-agent system with a zero-hallucination architecture that analyses, verifies and benchmarks complex legal agreements. Specialised agents keep risk reasoning separate from clause and lifecycle extraction, so outputs stay traceable and false positives drop. Every answer links back to the exact paragraph it came from.',
     problem: 'Lawyers waste hours searching for specific clauses across thousands of files. Comparing vendor drafts against company standards is manual and error-prone, and traditional AI tools often invent numbers and dates.',
     solution: 'A multi-agent system with Vault Intelligence for global semantic search, Intelligent Benchmarking for side-by-side comparison, and a custom "Factual Enforcer" layer that prevents the agent from inventing data.',
     metrics: [
@@ -152,7 +236,7 @@ export const PROJECTS: Project[] = [
     title: 'VivaGraph AI',
     tagline: 'Practice Interviews That Feel Real',
     category: 'Voice AI',
-    description: 'A voice-based practice platform that recreates the pressure of a real oral exam or interview. The AI examiner changes character on the fly, from encouraging coach to demanding professor, while listening for hesitation, filler words, and confidence. It then hands back a full performance report.',
+    description: 'A 7-agent oral exam simulator with real-time voice analysis, filler-word detection and dynamic difficulty adjustment. Its cognitive-core design lets each agent specialise in evaluation, coaching or difficulty tuning while they all share one exam session state.',
     problem: "Most students fail oral exams not because they don't know the material, but because they panic under questioning. Current AI tools like ChatGPT are too polite and don't simulate real examiner pressure.",
     solution: 'A multi-agent system with 7 specialized cognitive agents (Chief Examiner, Researcher, Personality, Psychology, Teacher) that simulates realistic exam pressure with voice analysis and adaptive difficulty.',
     metrics: [
@@ -183,15 +267,14 @@ export const PROJECTS: Project[] = [
     techStack: ['LangGraph', 'Groq LPU', 'Cerebras', 'Pinecone', 'Supabase', 'React'],
     liveUrl: 'https://vivagraph-ai.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/vivagraph-ai',
-    stats: '7-Agent Cognitive Architecture',
-    featured: true
+    stats: '7-Agent Cognitive Architecture'
   },
   {
     id: 'ai-sales-automation-agent',
     title: 'SalesAI: B2B Pipeline',
     tagline: 'From Search Query to Qualified Lead',
     category: 'Automation',
-    description: 'A sales system that turns one search into a finished pipeline. It finds prospects, verifies and scores them, then writes personalised outreach. That cuts roughly 60% of the manual research a sales team would otherwise do by hand.',
+    description: 'A 4-agent system that automates B2B lead generation, scoring and engagement, with a full-stack orchestration layer coordinating the sub-agents from prospect discovery through to outreach. It cut manual sales research time by 60%.',
     problem: 'Sales teams spend 60% of their time on manual research, finding emails, and qualifying leads instead of actually selling.',
     solution: 'An agent-of-agents architecture where a single search query triggers a deterministic pipeline of specialized sub-agents that deliver a qualified, scored, and engaged list of prospects.',
     metrics: [
@@ -222,8 +305,7 @@ export const PROJECTS: Project[] = [
     techStack: ['FastAPI', 'LLaMA 3', 'Groq Cloud', 'React 19', 'TailwindCSS', 'Docker'],
     liveUrl: 'https://ai-sales-automation-agent.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/AI-Sales-Automation-Agent',
-    stats: 'Full Pipeline Automation',
-    featured: true
+    stats: 'Full Pipeline Automation'
   },
   {
     id: 'smart-supply-chain-agent',
@@ -541,40 +623,24 @@ export const PROCESS_STEPS: ProcessStep[] = [
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    role: 'AI Automation Engineer & Cloud Assistant',
+    role: 'AI Engineer',
     company: 'Int. Dublin Tax Company Ltd.',
     period: 'Present',
     location: 'Remote (International)',
     points: [
-      'Design and implement AI-driven automation and cloud solutions across Microsoft Azure, Power Platform, and Power Automate.',
-      'Build and manage workflow automations in n8n, adding AI capabilities to create agent-based systems.',
-      'Develop and deploy API-based automation services that connect cloud platforms, business tools, and AI models.',
-      'Support cloud operations and AI-powered process automation in a fully remote international environment.',
-      'Collaborate on automation projects and contribute to scalable, production-ready cloud and AI infrastructure.'
+      'Build and manage AI-driven automation workflows on Microsoft Power Automate and the Power Platform, reducing manual processing across internal tax and accounting operations.',
+      'Develop AI-powered virtual agents (Power Virtual Agents) and support enterprise cloud infrastructure on Microsoft Azure.',
+      'Design and deploy intelligent process-automation assistants used across internal teams.',
+      'Develop and ship AI agents, workflows and custom copilots supporting internal tax and financial operations (details confidential due to client financial data).'
     ],
     isCurrent: true
   },
   {
-    role: 'Software Engineer & AI Developer',
-    company: 'Freelance / Independent Projects',
-    period: '2024 to Present',
-    location: 'Pakistan / Worldwide (Remote)',
-    points: [
-      'Built websites, web applications, and AI assistants for clients across several industries.',
-      'Developed chatbots and voice-based calling agents, integrated directly into client websites and CRMs.',
-      'Delivered automation systems that replaced manual inventory, sales, and support workflows, cutting 60%+ of research time.',
-      'Architected zero-hallucination RAG platforms with source citations for legal, financial, and operational use cases.'
-    ]
-  },
-  {
     role: 'Computer Vision Intern',
-    company: 'ITSOLERA Pvt. Ltd',
+    company: 'ITSOLERA Pvt. Ltd.',
     period: 'Jul 2024 to Oct 2024',
     location: 'Pakistan',
-    points: [
-      'Developed real-time pedestrian detection systems using Python and OpenCV.',
-      'Built object detection pipelines robust to low-light, rain, and fog conditions.'
-    ]
+    points: ['Built real-time pedestrian detection pipelines in Python and OpenCV, robust to low-light, rain and fog conditions.']
   }
 ];
 
@@ -612,45 +678,47 @@ export const CERTIFICATIONS: CertificationItem[] = [
 
 export const TECH_CATEGORIES: TechCategory[] = [
   {
-    category: 'AI & Multi-Agent Frameworks',
-    description: 'Architecting cognitive multi-agent workflows and high-speed inference',
+    category: 'Agentic AI & LLMs',
+    description: 'Multi-agent workflows, retrieval and model orchestration',
     skills: [
-      { name: 'LangGraph & LangChain', proficiency: 95, highlight: 'Deterministic agent-of-agents' },
-      { name: 'Groq LPU & Cerebras', proficiency: 92, highlight: 'Sub-second inference' },
-      { name: 'Claude (Anthropic) & OpenAI', proficiency: 95, highlight: 'Structured reasoning' },
-      { name: 'LLaMA 3 & DeepSeek', proficiency: 88, highlight: 'Open-weight fine-tuning' },
-      { name: 'Pinecone & Supabase Vector', proficiency: 92, highlight: 'RAG semantic search' }
+      { name: 'LangGraph', proficiency: 90, highlight: 'Stateful multi-agent graphs' },
+      { name: 'LangChain', proficiency: 90, highlight: 'Tooling and chains' },
+      { name: 'RAG & Vector Search', proficiency: 90, highlight: 'Grounded, cited answers' },
+      { name: 'Ollama & Hugging Face Transformers', proficiency: 90, highlight: 'Open-weight models' },
+      { name: 'Groq & Cerebras', proficiency: 90, highlight: 'Low-latency inference' },
+      { name: 'OpenAI, Anthropic Claude & Google Gemini', proficiency: 90, highlight: 'Frontier models' },
+      { name: 'Prompt Engineering', proficiency: 90, highlight: 'Reliable structured output' }
     ]
   },
   {
-    category: 'Backend & Cloud Engineering',
-    description: 'High-concurrency microservices, APIs, and cloud containerization',
+    category: 'Backend, Cloud & DevOps',
+    description: 'APIs, data stores and deployment',
     skills: [
-      { name: 'Python & FastAPI', proficiency: 95, highlight: 'Async API architectures' },
-      { name: 'Node.js & Express', proficiency: 90, highlight: 'Event-driven servers' },
-      { name: 'PostgreSQL & Redis', proficiency: 88, highlight: 'Relational & cache layers' },
-      { name: 'Microsoft Azure & Power Platform', proficiency: 85, highlight: 'Enterprise cloud services' },
-      { name: 'Docker & Linux', proficiency: 90, highlight: 'Containerized deployment' }
+      { name: 'Python & SQL', proficiency: 90, highlight: 'Core languages' },
+      { name: 'FastAPI', proficiency: 90, highlight: 'Async APIs' },
+      { name: 'AWS, Microsoft Azure & Vercel', proficiency: 90, highlight: 'Cloud platforms' },
+      { name: 'Docker, Git & Azure DevOps', proficiency: 90, highlight: 'Build and ship' },
+      { name: 'Pinecone, Weaviate & FAISS', proficiency: 90, highlight: 'Vector databases' },
+      { name: 'PostgreSQL, MySQL & Supabase', proficiency: 90, highlight: 'Relational data' }
     ]
   },
   {
-    category: 'Frontend & Modern Web',
-    description: 'Ultra-fast interfaces, modern typography, and reactive user experiences',
+    category: 'Web Development',
+    description: 'Dashboards and customer-facing interfaces for agents',
     skills: [
-      { name: 'React 19 & Next.js', proficiency: 92, highlight: 'Server components & SPA' },
-      { name: 'TypeScript', proficiency: 94, highlight: 'Strict type safety' },
-      { name: 'Tailwind CSS', proficiency: 96, highlight: 'Utility-first styling' },
-      { name: 'Framer Motion & Animations', proficiency: 88, highlight: 'Fluid interactions' }
+      { name: 'React', proficiency: 90, highlight: 'Agent dashboards' },
+      { name: 'Node.js', proficiency: 90, highlight: 'Realtime backends' },
+      { name: 'TypeScript & JavaScript', proficiency: 90, highlight: 'Typed front ends' }
     ]
   },
   {
-    category: 'Automation & Integration',
-    description: 'Connecting fragmented software into autonomous digital workflows',
+    category: 'ML & Automation',
+    description: 'Classic ML and automation platforms',
     skills: [
-      { name: 'n8n & Make', proficiency: 96, highlight: 'Complex multi-step pipelines' },
-      { name: 'Zapier & Webhooks', proficiency: 92, highlight: 'Ecosystem bridges' },
-      { name: 'Twilio & Voice AI (Vapi)', proficiency: 86, highlight: 'Phone calling agents' },
-      { name: 'Google & Microsoft APIs', proficiency: 92, highlight: 'Workspace automations' }
+      { name: 'TensorFlow, Keras & Scikit-learn', proficiency: 90, highlight: 'Model training' },
+      { name: 'Pandas & NumPy', proficiency: 90, highlight: 'Data work' },
+      { name: 'n8n, Zapier & Make', proficiency: 90, highlight: 'Workflow automation' },
+      { name: 'Microsoft Power Automate & Power Platform', proficiency: 90, highlight: 'Enterprise automation' }
     ]
   }
 ];

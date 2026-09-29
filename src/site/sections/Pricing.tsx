@@ -30,7 +30,7 @@ export function Pricing({ onEnquire }: { onEnquire: (tier: string) => void }) {
               <Reveal key={t.id} delay={i * 0.08}>
                 <div
                   className={`no-shadow flex h-full flex-col rounded-[var(--radius-lg)] p-6 sm:p-8 ${
-                    hot ? 'bg-pink-500 text-charcoal' : 'bg-charcoal/55 text-white backdrop-blur-xl'
+                    hot ? 'bg-pink-500 text-charcoal' : 'bg-charcoal/85 text-white'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">

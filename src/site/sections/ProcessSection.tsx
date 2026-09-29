@@ -53,7 +53,7 @@ export function ProcessSection() {
                 <p className="mt-3 max-w-[36rem] text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white/70">{s.summary}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.keyPoints.slice(0, 3).map((k) => (
-                    <li key={k} className="text-label-sm rounded-[5px] bg-white/8 px-2.5 py-1.5 text-white/75 backdrop-blur">
+                    <li key={k} className="text-label-sm rounded-[5px] bg-charcoal/70 px-2.5 py-1.5 text-white/75">
                       {k}
                     </li>
                   ))}

@@ -16,6 +16,8 @@ export interface CoverSpec {
 
 export const COVERS: CoverSpec[] = [
   // projects
+  { id: 'agentcraft-lead-agent', icon: 'Radar', seed: 31, cam: [1, 1, 11], look: [3, 1, -1], roll: 0.15 },
+  { id: 'whatsapp-ordering-agent', icon: 'MessageCircle', seed: 57, cam: [3, 2, 10], look: [3, 1, -1], roll: -0.2 },
   { id: 'contract-iq', icon: 'FileSearch', seed: 11, cam: [2, 1, 10], look: [3, 1, 0], roll: 0.2 },
   { id: 'vivagraph-ai', icon: 'AudioLines', seed: 23, cam: [-1, 2, 11], look: [2, 2, -1], roll: -0.15 },
   { id: 'ai-sales-automation-agent', icon: 'Target', seed: 5, cam: [4, -1, 9], look: [4, 2, -2], roll: 0.4 },
@@ -32,4 +34,4 @@ export const COVERS: CoverSpec[] = [
   { id: 'about', icon: 'none', seed: 9, cam: [0, 1, 12], look: [3, 1, -1], roll: 0 }
 ];
 
-export const coverUrl = (id: string) => `/covers/${id}.jpg`;
+export const coverUrl = (id: string) => `/covers/${id}.webp`;

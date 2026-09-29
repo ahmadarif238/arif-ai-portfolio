@@ -27,24 +27,25 @@ function Cover() {
     renderer.setSize(W, H);
     renderer.setClearColor(PALETTE.clear, 1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1;
+    renderer.toneMappingExposure = 1.12;
     host.current!.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
     scene.background = makeGlowTexture(0.25, 0.3, W, H);
-    const ribbons = createRibbons({ seed: spec.seed, count: 6 });
+    const ribbons = createRibbons({ seed: spec.seed, count: 4 });
     ribbons.update(spec.seed * 0.37);
-    const particles = createParticles(260, new THREE.Vector3(14, 9, 6));
+    const particles = createParticles(120, new THREE.Vector3(14, 9, 6));
+    particles.update(spec.seed);
     scene.add(ribbons.group, particles.points);
 
     const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
-    camera.position.set(...spec.cam);
-    camera.lookAt(new THREE.Vector3(...spec.look));
+    camera.position.set(spec.cam[0] * 0.35 + 0.5, spec.cam[1] * 0.3, 13 + spec.cam[2] * 0.15);
+    camera.lookAt(new THREE.Vector3(spec.look[0] * 0.3 + 1.8, spec.look[1] * 0.3 + 0.2, -1));
     camera.rotation.z += spec.roll ?? 0;
 
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.32, 0.45, 0.16));
+    composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.2, 0.35, 0.7));
     composer.addPass(new OutputPass());
     composer.render();
     requestAnimationFrame(() => {

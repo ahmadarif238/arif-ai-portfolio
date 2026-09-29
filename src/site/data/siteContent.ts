@@ -18,21 +18,23 @@ export const HOLD_WORDS = ['Build', 'Automate', 'Scale'];
 
 export const TECH_MARQUEE = [
   'LangGraph',
+  'LangChain',
   'OpenAI',
-  'Anthropic',
+  'Claude',
+  'Gemini',
   'Groq',
+  'Cerebras',
   'Pinecone',
+  'Weaviate',
   'FastAPI',
+  'Azure',
+  'Power Platform',
   'React',
-  'Next.js',
-  'n8n',
-  'Vapi',
-  'Deepgram',
-  'Twilio',
+  'Node.js',
   'Supabase',
   'Docker',
-  'Azure'
-];
+  'n8n'
+]
 
 export type UseCaseTab = 'voice' | 'agents' | 'automation' | 'web';
 
@@ -46,7 +48,7 @@ export interface UseCase {
 }
 
 export const USE_CASE_TABS: { value: UseCaseTab; label: string }[] = [
-  { value: 'voice', label: 'Voice' },
+  { value: 'voice', label: 'Voice & Chat' },
   { value: 'agents', label: 'AI Agents' },
   { value: 'automation', label: 'Automation' },
   { value: 'web', label: 'Web & Apps' }
@@ -54,7 +56,7 @@ export const USE_CASE_TABS: { value: UseCaseTab; label: string }[] = [
 
 export const USE_CASES: UseCase[] = [
   { tab: 'voice', title: 'AI receptionist for inbound calls', description: 'Answers every call, qualifies the enquiry and books straight into your calendar.', icon: 'PhoneIncoming', service: 'AI Voice Calling Bot' },
-  { tab: 'voice', title: 'Outbound lead qualification', description: 'Calls new leads within minutes and logs the conversation to your CRM.', icon: 'PhoneOutgoing', service: 'AI Voice Calling Bot' },
+  { tab: 'voice', title: 'WhatsApp ordering agent', description: 'Takes orders in English, Urdu and Roman Urdu, including voice notes, and updates customers live.', icon: 'MessagesSquare', projectId: 'whatsapp-ordering-agent', service: 'AI Voice Calling Bot' },
   { tab: 'voice', title: 'Voice-first executive assistant', description: 'Email, calendar and web lookups handled through ordinary spoken requests.', icon: 'AudioLines', projectId: 'voice-enabled-executive-agent', service: 'AI Voice Calling Bot' },
   { tab: 'voice', title: 'Oral exam & interview simulator', description: 'An examiner that shifts persona and scores confidence, hesitation and filler words.', icon: 'GraduationCap', projectId: 'vivagraph-ai', service: 'AI Voice Calling Bot' },
 
@@ -65,8 +67,8 @@ export const USE_CASES: UseCase[] = [
 
   { tab: 'automation', title: 'Search query to qualified lead', description: 'One search finds, verifies, scores and writes outreach for your prospects.', icon: 'Target', projectId: 'ai-sales-automation-agent', service: 'Workflow Automation (n8n/Make)' },
   { tab: 'automation', title: 'Inventory that manages itself', description: 'Forecasts demand and places purchase orders within the budget you set.', icon: 'Boxes', projectId: 'smart-supply-chain-agent', service: 'Workflow Automation (n8n/Make)' },
-  { tab: 'automation', title: 'CRM, email & sheets in sync', description: 'n8n and Make pipelines that move data between your tools without copy-paste.', icon: 'Workflow', service: 'Workflow Automation (n8n/Make)' },
-  { tab: 'automation', title: 'Document & invoice processing', description: 'Extracts fields from incoming documents and routes them for approval.', icon: 'ScanText', service: 'Workflow Automation (n8n/Make)' },
+  { tab: 'automation', title: 'Client-hunting outreach agent', description: 'Finds businesses on Google Maps, audits their sites and sends ~80 personalised emails a day.', icon: 'Radar', projectId: 'agentcraft-lead-agent', service: 'Workflow Automation (n8n/Make)' },
+  { tab: 'automation', title: 'Power Platform process automation', description: 'Power Automate flows and virtual agents that cut manual work in finance and operations teams.', icon: 'Workflow', service: 'Workflow Automation (n8n/Make)' },
 
   { tab: 'web', title: 'Websites that bring in customers', description: 'Fast, modern business sites built to convert visitors into enquiries.', icon: 'Globe', service: 'Full-Stack Web App' },
   { tab: 'web', title: 'Client portals & dashboards', description: 'Secure, role-based apps your team and customers work in every day.', icon: 'LayoutDashboard', service: 'Full-Stack Web App' },

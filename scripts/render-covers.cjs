@@ -1,5 +1,5 @@
 /**
- * Bakes every cover listed in src/site/data/covers.ts into public/covers/*.jpg.
+ * Bakes every cover listed in src/site/data/covers.ts into public/covers/*.webp.
  *
  * Needs the dev server running (npm run dev) and a Chromium browser. Point
  * CHROME_PATH at one if it is not the default Edge install:
@@ -14,7 +14,8 @@ const CHROME = process.env.CHROME_PATH || 'C:/Program Files (x86)/Microsoft/Edge
 const OUT = path.join(__dirname, '..', 'public', 'covers');
 
 const src = fs.readFileSync(path.join(__dirname, '..', 'src', 'site', 'data', 'covers.ts'), 'utf8');
-const ids = [...src.matchAll(/\{ id: '([^']+)'/g)].map((m) => m[1]);
+const only = process.argv.slice(2);
+const ids = [...src.matchAll(/\{ id: '([^']+)'/g)].map((m) => m[1]).filter((id) => !only.length || only.includes(id));
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
@@ -29,7 +30,7 @@ const ids = [...src.matchAll(/\{ id: '([^']+)'/g)].map((m) => m[1]);
     await page.goto(`${BASE}/cover-lab.html?id=${id}`, { waitUntil: 'networkidle0' });
     await page.waitForFunction('window.__coverReady === true', { timeout: 60000 });
     const el = await page.$('#cover');
-    await el.screenshot({ path: path.join(OUT, `${id}.jpg`), type: 'jpeg', quality: 86 });
+    await el.screenshot({ path: path.join(OUT, `${id}.webp`), type: 'webp', quality: 80 });
     console.log('baked', id);
   }
   await browser.close();
