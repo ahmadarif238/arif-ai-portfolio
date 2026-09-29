@@ -1,109 +1,100 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-import { Header } from './genz/components/Header';
-import { Hero } from './genz/components/Hero';
-import { MarqueeTicker } from './genz/components/MarqueeTicker';
-import { SelectedWorks } from './genz/components/SelectedWorks';
-import { ServicesSection } from './genz/components/ServicesSection';
-import { ProcessSection } from './genz/components/ProcessSection';
-import { AboutSection } from './genz/components/AboutSection';
-import { TechStackSection } from './genz/components/TechStackSection';
-import { PricingSection } from './genz/components/PricingSection';
-import { FaqSection } from './genz/components/FaqSection';
-import { ContactSection } from './genz/components/ContactSection';
-import { Footer } from './genz/components/Footer';
-import { ProjectModal } from './genz/components/ProjectModal';
-import { ResumeModal } from './genz/components/ResumeModal';
-import { ScrollTopButton } from './genz/components/ScrollTopButton';
+import { Header } from './site/sections/Header';
+import { Hero } from './site/sections/Hero';
+import { TrustStrip } from './site/sections/TrustStrip';
+import { WhySection } from './site/sections/WhySection';
+import { ProcessSection } from './site/sections/ProcessSection';
+import { UseCases } from './site/sections/UseCases';
+import { CaseStudies } from './site/sections/CaseStudies';
+import { Services } from './site/sections/Services';
+import { Pricing } from './site/sections/Pricing';
+import { About } from './site/sections/About';
+import { Faq } from './site/sections/Faq';
+import { BlogTeaser } from './site/sections/BlogTeaser';
+import { Contact } from './site/sections/Contact';
+import { Footer } from './site/sections/Footer';
+import { ProjectOverlay, ResumeOverlay } from './site/sections/Overlays';
+import { scrollToHash, scrollToTop, startSmoothScroll } from './site/lib/scroll';
 import WhatsAppButton from './components/layout/WhatsAppButton';
+
+// three.js is most of the bundle: load the stage after first paint, with the
+// same CSS gradient standing in until it arrives.
+const BackgroundStage = lazy(() => import('./site/three/BackgroundStage'));
 
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 
-const ScrollToTop = () => {
-    const { pathname } = useLocation();
+const ScrollManager = () => {
+    const { pathname, hash } = useLocation();
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+        if (hash) setTimeout(() => scrollToHash(hash), 120);
+        else scrollToTop(true);
+    }, [pathname, hash]);
     return null;
 };
 
-/** The single-page portfolio: every section in the order the design lays them out. */
-const HomePage = ({ onOpenResumeModal, onSelectProject, preselectedService, onPreselectService }) => (
-    <main id="main-content" className="pt-20">
+/**
+ * The single-page portfolio. Dark sections are transparent over the fixed 3D
+ * stage (their `data-stage` picks the set behind them); light `.sheet`s slide
+ * over it on rounded corners.
+ */
+const HomePage = ({ onOpenProject, onEnquire, preselected }) => (
+    <main id="main-content">
         <Hero />
-        <MarqueeTicker />
-        <SelectedWorks onSelectProject={onSelectProject} />
-        <ServicesSection onSelectServiceForContact={onPreselectService} />
+        <TrustStrip />
+        <WhySection />
         <ProcessSection />
-        <AboutSection onOpenResumeModal={onOpenResumeModal} />
-        <TechStackSection />
-        <PricingSection onSelectTierForContact={onPreselectService} />
-        <FaqSection />
-        <ContactSection selectedServiceOrTier={preselectedService} />
+        <UseCases onOpenProject={onOpenProject} onEnquire={onEnquire} />
+        <section className="sheet">
+            <CaseStudies onOpenProject={onOpenProject} />
+            <Services onEnquire={onEnquire} />
+        </section>
+        <Pricing onEnquire={onEnquire} />
+        <section className="sheet">
+            <About />
+            <Faq />
+            <BlogTeaser />
+            <Contact preselected={preselected} />
+        </section>
     </main>
 );
 
 function App() {
-    // Night / Day theme, matching the design's toggle
-    const [isDayMode, setIsDayMode] = useState(false);
+    const [project, setProject] = useState(null);
+    const [resumeOpen, setResumeOpen] = useState(false);
+    const [preselected, setPreselected] = useState('');
 
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [resumeModalOpen, setResumeModalOpen] = useState(false);
-    const [preselectedContactService, setPreselectedContactService] = useState('');
+    useEffect(() => startSmoothScroll(), []);
 
-    useEffect(() => {
-        const root = document.documentElement;
-        const body = document.body;
-        if (isDayMode) {
-            root.classList.add('theme-day');
-            body.classList.add('theme-day');
-        } else {
-            root.classList.remove('theme-day');
-            body.classList.remove('theme-day');
-        }
-    }, [isDayMode]);
-
-    const handleSelectServiceForContact = (title) => {
-        setPreselectedContactService(title);
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    };
+    const enquire = useCallback((service) => {
+        setPreselected(service);
+        scrollToHash('#contact');
+    }, []);
 
     return (
         <Router>
-            <ScrollToTop />
-            <div className="min-h-screen bg-[#0b1220] text-[#94a9c9] selection:bg-[#0bd1d1] selection:text-[#0b1220] transition-colors duration-300">
-                <Header
-                    isDayMode={isDayMode}
-                    onToggleTheme={() => setIsDayMode((prev) => !prev)}
-                    onOpenResumeModal={() => setResumeModalOpen(true)}
-                />
-
+            <ScrollManager />
+            <Suspense fallback={<div className="stage" aria-hidden="true" />}>
+                <BackgroundStage />
+            </Suspense>
+            <div className="site">
+                <WhatsAppButton />
+                <Header />
                 <Routes>
                     <Route
                         path="/"
-                        element={
-                            <HomePage
-                                onOpenResumeModal={() => setResumeModalOpen(true)}
-                                onSelectProject={setSelectedProject}
-                                preselectedService={preselectedContactService}
-                                onPreselectService={handleSelectServiceForContact}
-                            />
-                        }
+                        element={<HomePage onOpenProject={setProject} onEnquire={enquire} preselected={preselected} />}
                     />
-                    <Route path="/blog" element={<main className="pt-20"><Blog /></main>} />
-                    <Route path="/blog/:slug" element={<main className="pt-20"><BlogPost /></main>} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                 </Routes>
-
-                <Footer />
-
-                <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-                <ResumeModal isOpen={resumeModalOpen} onClose={() => setResumeModalOpen(false)} />
-
-                <ScrollTopButton />
-                <WhatsAppButton />
+                <Footer onOpenResume={() => setResumeOpen(true)} />
             </div>
+
+            <ProjectOverlay project={project} onClose={() => setProject(null)} onOpen={setProject} onEnquire={enquire} />
+            <ResumeOverlay open={resumeOpen} onClose={() => setResumeOpen(false)} />
         </Router>
     );
 }

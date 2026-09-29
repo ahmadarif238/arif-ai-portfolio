@@ -14,3 +14,19 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Design system & cover art
+
+The site sits on a fixed three.js stage (`src/site/three/`): lacquered magenta
+ribbons behind the hero, pricing and footer, and a hex force-field sphere behind
+the process and use-case sections. Dark sections pick their set with
+`data-stage="ribbons" | "shield"`; light content lives on `.sheet` panels that
+slide over the stage.
+
+Project, case-study and blog images in `public/covers/` are rendered from the
+same ribbon scene. To regenerate them after editing `src/site/data/covers.ts`:
+
+```bash
+npm run dev          # in one terminal
+npm run covers       # in another (uses Edge by default; set CHROME_PATH to use another Chromium)
+```

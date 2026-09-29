@@ -12,13 +12,13 @@
     content="Software Engineer, Web Development, App Development, AI Agents, Chatbot Development, AI Calling Agent, Chatbot Integration, Workflow Automation, Portfolio" />
   <meta name="author" content="Arif Ahmad Khan" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#050003" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
   <!-- Open Graph / Facebook -->
@@ -27,69 +27,36 @@
   <meta property="og:title" content="Arif Ahmad Khan, Software Engineer for Web, Apps and AI Automation" />
   <meta property="og:description"
     content="I build websites, apps, AI chatbots, and calling agents that take repetitive work off your team so you can focus on growth." />
-  <meta property="og:image" content="/profile.jpg" />
+  <meta property="og:image" content="/covers/contract-iq.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Arif Ahmad Khan, Software Engineer for Web, Apps and AI Automation" />
   <meta name="twitter:description"
     content="I build websites, apps, AI chatbots, and calling agents that take repetitive work off your team." />
-  <meta name="twitter:image" content="/profile.jpg" />
+  <meta name="twitter:image" content="/covers/contract-iq.jpg" />
 
   <link rel="canonical" href="https://portfolio-azui.vercel.app/" />
 </head>
 
-<body class="bg-[#0b1220] text-white font-sans antialiased selection:bg-[#0bd1d1] selection:text-[#0b1220]">
+<body>
   <style>
     /* Critical CSS for the preloader, shown before React mounts */
-    body {
-      background-color: #0b1220;
-      margin: 0;
-    }
-
+    html, body { background: #050003; margin: 0; }
     .loader-container {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b1220;
-      z-index: 9999;
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999;
+      background: radial-gradient(120% 90% at 20% 23%, #2d0b23 0%, #12040f 45%, #000 100%);
     }
-
-    .loader-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Noto Sans', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: 0.06em;
-      color: #ffffff;
-      background: linear-gradient(to top right, #0ea5ea, #0bd1d1);
-      animation: pulse 2s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(11, 209, 209, 0.4);
-      }
-
-      70% {
-        box-shadow: 0 0 0 18px rgba(11, 209, 209, 0);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(11, 209, 209, 0);
-      }
-    }
+    .loader-mark { width: 44px; height: 44px; animation: pulse 1.6s infinite ease-in-out; }
+    @keyframes pulse { 0%, 100% { opacity: .45; transform: scale(.94); } 50% { opacity: 1; transform: scale(1); } }
   </style>
   <div id="root">
     <div class="loader-container">
-      <div class="loader-logo">AK</div>
+      <svg class="loader-mark" viewBox="0 0 40 40" fill="none" aria-label="Loading">
+        <path d="M20 20V8.5M20 20l10 5.8M20 20l-10 5.8" stroke="#ff488b" stroke-width="2.4" stroke-linecap="round" opacity=".7" />
+        <circle cx="20" cy="7.4" r="4.6" fill="#ff488b" /><circle cx="31.2" cy="26.3" r="4.6" fill="#e33adb" />
+        <circle cx="8.8" cy="26.3" r="4.6" fill="#ff488b" /><circle cx="20" cy="20" r="4.4" stroke="#ff488b" stroke-width="2.6" />
+      </svg>
     </div>
   </div>
   <script type="module" src="/src/main.jsx"></script>
