@@ -90,7 +90,7 @@ export function Contact({ preselected }: { preselected?: string }) {
         <div className="rounded-[var(--radius-lg)] bg-white p-6 sm:p-10">
           {sent ? (
             <div className="flex min-h-[420px] flex-col items-start justify-center">
-              <CheckCircle2 className="h-10 w-10 text-pink-600" strokeWidth={1.5} />
+              <CheckCircle2 className="h-10 w-10 text-pink-700" strokeWidth={1.5} />
               <p className="mt-6 text-[length:var(--text-fluid-xs)] tracking-[-0.03em] text-navy-900">Message received.</p>
               <p className="mt-3 text-[16px] text-navy-500">Thanks {form.name.split(' ')[0] || 'for reaching out'}. I will reply to {form.email} within a day.</p>
               <Button variant="slate" className="mt-8" onClick={() => setSent(false)}>
@@ -129,7 +129,7 @@ export function Contact({ preselected }: { preselected?: string }) {
                 />
               </label>
               {error && (
-                <p className="flex items-center gap-2 rounded-[var(--radius-sm)] bg-pink-500/10 px-4 py-3 text-[14px] text-pink-600">
+                <p className="flex items-center gap-2 rounded-[var(--radius-sm)] bg-pink-500/10 px-4 py-3 text-[14px] text-pink-700">
                   <AlertCircle className="h-4 w-4" /> Could not send right now. Try WhatsApp or email instead.
                 </p>
               )}

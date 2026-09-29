@@ -252,7 +252,7 @@ const shieldFragment = /* glsl */ `
     float hexFres = pow(1.0 - max(dot(normalize(vNormal), normalize(vView)), 0.0), 4.6);
 
     float hover = uMouseStrength * smoothstep(0.55, 0.0, distance(n, normalize(uMouse)));
-    vec3 col = uColor * (fres * 2.2 * (0.66 + flow * 0.34));
+    vec3 col = uColor * (fres * 1.6 * (0.66 + flow * 0.34));
     col += uColor * hex * (0.06 + hexFres * 0.9);
     col += uHover * hex * hover * 2.2;
     float grain = noise(n * 40.0 + uTime) * 0.04;
@@ -296,10 +296,12 @@ export function createShield(opts: { segments?: number } = {}): ShieldSet {
   const shield = new THREE.Mesh(new THREE.SphereGeometry(4.5, seg, seg), shieldMaterial);
   group.add(shield);
 
+  // Kept deliberately dim: body copy sits on top of this scene, so no part of
+  // it may get bright enough to drop white text below 4.5:1.
   const coreMat = new THREE.MeshPhongMaterial({
-    color: '#5e1449',
-    specular: new THREE.Color('#ff9ad8'),
-    shininess: 60,
+    color: '#4a1040',
+    specular: new THREE.Color('#5a2452'),
+    shininess: 24,
     transparent: true
   });
 
@@ -324,8 +326,8 @@ export function createShield(opts: { segments?: number } = {}): ShieldSet {
   group.add(core);
 
   // The glowing orbit that slices across the sphere.
-  const ringMat = new THREE.MeshBasicMaterial({ color: '#ff4fb4', transparent: true, opacity: 0.85 });
-  ringMat.userData.maxOpacity = 0.85;
+  const ringMat = new THREE.MeshBasicMaterial({ color: '#8a2160', transparent: true, opacity: 0.65 });
+  ringMat.userData.maxOpacity = 0.65;
   const ring = new THREE.Mesh(new THREE.TorusGeometry(4.1, 0.028, 12, 260), ringMat);
   ring.rotation.set(1.2, 0.5, 0.2);
   group.add(ring);
@@ -398,7 +400,7 @@ export function createParticles(count = 260, box = new THREE.Vector3(18, 11, 8))
         float big = step(0.975, seed);
         gl_PointSize = (big * 26.0 + 3.0 + seed * 3.0) * uScale * (10.0 / -mv.z);
         float edge = 1.0 - smoothstep(0.35, 0.5, abs(p.y / uHeight));
-        vAlpha = edge * (big * 0.2 + 0.4);
+        vAlpha = edge * (big * 0.08 + 0.24);
       }
     `,
     fragmentShader: /* glsl */ `

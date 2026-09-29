@@ -60,7 +60,7 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.19,1,.22,1)] group-hover:scale-[1.06]"
                 />
-                <span className="absolute left-3 top-3 rounded-[var(--radius-sm)] bg-charcoal/70 px-2 py-1 text-[14px] text-white">
+                <span className="absolute left-3 top-3 rounded-[var(--radius-sm)] bg-charcoal px-2 py-1 text-[14px] text-white">
                   {p.stats}
                 </span>
               </div>
@@ -76,7 +76,7 @@ export function CaseStudies({ onOpenProject }: { onOpenProject: (p: Project) => 
                       </div>
                     ))}
                   </div>
-                  <span className="text-[14px] text-navy-500 transition-colors group-hover:text-pink-600">Read case study</span>
+                  <span className="text-[14px] text-navy-500 transition-colors group-hover:text-pink-700">Read case study</span>
                 </div>
               </div>
             </button>

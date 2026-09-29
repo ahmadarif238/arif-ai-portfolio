@@ -17,7 +17,7 @@ export function Faq() {
           return (
             <Reveal as="li" key={f.question} className="border-b hairline">
               <button onClick={() => setOpen(isOpen ? null : i)} aria-expanded={isOpen} className="group flex w-full items-center gap-6 py-6 text-left">
-                <span className="flex-1 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900 group-hover:text-pink-600">{f.question}</span>
+                <span className="flex-1 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900 group-hover:text-pink-700">{f.question}</span>
                 <Plus className={`h-5 w-5 shrink-0 text-navy-900 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} />
               </button>
               <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.645,.045,.355,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>

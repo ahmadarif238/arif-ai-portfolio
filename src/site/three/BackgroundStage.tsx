@@ -67,6 +67,8 @@ export function BackgroundStage() {
       if (!shield) return;
       const w = window.innerWidth;
       shield.group.scale.setScalar(w < 700 ? 0.55 : w < 1000 ? 0.75 : 1);
+      // On wide screens sit right of the headline column so its pink rim never runs behind the heading.
+      shield.group.position.x = w >= 1000 ? 2.9 : 0;
     }
     const ensureShield = () => {
       if (shield) return;
@@ -182,7 +184,7 @@ export function BackgroundStage() {
       if (sh) {
         sh.group.visible = mix > 0.01;
         sh.materials.forEach((m) => (m.opacity = mix * (m.userData.maxOpacity ?? 1)));
-        sh.shieldMaterial.uniforms.uOpacity.value = 0.4 * mix;
+        sh.shieldMaterial.uniforms.uOpacity.value = 0.26 * mix;
         sh.group.position.y = (1 - mix) * -3;
         if (sh.group.visible) sh.update(t, dt * speed);
 

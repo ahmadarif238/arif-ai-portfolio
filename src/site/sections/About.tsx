@@ -36,11 +36,11 @@ export function About() {
               />
             </picture>
             {/* plum fade so the caption sits on the photo, in the stage's colours */}
-            <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#1f0719] via-[#1f0719]/70 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#1f0719] from-25% via-[#1f0719]/75 to-transparent" />
             <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 text-white sm:p-8">
               <div>
                 <p className="text-[length:var(--text-fluid-xs)] leading-none tracking-[-0.03em]">{PERSONAL_INFO.name}</p>
-                <p className="text-label-sm mt-3 text-white/70">
+                <p className="text-label-sm mt-3 text-white">
                   {PERSONAL_INFO.role} · {PERSONAL_INFO.location}
                 </p>
               </div>

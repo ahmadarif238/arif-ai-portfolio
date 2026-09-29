@@ -40,7 +40,7 @@ export function ProcessSection() {
           </div>
         </div>
 
-        <ol className="space-y-14 md:col-span-6 md:col-start-7">
+        <ol className="stage-panel space-y-14 md:col-span-6 md:col-start-7">
           {PROCESS_STEPS.map((s, i) => {
             const Icon = iconFor(PROCESS_ICONS[i]);
             return (
@@ -50,10 +50,10 @@ export function ProcessSection() {
                   <h3 className="text-[length:var(--text-fluid-xs)] tracking-[-0.03em]">{s.title}</h3>
                   <span className="text-label-sm ml-auto shrink-0 text-pink-300">{s.duration}</span>
                 </div>
-                <p className="mt-3 max-w-[36rem] text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white/70">{s.summary}</p>
+                <p className="mt-3 max-w-[36rem] text-[length:var(--text-fluid-2xs)] leading-[1.45] text-white">{s.summary}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.keyPoints.slice(0, 3).map((k) => (
-                    <li key={k} className="rounded-[var(--radius-sm)] bg-charcoal/70 px-2.5 py-1.5 text-[14px] text-white/70">
+                    <li key={k} className="rounded-[var(--radius-sm)] bg-charcoal px-2.5 py-1.5 text-[14px] text-white/70">
                       {k}
                     </li>
                   ))}

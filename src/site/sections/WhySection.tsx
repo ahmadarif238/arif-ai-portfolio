@@ -59,7 +59,7 @@ export function WhySection() {
                         blocks.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                       }}
                       className={`text-left text-[length:var(--text-fluid-md)] leading-[1.15] tracking-[-0.035em] transition-colors duration-500 ${
-                        active === i ? 'text-navy-900' : 'text-slate-300 hover:text-navy-500'
+                        active === i ? 'text-navy-900' : 'text-navy-300 hover:text-navy-500'
                       }`}
                     >
                       {w.label}
@@ -75,7 +75,7 @@ export function WhySection() {
               <div key={w.key} id={`why-${w.key}`} data-index={i} ref={(el) => { blocks.current[i] = el; }}>
                 <Reveal>{visuals[i]}</Reveal>
                 <Reveal delay={0.1}>
-                  <p className="text-label-sm mt-8 text-pink-600 md:hidden">{w.label}</p>
+                  <p className="text-label-sm mt-8 text-pink-700 md:hidden">{w.label}</p>
                   <h3 className="mt-6 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900">{w.title}</h3>
                   <p className="mt-4 max-w-[34rem] text-[16px] leading-[1.6] text-navy-500">{w.body}</p>
                 </Reveal>
@@ -109,7 +109,7 @@ function PipelineCard() {
           onChange={setTab}
           options={FEATURED.map((p) => ({ value: p.id, label: p.title.split(/[: ]/)[0] }))}
         />
-        <div className="mt-24 w-full rounded-[var(--radius-md)] bg-slate-50/95 p-5 backdrop-blur sm:mt-32 sm:p-7" key={runKey}>
+        <div className="mt-24 w-full rounded-[var(--radius-md)] bg-slate-50 p-5 sm:mt-32 sm:p-7" key={runKey}>
           <p className="text-label-sm text-navy-500">Pipeline</p>
           <ul className="mt-5 space-y-4">
             {project.workflow.map((step, i) => (
@@ -117,7 +117,7 @@ function PipelineCard() {
                 <div className="flex items-start justify-between gap-4">
                   <span className="text-[14px] leading-snug text-navy-900">{step.split(/[.,]/)[0]}</span>
                   <Check
-                    className="h-4 w-4 shrink-0 text-pink-600 opacity-0"
+                    className="h-4 w-4 shrink-0 text-pink-700 opacity-0"
                     style={{ animation: inView ? `fade-in .3s ${0.6 + i * 0.55}s forwards` : undefined }}
                   />
                 </div>
@@ -164,7 +164,7 @@ function OwnershipCard() {
       <div className="rounded-[var(--radius-md)] bg-white p-5 sm:p-7">
         <div className="flex items-center justify-between">
           <p className="text-label-sm text-navy-500">Handover</p>
-          <p className="text-label-sm rounded-[var(--radius-sm)] bg-pink-500/12 px-2 py-1 text-pink-600">Delivered</p>
+          <p className="text-label-sm rounded-[var(--radius-sm)] bg-pink-500/12 px-2 py-1 text-pink-700">Delivered</p>
         </div>
         <ul className="mt-5 font-mono text-[14px] text-navy-900">
           {files.map((f, i) => (
@@ -173,7 +173,7 @@ function OwnershipCard() {
               className="flex items-center gap-2 py-[5px] opacity-0"
               style={{ paddingLeft: f.depth * 20, animation: inView ? `fade-in .35s ${i * 0.08}s forwards` : undefined }}
             >
-              {f.dir ? <Folder className="h-4 w-4 text-pink-600" /> : <FileCode2 className="h-4 w-4 text-navy-500" />}
+              {f.dir ? <Folder className="h-4 w-4 text-pink-700" /> : <FileCode2 className="h-4 w-4 text-navy-500" />}
               {f.name}
             </li>
           ))}
@@ -214,16 +214,16 @@ function TerminalCard() {
   return (
     <div ref={ref} className="rounded-[var(--radius-lg)] bg-charcoal p-4 sm:p-6">
       <p className="text-label-sm inline-block rounded-[var(--radius-sm)] bg-slate-200 px-2 py-1 text-navy-900">Terminal</p>
-      <div className="mt-4 min-h-[330px] rounded-[var(--radius-md)] bg-slate-200 p-5 font-mono text-[12px] leading-[1.75] text-navy-900 sm:p-6">
+      <div className="mt-4 min-h-[330px] rounded-[var(--radius-md)] bg-slate-50 p-5 font-mono text-[12px] leading-[1.75] text-navy-900 sm:p-6">
         {TERMINAL.slice(0, n).map((l, i) => (
           <div key={i} className="fade-line">
             {l.t === 'cmd' && <p className="break-words">{l.v}</p>}
-            {l.t === 'ok' && <p className="text-pink-600">✓ {l.v}</p>}
+            {l.t === 'ok' && <p className="text-pink-700">✓ {l.v}</p>}
             {l.t === 'log' && <p className="mt-2 text-navy-500">{l.v}</p>}
             {l.t === 'bar' && (
               <p className="flex items-center gap-2 whitespace-pre">
                 {l.v}
-                <span className="inline-block h-[10px] w-40 overflow-hidden bg-slate-300 sm:w-56">
+                <span className="inline-block h-[10px] w-40 overflow-hidden bg-slate-200 sm:w-56">
                   <span className="block h-full bg-navy-900" style={{ animation: 'bar-fill .8s forwards', width: 0 }} />
                 </span>
                 {l.p}%
@@ -273,13 +273,13 @@ function ChartCard() {
           {[0, 25, 50, 75, 100].map((g) => (
             <g key={g}>
               <line x1="0" x2={w} y1={h - (g / 100) * h} y2={h - (g / 100) * h} stroke="#dbe5ed" strokeDasharray="3 4" />
-              <text x="-10" y={h - (g / 100) * h + 4} textAnchor="end" className="fill-navy-500 font-mono text-[12px]">
+              <text aria-hidden="true" x="-10" y={h - (g / 100) * h + 4} textAnchor="end" className="fill-navy-500 font-mono text-[12px]">
                 {g}
               </text>
             </g>
           ))}
           {['09:00', '12:00', '15:00', '18:00'].map((t, i) => (
-            <text key={t} x={(i / 3) * w} y={h + 22} textAnchor="middle" className="fill-navy-500 font-mono text-[12px]">
+            <text aria-hidden="true" key={t} x={(i / 3) * w} y={h + 22} textAnchor="middle" className="fill-navy-500 font-mono text-[12px]">
               {t}
             </text>
           ))}
@@ -300,7 +300,7 @@ function ChartCard() {
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex gap-2">
             {['P50', 'P90', 'Max'].map((l, i) => (
-              <span key={l} className="text-label-sm rounded-[var(--radius-sm)] px-2 py-1 text-white" style={{ background: colors[i] }}>
+              <span key={l} className={`text-label-sm rounded-[var(--radius-sm)] px-2 py-1 ${['text-white', 'text-navy-900', 'text-charcoal'][i]}`} style={{ background: colors[i] }}>
                 {l}
               </span>
             ))}

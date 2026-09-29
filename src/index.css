@@ -29,6 +29,10 @@
   --color-pink-300: #f480c0;
   --color-pink-500: #ff488b;
   --color-pink-600: #f6186a;
+  /* pink for text on light surfaces: >= 5:1 on slate-50, slate-100, white and the pink tint */
+  --color-pink-700: #b80f52;
+  /* muted navy for large de-emphasised text on light: 3.1:1 on slate-50 */
+  --color-navy-300: #7f89ab;
   --color-purple-100: #e33adb;
 
   --radius-sm: 7px;
@@ -131,6 +135,8 @@ body {
   padding-bottom: .08em;
   margin-bottom: -.08em;
 }
+/* On light sheets the bright stage gradient would drop to ~3:1; use its deep end instead (4.5-5.2:1). */
+.sheet .text-gradient { background-image: linear-gradient(to right, #d6135c, #b01aa8); }
 .heading { font-weight: 400; letter-spacing: -.025em; line-height: 1.02; }
 
 /* Eyebrow: dot + mono label */
@@ -244,6 +250,14 @@ body {
 .fade-line { animation: rise .35s cubic-bezier(.19, 1, .22, 1) both; }
 @media (prefers-reduced-motion: reduce) { .hero-fade, .fade-line { animation: none; opacity: 1; } }
 
+/* Darkens the ribbons behind the hero copy so body text keeps >= 4.5:1 over the 3D. */
+.hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgb(5 0 3 / .82) 0%, rgb(5 0 3 / .55) 32%, rgb(5 0 3 / 0) 62%); }
+
+/* Translucent backing for long copy over an animated scene: the 3D stays visible
+   through it, but no frame can push body text under 4.5:1. */
+.stage-panel { background: rgb(5 0 3 / .55); border-radius: var(--radius-lg); padding: clamp(1.25rem, .8rem + 1.5vw, 2.5rem); }
+
 /* ---------------------------------------------------------- misc --------- */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -265,4 +279,6 @@ body {
 @layer utilities {
   [data-stage] p, [data-stage] h1, [data-stage] h2, [data-stage] h3 { text-shadow: 0 1px 18px rgb(5 0 3 / .55); }
   [data-stage] .btn, [data-stage] .btn *, [data-stage] .no-shadow, [data-stage] .no-shadow * { text-shadow: none; }
+  /* gradient-clipped words cannot take text-shadow; a drop-shadow halo does the same job */
+  [data-stage] .text-gradient { filter: drop-shadow(0 1px 10px rgb(5 0 3 / .7)); }
 }

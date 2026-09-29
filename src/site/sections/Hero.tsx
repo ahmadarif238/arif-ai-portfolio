@@ -111,6 +111,8 @@ export function Hero() {
       onPointerUp={() => setHolding(false)}
       onPointerCancel={() => setHolding(false)}
     >
+      <div aria-hidden="true" className="hero-scrim" />
+
       {/* Hold words */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 grid place-items-center">
         {HOLD_WORDS.map((w, i) => (
@@ -138,7 +140,7 @@ export function Hero() {
           stagger={0.08}
         />
         <div className="md:col-span-4 md:col-start-9" data-no-cursor>
-          <p className="mb-5 flex items-center gap-2 text-[14px] text-pink-300 hero-fade" style={{ animationDelay: '.7s' }}>
+          <p className="mb-5 flex items-center gap-2 text-[14px] text-pink-200 hero-fade" style={{ animationDelay: '.7s' }}>
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />

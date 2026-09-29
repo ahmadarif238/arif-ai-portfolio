@@ -25,7 +25,7 @@ export function BlogCard({ post, i = 0 }: { post: (typeof blogPosts)[number]; i?
               <span key={t}>{t}</span>
             ))}
           </p>
-          <h3 className="mt-4 text-[length:var(--text-fluid-2xs)] leading-[1.3] tracking-[-0.02em] text-navy-900 transition-colors group-hover:text-pink-600">{post.title}</h3>
+          <h3 className="mt-4 text-[length:var(--text-fluid-2xs)] leading-[1.3] tracking-[-0.02em] text-navy-900 transition-colors group-hover:text-pink-700">{post.title}</h3>
           <p className="mt-auto pt-4 text-[14px] text-navy-500">{post.readTime}</p>
         </div>
       </Link>

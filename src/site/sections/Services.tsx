@@ -34,7 +34,7 @@ export function Services({ onEnquire }: { onEnquire: (service: string) => void }
                 className="group flex w-full items-center gap-5 py-6 text-left"
               >
                 <span className="text-label-sm w-8 shrink-0 text-navy-500">{s.number}</span>
-                <span className="flex-1 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900 transition-colors group-hover:text-pink-600">
+                <span className="flex-1 text-[length:var(--text-fluid-2xs)] tracking-[-0.02em] text-navy-900 transition-colors group-hover:text-pink-700">
                   {s.title}
                 </span>
                 {isOpen ? (

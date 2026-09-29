@@ -131,11 +131,11 @@ export function ProjectOverlay({
 
           <div className="mt-16 grid gap-10 md:grid-cols-2">
             <div>
-              <Eyebrow className="text-pink-600">The problem</Eyebrow>
+              <Eyebrow className="text-pink-700">The problem</Eyebrow>
               <p className="mt-5 text-[length:var(--text-fluid-2xs)] leading-[1.5] text-navy-900">{p.problem}</p>
             </div>
             <div>
-              <Eyebrow className="text-pink-600">The solution</Eyebrow>
+              <Eyebrow className="text-pink-700">The solution</Eyebrow>
               <p className="mt-5 text-[length:var(--text-fluid-2xs)] leading-[1.5] text-navy-900">{p.solution}</p>
             </div>
           </div>
@@ -177,7 +177,7 @@ export function ProjectOverlay({
               <ol className="mt-6 space-y-4">
                 {p.workflow.map((w, i) => (
                   <li key={w} className="flex gap-4 border-t hairline pt-4">
-                    <span className="text-label-sm pt-1 text-pink-600">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="text-label-sm pt-1 text-pink-700">{String(i + 1).padStart(2, '0')}</span>
                     <span className="text-[16px] leading-relaxed text-navy-900">{w}</span>
                   </li>
                 ))}
@@ -210,7 +210,7 @@ export function ProjectOverlay({
           >
             <span>
               <span className="text-label-sm text-navy-500">Next case study</span>
-              <span className="mt-2 block text-[length:var(--text-fluid-md)] tracking-[-0.03em] text-navy-900 group-hover:text-pink-600">{next.title}</span>
+              <span className="mt-2 block text-[length:var(--text-fluid-md)] tracking-[-0.03em] text-navy-900 group-hover:text-pink-700">{next.title}</span>
             </span>
             <img src={coverUrl(next.id)} alt="" className="hidden h-24 w-40 rounded-[var(--radius-sm)] object-cover sm:block" />
           </button>

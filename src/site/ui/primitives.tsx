@@ -212,7 +212,7 @@ export function Segmented<T extends string>({
   return (
     <div
       role="tablist"
-      className={`inline-flex gap-1 rounded-[var(--radius-sm)] p-1 ${tone === 'light' ? 'bg-white' : 'bg-white/90'}`}
+      className={`inline-flex gap-1 rounded-[var(--radius-sm)] p-1 bg-white`}
     >
       {options.map((o) => (
         <button
