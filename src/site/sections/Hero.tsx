@@ -140,13 +140,29 @@ export function Hero() {
           stagger={0.08}
         />
         <div className="md:col-span-4 md:col-start-9" data-no-cursor>
-          <p className="mb-5 flex items-center gap-2 text-[14px] text-pink-200 hero-fade" style={{ animationDelay: '.7s' }}>
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />
-            </span>
-            Available for work · {PERSONAL_INFO.location} / Remote
-          </p>
+          <div className="mb-6 flex items-center gap-4 hero-fade" style={{ animationDelay: '.65s' }}>
+            <div className="relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full border-2 border-pink-500/80 shadow-xl shadow-pink-500/25 ring-4 ring-pink-500/10">
+              <picture>
+                <source type="image/webp" srcSet={`${PERSONAL_INFO.avatarSmallUrl} 560w, ${PERSONAL_INFO.avatarUrl} 960w`} />
+                <img
+                  src={PERSONAL_INFO.avatarFallbackUrl}
+                  alt={`${PERSONAL_INFO.name}, ${PERSONAL_INFO.role}`}
+                  className="h-full w-full object-cover object-top"
+                />
+              </picture>
+            </div>
+            <div>
+              <p className="text-[18px] font-bold tracking-tight text-white">{PERSONAL_INFO.name}</p>
+              <p className="text-[13px] font-medium text-pink-300">{PERSONAL_INFO.role}</p>
+              <p className="mt-1 flex items-center gap-2 text-[12px] text-pink-200">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />
+                </span>
+                Available for work · Remote
+              </p>
+            </div>
+          </div>
           <p className="hero-fade text-[length:var(--text-fluid-2xs)] leading-[1.35] text-white" style={{ animationDelay: '.8s' }}>
             {PERSONAL_INFO.shortBio}
           </p>
