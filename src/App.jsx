@@ -1,121 +1,109 @@
-import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-import { Header } from './site/sections/Header';
-import { Hero } from './site/sections/Hero';
-import { TrustStrip } from './site/sections/TrustStrip';
-import { WhySection } from './site/sections/WhySection';
-import { ProcessSection } from './site/sections/ProcessSection';
-import { UseCases } from './site/sections/UseCases';
-import { CaseStudies } from './site/sections/CaseStudies';
-import { Services } from './site/sections/Services';
-import { Pricing } from './site/sections/Pricing';
-import { About } from './site/sections/About';
-import { Faq } from './site/sections/Faq';
-import { BlogTeaser } from './site/sections/BlogTeaser';
-import { Contact } from './site/sections/Contact';
-import { Footer } from './site/sections/Footer';
-import { ProjectOverlay, ResumeOverlay } from './site/sections/Overlays';
-import { scrollToHash, scrollToTop, startSmoothScroll } from './site/lib/scroll';
+import { Header } from './genz/components/Header';
+import { Hero } from './genz/components/Hero';
+import { MarqueeTicker } from './genz/components/MarqueeTicker';
+import { SelectedWorks } from './genz/components/SelectedWorks';
+import { ServicesSection } from './genz/components/ServicesSection';
+import { ProcessSection } from './genz/components/ProcessSection';
+import { AboutSection } from './genz/components/AboutSection';
+import { TechStackSection } from './genz/components/TechStackSection';
+import { PricingSection } from './genz/components/PricingSection';
+import { FaqSection } from './genz/components/FaqSection';
+import { ContactSection } from './genz/components/ContactSection';
+import { Footer } from './genz/components/Footer';
+import { ProjectModal } from './genz/components/ProjectModal';
+import { ResumeModal } from './genz/components/ResumeModal';
+import { ScrollTopButton } from './genz/components/ScrollTopButton';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 
-// three.js is most of the bundle: load the stage after first paint, with the
-// same CSS gradient standing in until it arrives.
-const BackgroundStage = lazy(() => import('./site/three/BackgroundStage'));
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
-// Blog routes carry the long article text; only fetch them when visited.
-const Blog = lazy(() => import('./pages/Blog'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-
-/** Mount the 3D stage once the browser is idle, so text and layout paint first. */
-const DeferredStage = () => {
-    const [ready, setReady] = useState(false);
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
     useEffect(() => {
-        const go = () => setReady(true);
-        if ('requestIdleCallback' in window) {
-            const id = window.requestIdleCallback(go, { timeout: 1200 });
-            return () => window.cancelIdleCallback(id);
-        }
-        const id = setTimeout(go, 300);
-        return () => clearTimeout(id);
-    }, []);
-    const fallback = <div className="stage" aria-hidden="true" />;
-    return ready ? (
-        <Suspense fallback={fallback}>
-            <BackgroundStage />
-        </Suspense>
-    ) : (
-        fallback
-    );
-};
-
-const ScrollManager = () => {
-    const { pathname, hash } = useLocation();
-    useEffect(() => {
-        if (hash) setTimeout(() => scrollToHash(hash), 120);
-        else scrollToTop(true);
-    }, [pathname, hash]);
+        window.scrollTo(0, 0);
+    }, [pathname]);
     return null;
 };
 
-/**
- * The single-page portfolio. Dark sections are transparent over the fixed 3D
- * stage (their `data-stage` picks the set behind them); light `.sheet`s slide
- * over it on rounded corners.
- */
-const HomePage = ({ onOpenProject, onEnquire, preselected }) => (
-    <main id="main-content">
+/** The single-page portfolio: every section in the order the design lays them out. */
+const HomePage = ({ onOpenResumeModal, onSelectProject, preselectedService, onPreselectService }) => (
+    <main id="main-content" className="pt-20">
         <Hero />
-        <TrustStrip />
-        <WhySection />
+        <MarqueeTicker />
+        <SelectedWorks onSelectProject={onSelectProject} />
+        <ServicesSection onSelectServiceForContact={onPreselectService} />
         <ProcessSection />
-        <UseCases onOpenProject={onOpenProject} onEnquire={onEnquire} />
-        <section className="sheet">
-            <CaseStudies onOpenProject={onOpenProject} />
-            <Services onEnquire={onEnquire} />
-        </section>
-        <Pricing onEnquire={onEnquire} />
-        <section className="sheet">
-            <About />
-            <Faq />
-            <BlogTeaser />
-            <Contact preselected={preselected} />
-        </section>
+        <AboutSection onOpenResumeModal={onOpenResumeModal} />
+        <TechStackSection />
+        <PricingSection onSelectTierForContact={onPreselectService} />
+        <FaqSection />
+        <ContactSection selectedServiceOrTier={preselectedService} />
     </main>
 );
 
 function App() {
-    const [project, setProject] = useState(null);
-    const [resumeOpen, setResumeOpen] = useState(false);
-    const [preselected, setPreselected] = useState('');
+    // Night / Day theme, matching the design's toggle
+    const [isDayMode, setIsDayMode] = useState(false);
 
-    useEffect(() => startSmoothScroll(), []);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [resumeModalOpen, setResumeModalOpen] = useState(false);
+    const [preselectedContactService, setPreselectedContactService] = useState('');
 
-    const enquire = useCallback((service) => {
-        setPreselected(service);
-        scrollToHash('#contact');
-    }, []);
+    useEffect(() => {
+        const root = document.documentElement;
+        const body = document.body;
+        if (isDayMode) {
+            root.classList.add('theme-day');
+            body.classList.add('theme-day');
+        } else {
+            root.classList.remove('theme-day');
+            body.classList.remove('theme-day');
+        }
+    }, [isDayMode]);
+
+    const handleSelectServiceForContact = (title) => {
+        setPreselectedContactService(title);
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <Router>
-            <ScrollManager />
-            <DeferredStage />
-            <div className="site">
-                <WhatsAppButton />
-                <Header />
+            <ScrollToTop />
+            <div className="min-h-screen bg-[#0b1220] text-[#94a9c9] selection:bg-[#0bd1d1] selection:text-[#0b1220] transition-colors duration-300">
+                <Header
+                    isDayMode={isDayMode}
+                    onToggleTheme={() => setIsDayMode((prev) => !prev)}
+                    onOpenResumeModal={() => setResumeModalOpen(true)}
+                />
+
                 <Routes>
                     <Route
                         path="/"
-                        element={<HomePage onOpenProject={setProject} onEnquire={enquire} preselected={preselected} />}
+                        element={
+                            <HomePage
+                                onOpenResumeModal={() => setResumeModalOpen(true)}
+                                onSelectProject={setSelectedProject}
+                                preselectedService={preselectedContactService}
+                                onPreselectService={handleSelectServiceForContact}
+                            />
+                        }
                     />
-                    <Route path="/blog" element={<Suspense fallback={<main className="min-h-screen" />}><Blog /></Suspense>} />
-                    <Route path="/blog/:slug" element={<Suspense fallback={<main className="min-h-screen" />}><BlogPost /></Suspense>} />
+                    <Route path="/blog" element={<main className="pt-20"><Blog /></main>} />
+                    <Route path="/blog/:slug" element={<main className="pt-20"><BlogPost /></main>} />
                 </Routes>
-                <Footer onOpenResume={() => setResumeOpen(true)} />
-            </div>
 
-            <ProjectOverlay project={project} onClose={() => setProject(null)} onOpen={setProject} onEnquire={enquire} />
-            <ResumeOverlay open={resumeOpen} onClose={() => setResumeOpen(false)} />
+                <Footer />
+
+                <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+                <ResumeModal isOpen={resumeModalOpen} onClose={() => setResumeModalOpen(false)} />
+
+                <ScrollTopButton />
+                <WhatsAppButton />
+            </div>
         </Router>
     );
 }
