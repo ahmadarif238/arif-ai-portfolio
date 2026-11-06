@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
               </a>
 
               <p className="text-xs sm:text-sm text-[#94a9c9] leading-relaxed">
-                Software Engineer specializing in autonomous multi-agent AI systems, high-speed Next.js/React applications, and end-to-end enterprise workflow automation.
+                AI Engineer specializing in autonomous multi-agent systems, grounded enterprise retrieval architectures, and end-to-end process automation on Microsoft Azure and Power Platform.
               </p>
 
               <div className="pt-2">

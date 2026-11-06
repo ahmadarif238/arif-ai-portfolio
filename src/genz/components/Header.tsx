@@ -50,12 +50,11 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems: { label: string; href: string; id: string; route: boolean }[] = [
     { label: 'Home', href: '#home', id: 'home', route: false },
-    { label: 'Domains', href: '#topics', id: 'topics', route: false },
-    { label: 'Portfolio', href: '#works', id: 'works', route: false },
+    { label: 'Capabilities', href: '#topics', id: 'topics', route: false },
+    { label: 'Projects', href: '#works', id: 'works', route: false },
     { label: 'Services', href: '#services', id: 'services', route: false },
-    { label: 'About Me', href: '#about', id: 'about', route: false },
+    { label: 'About & Credentials', href: '#about', id: 'about', route: false },
     { label: 'Tech Stack', href: '#tech', id: 'tech', route: false },
-    { label: 'Journal', href: '/blog', id: 'journal', route: true },
     { label: 'Contact', href: '#contact', id: 'contact', route: false }
   ];
 
@@ -81,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
                 Arif <span className="color-linear">Ahmad Khan</span>
               </span>
               <span className="hidden sm:block text-[10px] text-[#94a9c9] tracking-wider uppercase font-medium -mt-1">
-                Software Engineer
+                AI Engineer &middot; Autonomous Systems
               </span>
             </div>
           </Link>
@@ -135,12 +134,10 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="sr-only">Toggle theme</span>
             </button>
 
-            {/* GenZ Signature Linear CTA Button */}
-            {/* Wrapped, because .btn-linear-small sets display:inline-flex in
-                plain CSS and would win over the `hidden` utility. */}
+            {/* Signature Linear CTA Button */}
             <span className="hidden sm:block">
               <a href={sectionHref('#contact')} className="btn-linear-small">
-                <span>Get in Touch</span>
+                <span>Contact Me</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </span>

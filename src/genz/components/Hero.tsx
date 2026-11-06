@@ -1,211 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Zap, Bot, PhoneCall, Database, Globe } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Bot, Database, Globe, Zap, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import WhatsAppIcon from '../../components/ui/WhatsAppIcon';
 
 export const Hero: React.FC = () => {
-  const titles = [
-    'Software Engineer',
-    'AI Agents Architect',
-    'Full-Stack Developer',
-    'Automation Specialist'
-  ];
-
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypSpeed] = useState(120);
-  const [quickInput, setQuickInput] = useState('');
-  const [submittedMessage, setSubmittedMessage] = useState(false);
-
-  // Typewriter effect matching GenZ demo
-  useEffect(() => {
-    const currentTitle = titles[titleIndex];
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        setDisplayText(currentTitle.substring(0, displayText.length + 1));
-        if (displayText.length + 1 === currentTitle.length) {
-          // Pause at end
-          setTimeout(() => setIsDeleting(true), 1800);
-        }
-      } else {
-        setDisplayText(currentTitle.substring(0, displayText.length - 1));
-        if (displayText.length === 0) {
-          setIsDeleting(false);
-          setTitleIndex((prev) => (prev + 1) % titles.length);
-        }
-      }
-    }, isDeleting ? 60 : typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, titleIndex, typingSpeed]);
-
-  const handleQuickSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!quickInput.trim()) return;
-    setSubmittedMessage(true);
-    setTimeout(() => {
-      const whatsappUrl = `https://wa.me/923438992587?text=${encodeURIComponent(
-        `Hi Arif, I'm reaching out from your portfolio: "${quickInput}"`
-      )}`;
-      window.open(whatsappUrl, '_blank');
-      setSubmittedMessage(false);
-      setQuickInput('');
-    }, 800);
-  };
-
-  // Bubbles seated on the portrait ring, one per core domain.
+  // Bubbles seated on the portrait ring, one per core engineering domain
   const skillOrbit = [
-    { Icon: Bot, label: 'AI Agents', pos: 'top-[12%] -left-[3%] sm:top-[13%] sm:-left-[2%]' },
-    { Icon: Globe, label: 'Web & App Development', pos: 'top-[12%] -right-[3%] sm:top-[13%] sm:-right-[2%]' },
-    { Icon: PhoneCall, label: 'AI Calling Agents', pos: 'bottom-[18%] -left-[6%] sm:bottom-[19%] sm:-left-[5%]' },
-    { Icon: Zap, label: 'Workflow Automation', pos: 'bottom-[18%] -right-[6%] sm:bottom-[19%] sm:-right-[5%]' }
+    { Icon: Bot, label: 'LangGraph and Multi-Agent Systems', pos: 'top-[8%] -left-[4%] sm:top-[10%] sm:-left-[3%]' },
+    { Icon: Database, label: 'RAG and Vector Retrieval', pos: 'top-[8%] -right-[4%] sm:top-[10%] sm:-right-[3%]' },
+    { Icon: Globe, label: 'Computer Vision at 92 FPS', pos: 'bottom-[14%] -left-[6%] sm:bottom-[16%] sm:-left-[5%]' },
+    { Icon: Zap, label: 'Enterprise Cloud Automation', pos: 'bottom-[14%] -right-[6%] sm:bottom-[16%] sm:-right-[5%]' }
   ];
 
   const domainCategories = [
     {
       title: 'Autonomous AI Agents',
-      count: 'Case studies',
+      count: 'Production',
       icon: Bot,
-      color: 'from-cyan-500 to-blue-500',
-      tag: 'LangGraph & CrewAI'
+      tag: 'LangGraph, LangChain and Multi-Agent Orchestration'
     },
     {
-      title: 'Full-Stack Web Apps',
-      count: 'Web & mobile',
-      icon: Globe,
-      color: 'from-blue-500 to-indigo-500',
-      tag: 'Next.js & React 19'
-    },
-    {
-      title: 'Workflow Automation',
-      count: 'Pipelines',
-      icon: Zap,
-      color: 'from-teal-400 to-cyan-500',
-      tag: 'n8n, Make & Webhooks'
-    },
-    {
-      title: 'AI Calling & Voice Bots',
-      count: 'Voice AI',
-      icon: PhoneCall,
-      color: 'from-sky-400 to-blue-600',
-      tag: 'Twilio & Retell AI'
-    },
-    {
-      title: 'API & Microservices',
-      count: 'Backend',
+      title: 'Enterprise RAG Systems',
+      count: 'Grounded',
       icon: Database,
-      color: 'from-emerald-400 to-teal-500',
-      tag: 'FastAPI & Postgres'
+      tag: 'Pinecone, FAISS and Verifiable Factual Retrieval'
+    },
+    {
+      title: 'Computer Vision & Edge AI',
+      count: '92 FPS',
+      icon: Globe,
+      tag: 'Quantized YOLO, Depth Anything V2 and OpenVINO'
+    },
+    {
+      title: 'Enterprise Process Automation',
+      count: 'Azure',
+      icon: Zap,
+      tag: 'Microsoft Power Platform, Azure and n8n Pipelines'
+    },
+    {
+      title: 'Scalable Backends & APIs',
+      count: 'High Throughput',
+      icon: Database,
+      tag: 'FastAPI, React 19, TypeScript and PostgreSQL'
     }
   ];
 
   return (
     <section id="home" className="relative pt-32 pb-16 overflow-hidden">
-      {/* GenZ Ambient glow backgrounds */}
+      {/* Ambient background glows */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#0ea5ea]/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-40 right-10 w-96 h-96 bg-[#0bd1d1]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Hero Banner */}
+        {/* Main Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column Text */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#131c31] border border-[#222f43] text-xs font-semibold tracking-wider text-[#0bd1d1] uppercase">
               <span className="pulse-dot" />
-              <span>Available for Hire & Consulting</span>
+              <span>AI Engineer &middot; Agentic AI and RAG Systems</span>
             </div>
 
             <div>
-              <span className="block text-sm sm:text-base font-bold text-[#7f92b0] tracking-wider uppercase mb-2">
-                Introducing
+              <span className="block text-xs sm:text-sm font-semibold text-[#7f92b0] tracking-wider uppercase mb-2">
+                Portfolio and Technical Case Studies
               </span>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#f0f5fd] tracking-tight leading-tight">
-                Hello, <br className="hidden sm:inline" />
-                I’m <span className="color-linear">{displayText}</span>
-                <span className="inline-block w-1 h-8 sm:h-12 bg-[#0bd1d1] ml-1.5 animate-pulse align-middle" />
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#f0f5fd] tracking-tight leading-tight">
+                Arif Ahmad Khan
               </h1>
+              <p className="text-xl sm:text-2xl font-bold text-[#0bd1d1] mt-2 tracking-tight">
+                Designing and Deploying Autonomous AI Architectures
+              </p>
             </div>
 
             <p className="text-[#94a9c9] text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-              AI Engineer with a real zeal for building production multi-agent systems, autonomous workflow automations, and intelligent web applications that generate real business results.
+              AI Engineer specializing in agentic systems, Retrieval-Augmented Generation, and production LLM application backends. Experienced in deploying autonomous multi-agent workflows with LangGraph, scalable FastAPI microservices, and enterprise automation on Microsoft Azure and Power Platform.
             </p>
 
-            {/* GenZ Subscriber / Fast Project Inquiry Box */}
-            <div className="pt-2">
-              <form onSubmit={handleQuickSubmit} className="inner-subscriber max-w-xl">
-                <input
-                  type="text"
-                  value={quickInput}
-                  onChange={(e) => setQuickInput(e.target.value)}
-                  placeholder="Drop your project idea or email..."
-                  className="w-full bg-transparent text-sm text-white placeholder-[#7f92b0] px-3 focus:outline-hidden"
-                />
-                <button
-                  type="submit"
-                  className="btn-linear shrink-0"
-                >
-                  {submittedMessage ? (
-                    <span>Opening WhatsApp...</span>
-                  ) : (
-                    <>
-                      <span>Get in Touch</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              </form>
-              <div className="flex items-center gap-4 mt-3 text-xs text-[#66768f]">
-                <span>⚡ Straight to WhatsApp</span>
-                <span>•</span>
-                <span>Zero-obligation consultation</span>
-              </div>
-            </div>
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+              <a href="#works" className="btn-linear">
+                <span>View Engineering Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
 
-            {/* Action Buttons: Bilal Faiz Style */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3">
-              <a
-                href="#contact"
-                className="btn-linear font-bold text-[#0f172a] shadow-lg shadow-amber-500/20"
-                style={{
-                  background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
-                  color: '#0f172a'
-                }}
-              >
+              <a href="#contact" className="btn-border-linear">
                 <span>Contact Me</span>
-                <ArrowRight className="w-4 h-4 text-[#0f172a]" />
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[#222f43] bg-[#131c31] text-xs font-semibold text-[#94a9c9] hover:text-white hover:border-[#0ea5ea] transition-all"
+                title="Download Curriculum Vitae"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Curriculum Vitae</span>
               </a>
 
               <a
                 href={PERSONAL_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all shadow-lg hover:scale-105"
-                title="Chat on WhatsApp"
+                className="flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all shadow-md hover:scale-105"
+                title="Direct WhatsApp Communication"
               >
-                <WhatsAppIcon className="w-6 h-6" />
-              </a>
-
-              <a href="#works" className="btn-border-linear">
-                <span>Explore Projects</span>
-                <ArrowRight className="w-4 h-4" />
+                <WhatsAppIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Right Column: portrait ringed by the domains he works in */}
+          {/* Right Column: Prominent Portrait Ringed with Orbit Badges */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
             <div className="relative w-[320px] h-[320px] sm:w-[390px] sm:h-[390px] lg:w-[440px] lg:h-[440px]">
-              {/* Ambient glow */}
+              {/* Ambient halo glow */}
               <div className="absolute inset-4 -z-10 rounded-full bg-gradient-to-tr from-[#10b981]/30 via-[#0ea5ea]/25 to-[#0bd1d1]/20 blur-[75px]" />
 
-              {/* Gradient ring: outer gradient disc with the page colour punched out */}
+              {/* Gradient ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[#10b981] via-[#0ea5ea] to-[#0bd1d1]/40 p-[12px] sm:p-[16px] shadow-2xl shadow-emerald-950/40">
                 <div className="h-full w-full rounded-full" style={{ backgroundColor: "var(--theme-bg)" }} />
               </div>
 
-              {/* Portrait sits inside the ring */}
+              {/* Centered Portrait */}
               <picture className="absolute inset-[22px] sm:inset-[28px] h-[calc(100%-44px)] w-[calc(100%-44px)] sm:h-[calc(100%-56px)] sm:w-[calc(100%-56px)]">
                 <source type="image/webp" srcSet={`${PERSONAL_INFO.avatarSmallUrl} 560w, ${PERSONAL_INFO.avatarUrl} 960w`} />
                 <img
@@ -229,14 +147,14 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* GenZ Hot Domains / Topics Bar */}
+        {/* Core Domains & Capabilities Bar */}
         <div id="topics" className="mt-16 card-hover-border bg-[#131c31] border-[#222f43] p-6 sm:p-8 rounded-3xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Left Header */}
             <div className="lg:col-span-3 space-y-2">
-              <h3 className="text-xl font-bold text-white">Core Domains</h3>
+              <h3 className="text-xl font-bold text-white">Core Capabilities</h3>
               <p className="text-xs sm:text-sm text-[#94a9c9] leading-relaxed">
-                Specialized engineering capabilities tailored for high-scale businesses.
+                Specialized engineering capabilities across multi-agent AI, edge computer vision, and enterprise automation.
               </p>
               <div className="pt-2">
                 <a href="#services" className="text-xs font-bold color-linear inline-flex items-center gap-1 hover:underline">

@@ -11,7 +11,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [featuredIdx, setFeaturedIdx] = useState<number>(0);
 
-  const categories = ['All', 'AI Agents', 'Automation', 'Voice AI', 'Chatbots'];
+  const categories = ['All', 'Computer Vision', 'AI Agents', 'Automation', 'Voice AI', 'Chatbots'];
 
   const filteredProjects = activeCategory === 'All'
     ? PROJECTS
@@ -30,6 +30,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
   // Self-hosted thumbnails, one per project, so nothing repeats and the page
   // never depends on a third-party image host being up.
   const PROJECT_IMAGES: Record<string, string> = {
+    'spatial-ai-vision-assistant': '/covers/spatial-ai-vision-assistant.webp',
     'agentcraft-lead-agent': '/covers/agentcraft-lead-agent.webp',
     'contract-iq': '/covers/contract-iq.webp',
     'vivagraph-ai': '/covers/vivagraph-ai.webp',
@@ -47,20 +48,20 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onSelectProject })
   return (
     <section id="works" className="relative py-24 border-t border-[#222f43]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* GenZ Section Header */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#131c31] border border-[#222f43] text-xs font-semibold text-[#0bd1d1] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#0ea5ea]" />
-              <span>Engineered Systems & Case Studies</span>
+              <span className="pulse-dot" />
+              <span>Production Systems & Architecture Case Studies</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              My <span className="color-linear">Latest Projects</span>
+              Selected <span className="color-linear">Technical Projects</span>
             </h2>
           </div>
 
           <p className="max-w-md text-sm text-[#94a9c9] leading-relaxed">
-            Multi-agent orchestrations, conversational voice bots, and automated business workflows delivered with verifiable enterprise metrics.
+            Multi-agent orchestrations, edge computer vision pipelines, and automated enterprise workflows deployed with verifiable engineering metrics.
           </p>
         </div>
 

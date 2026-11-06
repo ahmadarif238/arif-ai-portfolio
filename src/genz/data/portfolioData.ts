@@ -17,29 +17,32 @@ export const PERSONAL_INFO = {
   monogram: 'AK',
   role: 'AI Engineer',
   tagline: 'AI Engineer | Agentic AI & RAG Systems',
-  headline: 'Intelligent software that works for you',
-  shortBio: 'I build production AI agents, RAG systems and the apps around them, so repetitive work runs itself and your team can focus on growth.',
-  extendedBio: "I'm an AI Engineer specialising in agentic AI and Retrieval-Augmented Generation (RAG). I build production multi-agent workflows with LangGraph and LangChain, scalable APIs with FastAPI, and enterprise process automation on Microsoft Power Platform and Azure. I have independently designed, shipped and operated autonomous agents that solve real operational problems, from sales lead generation and customer ordering to legal document review and internal tax and finance workflows, and I build the React, Node.js and TypeScript dashboards teams use to run them.",
+  headline: 'Engineering Autonomous Agentic Systems and Enterprise RAG Architectures',
+  shortBio: 'AI Engineer specializing in agentic systems, Retrieval-Augmented Generation, and large language model backends. Experienced in deploying production multi-agent architectures with LangGraph, scalable FastAPI services, and enterprise process automation on Microsoft Azure and Power Platform.',
+  extendedBio: 'AI Engineer specializing in agentic systems, retrieval-augmented generation (RAG), and large language model application backends. Designs and deploys production multi-agent architectures using LangGraph and LangChain, with scalable FastAPI services grounded in vector search. Has independently built and deployed seven end-to-end agentic AI systems spanning computer vision, legal document analysis, sales automation, conversational ordering, and IT operations, several of which operate autonomously in live production environments.',
+  researchInterests: 'Agentic reasoning and long-horizon autonomy in large language models, including planning, tool use, and self-correction across extended task execution; memory architectures and context management for persistent, stateful agents; multi-agent coordination protocols and emergent collaborative behavior; inference-time reasoning and test-time compute scaling; evaluation and interpretability of agentic systems, with emphasis on verifiable reasoning traces, reward model alignment, and reliability under real-world deployment conditions.',
   location: 'Pakistan',
-  status: 'AVAILABLE FOR WORK',
+  status: 'Available for Selected Projects',
   year: '2026',
   email: 'ahmadarif238@gmail.com',
   phone: '+92 343 8992587',
   whatsappNumber: '923438992587',
-  whatsappUrl: 'https://wa.me/923438992587?text=Hi%20Arif,%20I%20found%20you%20through%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.',
+  whatsappUrl: 'https://wa.me/923438992587?text=Hello%20Arif,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20AI%20engineering%20engagement.',
   githubUrl: 'https://github.com/ahmadarif238',
   linkedinUrl: 'https://www.linkedin.com/in/arif-a-0b853580',
   avatarUrl: '/portrait.webp',
   avatarSmallUrl: '/portrait-sm.webp',
-  avatarFallbackUrl: '/portrait.jpg'
+  avatarFallbackUrl: '/portrait.jpg',
+  completedProjects: '7+ Autonomous Systems',
+  hoursSavedWeekly: '60% Research Time Cut'
 };
 
 /** Headline numbers for the About section. Every one traces back to a line in the resume. */
 export const ABOUT_STATS = [
-  { value: '2', label: 'Agents live in daily production' },
-  { value: '~80', label: 'Personalised emails sent / day' },
-  { value: '60%', label: 'Sales research time cut' },
-  { value: '3', label: 'Languages one agent speaks' }
+  { value: '7+', label: 'Production AI Systems Deployed' },
+  { value: '92 FPS', label: 'Computer Vision Edge Inference' },
+  { value: '60%', label: 'Research and Processing Time Cut' },
+  { value: '3.65', label: 'BS Software Engineering GPA' }
 ];
 
 export const THEME_COLOR_PRESETS: ThemeColorPreset[] = [
@@ -102,360 +105,401 @@ export const THEME_COLOR_PRESETS: ThemeColorPreset[] = [
 ];
 
 export const MARQUEE_ITEMS = [
-  'Web Development',
-  'App Development',
-  'AI Agents',
-  'Chatbot Development',
-  'AI Calling Agents',
-  'Workflow Automation',
-  'AI Integration',
   'Multi-Agent Systems',
-  'RAG Knowledge Bases',
-  'FastAPI & Next.js'
+  'LangGraph & LangChain',
+  'Enterprise RAG Architectures',
+  'FastAPI Microservices',
+  'Edge Computer Vision at 92 FPS',
+  'Microsoft Power Platform & Azure',
+  'Zero-Hallucination Grounding',
+  'Autonomous Workflow Pipelines',
+  'Vector Search & Pinecone',
+  'React 19 & TypeScript'
 ];
 
 export const PROJECTS: Project[] = [
   {
-    id: 'agentcraft-lead-agent',
-    title: 'Client-Hunting Agent',
-    tagline: 'Finding, Qualifying and Emailing Prospects on Autopilot',
-    category: 'Automation',
-    description: 'A production agent built for AgentCraft AI Automations. It scrapes Google Maps for US businesses such as dentists, law firms and real estate agencies, reads each website, and judges where AI automation, a chatbot, an AI receptionist or a new website would help. It then writes and sends personalised cold emails and follow-ups, and alerts the decision-makers the moment a prospect replies.',
-    problem: 'Finding the right small businesses to pitch, working out what each one actually needs, and writing a relevant email to every one of them is slow manual work that a small agency cannot keep up with.',
-    solution: 'An autonomous pipeline that discovers businesses, audits each website for specific automation and web gaps, drafts a personalised email around that gap, handles follow-ups, stores every contact detail, and escalates replies straight to a human.',
+    id: 'spatial-ai-vision-assistant',
+    title: 'Spatial AI Vision Assistant',
+    tagline: 'Real-Time Hazard Detection and Edge Scene Reasoning for the Visually Impaired',
+    category: 'Computer Vision',
+    description: 'A real-time hazard detection pipeline combining quantized YOLO architectures with Depth Anything V2 INT8 ONNX monocular depth estimation to detect obstacles and ground drop-offs across left, center, and right spatial corridors. Optimized for CPU inference using OpenVINO and ONNX Runtime to reach 92 FPS with sub-15ms latency over WebSockets. Deployed as a WCAG AAA compliant Progressive Web App with Groq scene reasoning and a specialized Silent Until Danger alert engine.',
+    problem: 'Visual assistance tools require sub-second latency to prevent real-world collisions, but executing depth estimation alongside multi-class object detection on consumer edge hardware typically causes severe latency, device overheating, and excessive false alerts.',
+    solution: 'Engineered an asynchronous edge-optimized inference pipeline pairing INT8 quantized models with OpenVINO acceleration, streaming video frames over WebSockets at 92 FPS and activating scene reasoning alerts strictly when obstacles enter immediate navigation corridors.',
     metrics: [
-      { value: '~80', label: 'Personalised emails / day' },
-      { value: 'Daily', label: 'Production use' },
-      { value: 'Instant', label: 'Reply escalation' }
+      { value: '92 FPS', label: 'CPU Inference Speed' },
+      { value: '<15 ms', label: 'End-to-End Latency' },
+      { value: 'WCAG AAA', label: 'Accessibility Standard' }
     ],
     workflow: [
-      'Scrape Google Maps for US businesses in target niches.',
-      'Pull each website and evaluate it for automation, chatbot, AI receptionist or web gaps.',
-      'Draft and send a personalised cold email and follow-ups around that specific gap.',
-      'Store contact details and email the decision-makers the moment a prospect replies.'
+      'Capture video streams directly on client hardware via high-throughput WebSockets.',
+      'Execute quantized YOLO obstacle detection and Depth Anything V2 monocular depth estimation in parallel.',
+      'Segment obstacles into spatial navigation corridors and detect elevation drop-offs.',
+      'Trigger Groq scene reasoning and contextual audio guidance via the Silent Until Danger heuristic.'
     ],
     architecture: [
-      { id: 'maps', label: 'Google Maps Scraper', type: 'input', color: '#ff488b' },
-      { id: 'site', label: 'Website Fetcher', type: 'process', color: '#ff488b' },
-      { id: 'audit', label: 'Gap Evaluator', type: 'agent', color: '#ff488b' },
-      { id: 'writer', label: 'Email Writer', type: 'agent', color: '#ff488b' },
-      { id: 'crm', label: 'Contact Store', type: 'process', color: '#ff488b' },
-      { id: 'alert', label: 'Reply Alerts', type: 'output', color: '#ff488b' }
+      { id: 'cam', label: 'Camera Input / WebSockets', type: 'input', color: '#10b981' },
+      { id: 'yolo', label: 'Quantized YOLO Detection', type: 'process', color: '#0ea5ea' },
+      { id: 'depth', label: 'Depth Anything V2 INT8', type: 'process', color: '#0ea5ea' },
+      { id: 'corridor', label: 'Spatial Corridor Mapper', type: 'agent', color: '#0bd1d1' },
+      { id: 'groq', label: 'Groq Scene Reasoning', type: 'agent', color: '#0ea5ea' },
+      { id: 'alert', label: 'Audio Alert Engine', type: 'output', color: '#10b981' }
     ],
     features: [
-      'Niche-targeted Google Maps prospecting',
-      'Per-website opportunity analysis',
-      'LLM-personalised outreach and follow-ups',
-      'Instant reply alerts to decision-makers'
+      'Sub-15ms inference latency at 92 FPS using OpenVINO and ONNX Runtime',
+      'Dual-model architecture with monocular depth estimation and spatial corridor hazard mapping',
+      'WCAG AAA accessible progressive web app interface',
+      'Contextual Groq LLM scene reasoning for complex environment interpretation'
     ],
-    techStack: ['Python', 'Web Scraping', 'LLM Personalisation', 'Email Automation'],
-    liveUrl: null,
-    githubUrl: null,
-    stats: 'Primary client-acquisition channel',
-    featured: true
-  },
-  {
-    id: 'whatsapp-ordering-agent',
-    title: 'WhatsApp Ordering Agent',
-    tagline: 'Taking Food Orders in English, Urdu and Roman Urdu',
-    category: 'Chatbots',
-    description: 'A production WhatsApp agent for a local fast-food business. It knows the full menu, prices, images and videos, chats with customers in English, Urdu and Roman Urdu, transcribes voice-note orders, and takes each order through to placement. Staff confirm orders into the kitchen from a companion dashboard, and customers get live status updates back on WhatsApp.',
-    problem: 'Orders arrived as a flood of WhatsApp texts and voice notes in mixed languages, and staff had to read, reply to and relay every one by hand during the busiest hours.',
-    solution: 'An LLM agent on the WhatsApp API that understands text and voice in three languages and places complete orders, paired with a React and Node.js dashboard for the kitchen that pushes real-time status back to the customer.',
-    metrics: [
-      { value: '3', label: 'Languages understood' },
-      { value: 'Voice', label: 'Notes turned into orders' },
-      { value: 'Live', label: 'Order status to customers' }
-    ],
-    workflow: [
-      'Customer messages or sends a voice note on WhatsApp.',
-      'Speech-to-text transcribes voice orders; the agent answers from the full menu.',
-      'The agent confirms items and prices and places the order.',
-      'Staff accept it on the dashboard and status updates flow back to the customer.'
-    ],
-    architecture: [
-      { id: 'wa', label: 'WhatsApp API', type: 'input', color: '#ff488b' },
-      { id: 'stt', label: 'Speech-to-Text', type: 'process', color: '#ff488b' },
-      { id: 'agent', label: 'Ordering Agent', type: 'agent', color: '#ff488b' },
-      { id: 'menu', label: 'Menu Knowledge', type: 'process', color: '#ff488b' },
-      { id: 'dash', label: 'Kitchen Dashboard', type: 'output', color: '#ff488b' }
-    ],
-    features: [
-      'English, Urdu and Roman Urdu conversations',
-      'Voice-note order transcription',
-      'Menu, pricing, image and video knowledge',
-      'Real-time status updates on WhatsApp'
-    ],
-    techStack: ['WhatsApp API', 'LLM', 'Speech-to-Text', 'React', 'Node.js'],
-    liveUrl: null,
-    githubUrl: null,
-    stats: 'Live orders handled daily',
+    techStack: ['Python', 'OpenCV', 'OpenVINO', 'ONNX Runtime', 'FastAPI', 'Groq', 'WebSockets', 'React'],
+    liveUrl: 'https://ai-vision-assistant-fyp.vercel.app',
+    githubUrl: 'https://github.com/ahmadarif238/ai-vision-assistant-fyp',
+    stats: 'Final Year Engineering Project',
     featured: true
   },
   {
     id: 'contract-iq',
-    title: 'ContractIQ',
-    tagline: 'Contract Review, Handled Automatically',
+    title: 'ContractIQ: Legal Agreement Analysis',
+    tagline: 'Autonomous Multi-Agent System with Zero-Hallucination Legal Grounding',
     category: 'AI Agents',
-    description: 'An autonomous multi-agent system with a zero-hallucination architecture that analyses, verifies and benchmarks complex legal agreements. Specialised agents keep risk reasoning separate from clause and lifecycle extraction, so outputs stay traceable and false positives drop. Every answer links back to the exact paragraph it came from.',
-    problem: 'Lawyers waste hours searching for specific clauses across thousands of files. Comparing vendor drafts against company standards is manual and error-prone, and traditional AI tools often invent numbers and dates.',
-    solution: 'A multi-agent system with Vault Intelligence for global semantic search, Intelligent Benchmarking for side-by-side comparison, and a custom "Factual Enforcer" layer that prevents the agent from inventing data.',
+    description: 'An autonomous multi-agent system engineered with a zero-hallucination architecture to analyze, verify, and benchmark complex legal agreements. Specialized sub-agents decouple risk evaluation from clause and lifecycle extraction, ensuring every output remains strictly traceable to source paragraphs and substantially reducing false positives.',
+    problem: 'Legal professionals expend significant time manually verifying clauses across large document repositories. Comparing counterparty drafts against standard playbooks is error-prone, while standard language models frequently hallucinate clauses, dates, and liability caps.',
+    solution: 'Constructed an agentic workflow featuring Vault Intelligence for high-dimensional semantic search, an automated Benchmarking Agent for side-by-side deviations, and a deterministic Factual Enforcer layer that validates all claims against source citations before presentation.',
     metrics: [
-      { value: '100%', label: 'Sourced Answers' },
-      { value: '4', label: 'Review Stages' },
-      { value: '<2s', label: 'Query Response Time' }
+      { value: '100%', label: 'Traceable Citations' },
+      { value: '4', label: 'Specialized Agent Stages' },
+      { value: '<2s', label: 'Query Response Latency' }
     ],
     workflow: [
-      'Index entire contract repository into Pinecone Vector Store.',
-      'Perform global semantic search across all indexed legal documents.',
-      'Compare contracts side-by-side to identify deviations and risk mismatches.',
-      'Enforce strict factual grounding with clickable source citations.'
+      'Ingest and chunk complex legal contracts into Pinecone Vector Store.',
+      'Execute high-recall semantic search across indexed agreement repositories.',
+      'Conduct side-by-side clause benchmarking against predefined risk playbooks.',
+      'Validate outputs through a deterministic Factual Enforcer with clickable line-item citations.'
     ],
     architecture: [
-      { id: 'upload', label: 'Document Upload', type: 'input', color: '#6366f1' },
-      { id: 'indexer', label: 'Pinecone Indexer', type: 'process', color: '#8b5cf6' },
-      { id: 'vault', label: 'Vault Intelligence', type: 'agent', color: '#6366f1' },
+      { id: 'upload', label: 'Document Ingestion', type: 'input', color: '#6366f1' },
+      { id: 'indexer', label: 'Pinecone Vector Indexer', type: 'process', color: '#8b5cf6' },
+      { id: 'vault', label: 'Vault Intelligence Agent', type: 'agent', color: '#6366f1' },
       { id: 'benchmark', label: 'Benchmarking Agent', type: 'agent', color: '#a855f7' },
-      { id: 'enforcer', label: 'Factual Enforcer', type: 'agent', color: '#22c55e' },
-      { id: 'output', label: 'Cited Report', type: 'output', color: '#10b981' }
+      { id: 'enforcer', label: 'Factual Enforcer Layer', type: 'agent', color: '#22c55e' },
+      { id: 'output', label: 'Verified Report', type: 'output', color: '#10b981' }
     ],
     features: [
-      'Vault Intelligence (RAG at Scale)',
-      'Intelligent Benchmarking & Comparison',
-      'Zero-Hallucination Architecture',
-      'Clickable Source Citations'
+      'Vault Intelligence semantic retrieval at scale',
+      'Side-by-side contract benchmarking and deviation scoring',
+      'Zero-hallucination architecture with verifiable reasoning traces',
+      'Direct line-level paragraph citations'
     ],
     techStack: ['LangGraph', 'FastAPI', 'Pinecone', 'Cerebras', 'React', 'Docker'],
     liveUrl: 'https://contract-iq-six.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/contract-iq',
-    stats: 'Zero-Hallucination Legal AI',
+    stats: 'Zero-Hallucination Architecture',
+    featured: true
+  },
+  {
+    id: 'agentcraft-lead-agent',
+    title: 'Autonomous Client-Hunting Agent',
+    tagline: 'Production Pipeline Automating Prospect Discovery, Analysis, and Outreach',
+    category: 'Automation',
+    description: 'A production autonomous agent engineered for AgentCraft AI Automations. The system extracts business listings from Google Maps across target US commercial sectors, evaluates each target web property to diagnose technical and operational automation deficits, drafts contextually grounded personalized outreach, and dispatches real-time alerts to decision-makers upon prospect engagement.',
+    problem: 'Target identification, individualized capability auditing, and drafting bespoke outreach across thousands of commercial prospects requires extensive manual labor, creating a severe operational bottleneck in business development.',
+    solution: 'Built an autonomous multi-stage pipeline coordinating web scraping, LLM-based technical gap evaluation, dynamic email personalization, and automated follow-up cadences with instant human-in-the-loop escalation upon prospect response.',
+    metrics: [
+      { value: '~80', label: 'Personalized Dispatches / Day' },
+      { value: 'Daily', label: 'Live Production Operation' },
+      { value: 'Instant', label: 'Reply Escalation' }
+    ],
+    workflow: [
+      'Scrape Google Maps listings across commercial target sectors.',
+      'Extract target websites and execute structured technical audits for automation opportunities.',
+      'Generate context-aware personalized outreach and structured follow-up cadences.',
+      'Persist contact records and route replies directly to decision-maker communication channels.'
+    ],
+    architecture: [
+      { id: 'maps', label: 'Google Maps Pipeline', type: 'input', color: '#0ea5ea' },
+      { id: 'site', label: 'Web Scraper & Parser', type: 'process', color: '#0ea5ea' },
+      { id: 'audit', label: 'Opportunity Evaluator Agent', type: 'agent', color: '#0bd1d1' },
+      { id: 'writer', label: 'Personalization Agent', type: 'agent', color: '#0ea5ea' },
+      { id: 'crm', label: 'Data Persistence Layer', type: 'process', color: '#0ea5ea' },
+      { id: 'alert', label: 'Decision-Maker Alert Router', type: 'output', color: '#10b981' }
+    ],
+    features: [
+      'Targeted geographical and vertical business prospecting',
+      'Automated site audit for technical and conversational deficits',
+      'Context-grounded LLM email generation and scheduling',
+      'Immediate reply notification and CRM synchronization'
+    ],
+    techStack: ['Python', 'FastAPI', 'BeautifulSoup', 'LLM Personalization', 'Email Automation', 'PostgreSQL'],
+    liveUrl: null,
+    githubUrl: 'https://github.com/ahmadarif238',
+    stats: 'Primary Acquisition Channel',
+    featured: true
+  },
+  {
+    id: 'whatsapp-ordering-agent',
+    title: 'WhatsApp Conversational Ordering Agent',
+    tagline: 'Production Conversational Ordering System with Voice Transcription and Operations Dashboard',
+    category: 'Chatbots',
+    description: 'A production conversational agent deployed for a high-volume food service business. The system maintains complete domain knowledge across menus, dynamic pricing, and promotional media, conversing natively with customers across English, Urdu, and Roman Urdu. Features automated voice-note transcription through to complete order execution, paired with a companion React and Node.js operations dashboard for live kitchen confirmation and real-time customer status messaging.',
+    problem: 'High-volume incoming orders across voice messages and fragmented multilingual text chats created severe manual bottlenecks during peak operating hours, leading to delayed order confirmation and fulfillment errors.',
+    solution: 'Constructed an end-to-end conversational pipeline on the WhatsApp Business API integrating automated speech-to-text transcription, context-aware menu reasoning, and an operational React/Node.js fulfillment dashboard with real-time customer push updates.',
+    metrics: [
+      { value: '3', label: 'Languages Supported' },
+      { value: 'Voice-to-Order', label: 'Audio Transcription' },
+      { value: 'Real-time', label: 'Kitchen Synchronization' }
+    ],
+    workflow: [
+      'Ingest customer text messages and audio voice notes via WhatsApp Business Webhooks.',
+      'Transcribe voice notes to text and parse customer intent against menu catalog data.',
+      'Calculate line-item pricing, confirm delivery details, and submit structured order state.',
+      'Relay confirmed order tickets to the kitchen operations dashboard with real-time status dispatch.'
+    ],
+    architecture: [
+      { id: 'wa', label: 'WhatsApp API Gateway', type: 'input', color: '#10b981' },
+      { id: 'stt', label: 'Speech-to-Text Pipeline', type: 'process', color: '#0ea5ea' },
+      { id: 'agent', label: 'Conversational Reasoning Engine', type: 'agent', color: '#0bd1d1' },
+      { id: 'menu', label: 'Menu Catalog & Pricing Store', type: 'process', color: '#0ea5ea' },
+      { id: 'dash', label: 'Kitchen Operations Dashboard', type: 'output', color: '#10b981' }
+    ],
+    features: [
+      'Native multilingual support for English, Urdu, and Roman Urdu',
+      'Automated voice-note audio transcription to structured order tickets',
+      'Context-grounded menu, pricing, and media asset retrieval',
+      'Bidirectional kitchen operations dashboard with live status dispatch'
+    ],
+    techStack: ['WhatsApp API', 'FastAPI', 'Node.js', 'React', 'Speech-to-Text', 'PostgreSQL'],
+    liveUrl: null,
+    githubUrl: null,
+    stats: 'Production Ordering Pipeline',
     featured: true
   },
   {
     id: 'vivagraph-ai',
-    title: 'VivaGraph AI',
-    tagline: 'Practice Interviews That Feel Real',
+    title: 'VivaGraph AI: Oral Examination Simulator',
+    tagline: 'Multi-Agent Cognitive System with Real-Time Acoustic & Semantic Evaluation',
     category: 'Voice AI',
-    description: 'A 7-agent oral exam simulator with real-time voice analysis, filler-word detection and dynamic difficulty adjustment. Its cognitive-core design lets each agent specialise in evaluation, coaching or difficulty tuning while they all share one exam session state.',
-    problem: "Most students fail oral exams not because they don't know the material, but because they panic under questioning. Current AI tools like ChatGPT are too polite and don't simulate real examiner pressure.",
-    solution: 'A multi-agent system with 7 specialized cognitive agents (Chief Examiner, Researcher, Personality, Psychology, Teacher) that simulates realistic exam pressure with voice analysis and adaptive difficulty.',
+    description: 'A multi-agent cognitive architecture featuring a seven-agent core designed to simulate academic oral examinations. The system integrates real-time vocal analysis, filler-word frequency tracking, and dynamic difficulty adjustment, where specialized agents manage questioning, behavioral observation, evaluation, and psychological pressure while sharing a unified state machine.',
+    problem: 'Oral examination preparation lacks scalable, objective simulation tools that accurately emulate panel examination dynamics, cognitive stress, and adaptive technical follow-up questions under time constraints.',
+    solution: 'Designed an interconnected multi-agent framework comprising seven cognitive personas (Chief Examiner, Domain Researcher, Behavioral Assessor, Dynamic Difficulty Tuner) that collaborate across a shared LangGraph session state.',
     metrics: [
-      { value: '7', label: 'Examiner Personas' },
-      { value: 'Real-time', label: 'Voice Analysis' },
-      { value: '3', label: 'Difficulty Modes' }
+      { value: '7', label: 'Specialized Cognitive Agents' },
+      { value: 'Real-Time', label: 'Speech & Semantic Analytics' },
+      { value: 'Adaptive', label: 'Dynamic Difficulty Engine' }
     ],
     workflow: [
-      'Upload study materials for RAG-based question generation.',
-      'Engage in voice-based examination with adaptive AI examiner.',
-      'Real-time analysis of voice confidence, filler words, and response latency.',
-      'Receive detailed performance report card with coaching feedback.'
+      'Ingest candidate syllabus documents and domain literature into vector storage.',
+      'Generate contextual examination questions using multi-agent deliberation.',
+      'Perform real-time audio analysis measuring latency, vocal confidence, and filler words.',
+      'Synthesize structured multi-parameter performance evaluations and diagnostic feedback.'
     ],
     architecture: [
-      { id: 'materials', label: 'Study Materials', type: 'input', color: '#a855f7' },
-      { id: 'rag', label: 'RAG Engine', type: 'process', color: '#8b5cf6' },
-      { id: 'chief', label: 'Chief Examiner', type: 'agent', color: '#c084fc' },
-      { id: 'psychology', label: 'Psychology Agent', type: 'agent', color: '#a855f7' },
-      { id: 'voice', label: 'Voice Analyzer', type: 'agent', color: '#7c3aed' },
-      { id: 'report', label: 'Report Card', type: 'output', color: '#10b981' }
+      { id: 'materials', label: 'Curriculum Ingestion', type: 'input', color: '#a855f7' },
+      { id: 'rag', label: 'Domain Retrieval Engine', type: 'process', color: '#8b5cf6' },
+      { id: 'chief', label: 'Chief Examiner Agent', type: 'agent', color: '#c084fc' },
+      { id: 'psychology', label: 'Behavioral Assessor Agent', type: 'agent', color: '#a855f7' },
+      { id: 'voice', label: 'Acoustic Feature Analyzer', type: 'agent', color: '#7c3aed' },
+      { id: 'report', label: 'Diagnostic Performance Dossier', type: 'output', color: '#10b981' }
     ],
     features: [
-      'Dynamic Difficulty Adjustment',
-      'Voice & Filler Word Analysis',
-      '7-Agent Cognitive Core',
-      'Strict Mode Stress Testing'
+      'Dynamic multi-agent difficulty adjustment based on candidate mastery',
+      'Real-time acoustic analysis covering cadence and filler-word frequency',
+      'Seven-agent collaborative cognitive core architecture',
+      'Comprehensive analytical scorecard and targeted revision roadmaps'
     ],
     techStack: ['LangGraph', 'Groq LPU', 'Cerebras', 'Pinecone', 'Supabase', 'React'],
     liveUrl: 'https://vivagraph-ai.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/vivagraph-ai',
-    stats: '7-Agent Cognitive Architecture'
+    stats: '7-Agent Cognitive Architecture',
+    featured: true
   },
   {
     id: 'ai-sales-automation-agent',
-    title: 'SalesAI: B2B Pipeline',
-    tagline: 'From Search Query to Qualified Lead',
+    title: 'SalesAI: B2B Pipeline Orchestrator',
+    tagline: 'Autonomous 4-Agent Pipeline for Prospect Discovery, Qualification, and Outreach',
     category: 'Automation',
-    description: 'A 4-agent system that automates B2B lead generation, scoring and engagement, with a full-stack orchestration layer coordinating the sub-agents from prospect discovery through to outreach. It cut manual sales research time by 60%.',
-    problem: 'Sales teams spend 60% of their time on manual research, finding emails, and qualifying leads instead of actually selling.',
-    solution: 'An agent-of-agents architecture where a single search query triggers a deterministic pipeline of specialized sub-agents that deliver a qualified, scored, and engaged list of prospects.',
+    description: 'An autonomous multi-agent system coordinating four specialized sub-agents to automate B2B prospect discovery, ICP qualification scoring, and context-personalized outreach generation. The architecture reduced manual prospecting research duration by 60% while maintaining strict data verification standards.',
+    problem: 'Enterprise sales teams commit over 60% of their operational hours to manual prospect identification, verification, and drafting bespoke outreach, constraining actual engagement bandwidth.',
+    solution: 'Constructed an orchestrator-driven multi-agent system executing high-speed web research, firmographic qualification against ideal customer profiles, and personalized outreach synthesis.',
     metrics: [
-      { value: '60%', label: 'Research Time Saved' },
-      { value: '<30s', label: 'Pipeline Execution' },
-      { value: '4', label: 'Pipeline Stages' }
+      { value: '60%', label: 'Manual Research Reduction' },
+      { value: '<30s', label: 'Pipeline Cycle Latency' },
+      { value: '4', label: 'Specialized Sub-Agents' }
     ],
     workflow: [
-      'Input a single search query for target prospects.',
-      'Lead Generation Agent scrapes and aggregates verified data.',
-      'Scoring Agent qualifies and ranks leads based on ICP fit.',
-      'Engagement Agent crafts personalized outreach and follow-ups.'
+      'Ingest target industry specifications and Ideal Customer Profile parameters.',
+      'Scrape and aggregate verified firmographic data across web sources.',
+      'Score and rank candidate prospects via deterministic ICP qualification rules.',
+      'Synthesize contextually personalized outreach drafts and schedule engagement cadences.'
     ],
     architecture: [
-      { id: 'query', label: 'Search Query', type: 'input', color: '#0ea5e9' },
-      { id: 'orchestrator', label: 'Orchestrator Agent', type: 'agent', color: '#38bdf8' },
-      { id: 'leadgen', label: 'Lead Gen Agent', type: 'agent', color: '#0ea5e9' },
-      { id: 'scorer', label: 'Scoring Agent', type: 'agent', color: '#0284c7' },
-      { id: 'engage', label: 'Engagement Agent', type: 'agent', color: '#0369a1' },
-      { id: 'dashboard', label: 'Analytics Dashboard', type: 'output', color: '#22c55e' }
+      { id: 'query', label: 'ICP & Search Ingestion', type: 'input', color: '#0ea5e9' },
+      { id: 'orchestrator', label: 'Pipeline Orchestrator', type: 'agent', color: '#38bdf8' },
+      { id: 'leadgen', label: 'Prospect Discovery Agent', type: 'agent', color: '#0ea5e9' },
+      { id: 'scorer', label: 'ICP Qualification Agent', type: 'agent', color: '#0284c7' },
+      { id: 'engage', label: 'Personalization Agent', type: 'agent', color: '#0369a1' },
+      { id: 'dashboard', label: 'Operations & Analytics UI', type: 'output', color: '#22c55e' }
     ],
     features: [
-      'Agent-of-Agents Architecture',
-      'Automated Lead Scoring',
-      'Personalized Outreach Generation',
-      'Real-time Analytics Dashboard'
+      'Deterministic agent-of-agents orchestration architecture',
+      'Automated qualification scoring aligned with enterprise ICP definitions',
+      'Grounded personalized email synthesis with verifiable company references',
+      'Real-time pipeline analytics dashboard'
     ],
     techStack: ['FastAPI', 'LLaMA 3', 'Groq Cloud', 'React 19', 'TailwindCSS', 'Docker'],
     liveUrl: 'https://ai-sales-automation-agent.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/AI-Sales-Automation-Agent',
-    stats: 'Full Pipeline Automation'
+    stats: 'Full Pipeline Automation',
+    featured: true
   },
   {
     id: 'smart-supply-chain-agent',
-    title: 'Smart Supply Chain Agent',
-    tagline: 'Inventory That Manages Itself',
+    title: 'Autonomous Supply Chain & Procurement Agent',
+    tagline: 'Predictive Stock Replenishment and Algorithmic Negotiation Engine',
     category: 'Automation',
-    description: 'A system that watches stock levels around the clock, predicts what will run out and when, and places purchase orders on its own, negotiating within the budget limits you set, without anyone having to check a spreadsheet.',
-    problem: 'Manual inventory management is prone to human error, leading to overstocking or stockouts and inefficient procurement processes.',
-    solution: 'A 24/7 autonomous agent that forecasts demand using LLMs and Linear Programming, and automates negotiation and purchasing.',
+    description: 'An autonomous multi-stage system that continuously monitors enterprise inventory levels, forecasts replenishment deficits using hybrid linear programming models and LLM reasoning, and conducts automated vendor negotiation within strict capital constraints.',
+    problem: 'Manual inventory monitoring and purchase order negotiation introduce supply latency, stockout vulnerabilities, and capital inefficiencies.',
+    solution: 'Engineered an autonomous agent combining quantitative demand forecasting with dynamic supplier negotiation heuristics and automated ERP synchronization.',
     metrics: [
-      { value: '24/7', label: 'Autonomous Operation' },
-      { value: 'Smart', label: 'Demand Forecasting' },
-      { value: 'Auto', label: 'Budget Negotiation' }
+      { value: '24/7', label: 'Continuous Telemetry' },
+      { value: 'Linear Prog', label: 'Optimization Engine' },
+      { value: 'Automated', label: 'Procurement Dispatch' }
     ],
     workflow: [
-      'Monitor inventory levels continuously.',
-      'Forecast demand using hybrid LLM + Linear Programming engine.',
-      'Autonomously negotiate purchase orders with suppliers.',
-      'Execute procurement within strict budget constraints.'
+      'Ingest continuous stock telemetry across warehouse nodes.',
+      'Forecast replenishment thresholds using linear programming and historical consumption.',
+      'Generate deterministic purchase parameters and conduct structured supplier negotiations.',
+      'Execute verified purchase orders and commit transaction state to relational databases.'
     ],
     architecture: [
-      { id: 'inventory', label: 'Inventory Monitor', type: 'input', color: '#eab308' },
-      { id: 'forecaster', label: 'Demand Forecaster', type: 'agent', color: '#f59e0b' },
-      { id: 'lp', label: 'LP Optimizer', type: 'process', color: '#d97706' },
-      { id: 'negotiator', label: 'Negotiation Agent', type: 'agent', color: '#eab308' },
-      { id: 'procure', label: 'Procurement Agent', type: 'agent', color: '#ca8a04' },
-      { id: 'orders', label: 'Purchase Orders', type: 'output', color: '#22c55e' }
+      { id: 'inventory', label: 'Warehouse Telemetry Feed', type: 'input', color: '#eab308' },
+      { id: 'forecaster', label: 'Demand Forecasting Model', type: 'agent', color: '#f59e0b' },
+      { id: 'lp', label: 'Linear Programming Optimizer', type: 'process', color: '#d97706' },
+      { id: 'negotiator', label: 'Vendor Negotiation Agent', type: 'agent', color: '#eab308' },
+      { id: 'procure', label: 'Order Execution Agent', type: 'agent', color: '#ca8a04' },
+      { id: 'orders', label: 'ERP Commit / Dispatch', type: 'output', color: '#22c55e' }
     ],
     features: [
-      '24/7 Autonomous Operation',
-      'Hybrid Forecasting Engine',
-      'Automated Negotiation',
-      'Budget-Aware Procurement'
+      'Continuous warehouse telemetry monitoring',
+      'Hybrid demand forecasting integrating linear programming',
+      'Algorithmic vendor negotiation adhering to budget constraints',
+      'Direct ERP order commitment and audit logging'
     ],
     techStack: ['Agentic AI', 'LangGraph', 'FastAPI', 'PostgreSQL', 'Docker'],
     liveUrl: 'https://smart-supply-chain-agent.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/Smart-Supply-Chain-Agent',
-    stats: 'Autonomous Negotiation & Forecasting'
+    stats: 'Autonomous Procurement System'
   },
   {
     id: 'stock-news-alert-agent',
-    title: 'Stock News Alert Agent',
-    tagline: 'Market News, Filtered and Delivered',
+    title: 'High-Throughput Financial News Sentiment Pipeline',
+    tagline: 'Real-Time Financial Telemetry Ingestion and Low-Latency Impact Scoring',
     category: 'AI Agents',
-    description: 'An assistant that reads financial news as it breaks, judges whether the sentiment is positive or negative, summarises what it means for the market, and pushes the alert straight to Telegram, so nothing important gets buried in the noise.',
-    problem: 'Traders miss critical market movements due to the sheer volume of financial news and delayed manual analysis.',
-    solution: 'An agent that filters noise, analyzes sentiment instantly using fast inference, and pushes alerts directly to Telegram channels.',
+    description: 'A streaming financial intelligence pipeline that ingests continuous market RSS feeds, computes sentiment polarity using accelerated Groq LPU inference, and dispatches structured impact briefs to high-frequency communication channels.',
+    problem: 'Financial decision-makers confront continuous data overload from real-time news wires, where delayed extraction of directional market signals results in missed execution opportunities.',
+    solution: 'Architected a low-latency sentiment analysis pipeline combining asynchronous RSS scrapers, sub-second LLM inference, and structured telemetry broadcast.',
     metrics: [
-      { value: 'Instant', label: 'Alert Delivery' },
-      { value: 'Real-time', label: 'RSS Monitoring' },
-      { value: 'Auto', label: 'Sentiment Scoring' }
+      { value: '<500ms', label: 'Inference Latency' },
+      { value: 'Real-time', label: 'Feed Monitoring' },
+      { value: 'Automated', label: 'Sentiment Classification' }
     ],
     workflow: [
-      'Parse real-time RSS news feeds from major financial outlets.',
-      'Analyze sentiment and market impact with Groq inference.',
-      'Summarize key actionable insights into concise points.',
-      'Dispatch instant Telegram alerts to dedicated channels.'
+      'Ingest real-time financial RSS wires via asynchronous event listeners.',
+      'Normalize unstructured articles and dispatch to accelerated Groq inference.',
+      'Compute directional market sentiment and extract high-signal tickers.',
+      'Broadcast structured analytical briefs to designated operational channels.'
     ],
     architecture: [
-      { id: 'rss', label: 'RSS News Feeds', type: 'input', color: '#ef4444' },
-      { id: 'parser', label: 'Feed Parser', type: 'process', color: '#f59e0b' },
-      { id: 'sentiment', label: 'Sentiment Analyzer', type: 'agent', color: '#22c55e' },
-      { id: 'summarizer', label: 'Groq Summarizer', type: 'agent', color: '#eab308' },
-      { id: 'telegram', label: 'Telegram Bot', type: 'output', color: '#0ea5e9' }
+      { id: 'rss', label: 'Financial Wire Feeds', type: 'input', color: '#ef4444' },
+      { id: 'parser', label: 'Asynchronous Normalizer', type: 'process', color: '#f59e0b' },
+      { id: 'sentiment', label: 'Sentiment Analysis Engine', type: 'agent', color: '#22c55e' },
+      { id: 'summarizer', label: 'Signal Extraction Agent', type: 'agent', color: '#eab308' },
+      { id: 'telegram', label: 'Channel Broadcast Dispatcher', type: 'output', color: '#0ea5e9' }
     ],
     features: [
-      'Real-time RSS Parsing',
-      'Groq-powered Sentiment Analysis',
-      'Instant Telegram Notifications',
-      'Market Impact Summaries'
+      'Asynchronous financial RSS parsing and deduplication',
+      'Accelerated sentiment scoring using high-speed LPU inference',
+      'Real-time automated Telegram channel alert dissemination',
+      'Concise macro and micro impact synthesis'
     ],
-    techStack: ['Python', 'Groq Models', 'Telegram Bot API', 'RSS'],
+    techStack: ['Python', 'Groq Models', 'FastAPI', 'Telegram API', 'AsyncIO'],
     liveUrl: 'https://stock-news-agent.vercel.app',
     githubUrl: 'https://github.com/ahmadarif238/stock-news-agent',
-    stats: 'Instant Sentiment Alerts'
+    stats: 'Low-Latency Sentiment Pipeline'
   },
   {
     id: 'ai-operations-copilot',
-    title: 'AI Operations Copilot',
-    tagline: 'An Assistant for Your Internal Team',
+    title: 'AI Operations Copilot: Multi-Agent RAG System',
+    tagline: 'Enterprise SOP Retrieval, Log Anomaly Detection, and Automated Ticket Dispatch',
     category: 'Chatbots',
-    description: "An internal assistant trained on a company's own policies and procedures. Staff ask questions in plain language and get accurate answers instantly, while the system watches system logs in the background and raises support tickets before anyone notices a problem.",
-    problem: 'Internal IT teams are overwhelmed with repetitive tickets, policy questions, and manual log monitoring.',
-    solution: 'A multi-agent RAG system that answers policy questions, monitors logs, and identifies issues automatically.',
+    description: 'An enterprise multi-agent RAG system built for internal IT and operational infrastructure. Resolves internal standard operating procedure queries through semantic retrieval, continuously monitors system event logs for anomaly signatures, and automatically synthesizes structured support tickets.',
+    problem: 'Internal engineering and operational teams face high ticket resolution overhead and repetitive procedural queries, while anomalies in production log streams frequently go undetected until service disruption.',
+    solution: 'Deployed a multi-agent RAG platform integrating vector-indexed enterprise SOPs, automated log anomaly detection, and automated ticket synthesis.',
     metrics: [
-      { value: 'Instant', label: 'Policy Answers' },
-      { value: 'Auto', label: 'Ticket Generation' },
-      { value: '3', label: 'Automated Modules' }
+      { value: 'Real-Time', label: 'SOP Grounding' },
+      { value: 'Automated', label: 'Anomaly Ticket Generation' },
+      { value: '3', label: 'Coordinated Modules' }
     ],
     workflow: [
-      'Ingest and index SOPs into Vector DB.',
-      'Retrieve context using Groq Models for precise Q&A.',
-      'Monitor system logs for anomalies and error spikes.',
-      'Auto-generate support tickets for unresolved issues.'
+      'Ingest and chunk internal SOPs and technical documentation into vector indexes.',
+      'Execute high-precision semantic retrieval for contextual operational answers.',
+      'Continuously parse application log streams to isolate anomaly patterns.',
+      'Auto-generate structured incident tickets with source diagnostic context.'
     ],
     architecture: [
-      { id: 'sops', label: 'SOP Documents', type: 'input', color: '#10b981' },
-      { id: 'vectordb', label: 'Vector Database', type: 'process', color: '#34d399' },
-      { id: 'qa', label: 'Q&A Agent', type: 'agent', color: '#10b981' },
-      { id: 'monitor', label: 'Log Monitor', type: 'agent', color: '#059669' },
-      { id: 'tickets', label: 'Ticket Generator', type: 'output', color: '#047857' }
+      { id: 'sops', label: 'Operational Documentation', type: 'input', color: '#10b981' },
+      { id: 'vectordb', label: 'Vector Knowledge Store', type: 'process', color: '#34d399' },
+      { id: 'qa', label: 'Contextual Retrieval Agent', type: 'agent', color: '#10b981' },
+      { id: 'monitor', label: 'Telemetry Log Auditor', type: 'agent', color: '#059669' },
+      { id: 'tickets', label: 'Incident Ticket Router', type: 'output', color: '#047857' }
     ],
     features: [
-      'RAG-based Policy Q&A',
-      'Automated Log Monitoring',
-      'Ticket Generation',
-      'Groq Model Integration'
+      'Semantic retrieval grounded strictly in enterprise documentation',
+      'Automated log anomaly classification and severity scoring',
+      'Structured incident ticket synthesis with diagnostic traces',
+      'FastAPI backend with Redis caching and PostgreSQL persistence'
     ],
-    techStack: ['LangGraph', 'FastAPI', 'RAG', 'Groq Models', 'PostgreSQL', 'Redis'],
+    techStack: ['LangGraph', 'FastAPI', 'Pinecone', 'Groq Models', 'PostgreSQL', 'Redis'],
     liveUrl: null,
     githubUrl: 'https://github.com/ahmadarif238',
-    stats: 'Scalable RAG Architecture'
+    stats: 'Enterprise Operations RAG'
   },
   {
     id: 'voice-enabled-executive-agent',
-    title: 'Voice-Enabled Executive Agent',
-    tagline: 'Run Your Day by Voice',
+    title: 'Voice-Enabled Executive Automation Agent',
+    tagline: 'Acoustic Command Processing and Autonomous Workspace Orchestration',
     category: 'Voice AI',
-    description: 'A voice assistant that handles email, calendar bookings, and web lookups through ordinary spoken requests. Ask it to clear your inbox or move a meeting and it does it, with no clicking through menus and no switching between apps.',
-    problem: 'Executives need a hands-free, efficient way to manage their digital workspace while on the move.',
-    solution: 'A voice-first agent that executes complex tasks like scheduling and emailing through natural conversation.',
+    description: 'A voice-first automation agent combining speech transcription, natural language task decomposition, and Google Workspace API orchestration to execute email triage, calendar conflict resolution, and information retrieval via spoken commands.',
+    problem: 'Knowledge workers lose significant daily bandwidth navigating fragmented user interfaces for routine scheduling, email drafting, and calendar management.',
+    solution: 'Engineered an end-to-end voice processing interface coupling low-latency speech-to-text models with an LLM task execution agent connected to enterprise APIs.',
     metrics: [
-      { value: 'Voice', label: 'First Interface' },
-      { value: '3', label: 'Connected Apps' },
-      { value: 'Real-time', label: 'Processing Speed' }
+      { value: 'Voice-First', label: 'Acoustic Interface' },
+      { value: 'Sub-Second', label: 'Execution Latency' },
+      { value: 'Zero-Click', label: 'Calendar Automation' }
     ],
     workflow: [
-      'Capture voice input via modern audio streaming interface.',
-      'Transcribe and process commands using Groq LLM.',
-      'Execute actions via Google APIs (Gmail, Calendar).',
-      'Synthesize spoken voice confirmation in real-time.'
+      'Stream user audio through acoustic ingestion pipeline.',
+      'Transcribe spoken requests and extract structured action intents.',
+      'Execute corresponding API mutations across email and calendar services.',
+      'Synthesize spoken audio confirmation and update state.'
     ],
     architecture: [
-      { id: 'mic', label: 'Voice Input', type: 'input', color: '#f43f5e' },
-      { id: 'transcribe', label: 'Groq Transcriber', type: 'process', color: '#fb7185' },
-      { id: 'planner', label: 'Task Planner', type: 'agent', color: '#f43f5e' },
-      { id: 'gmail', label: 'Gmail API', type: 'process', color: '#e11d48' },
-      { id: 'calendar', label: 'Calendar API', type: 'process', color: '#be123c' },
-      { id: 'response', label: 'Voice Response', type: 'output', color: '#10b981' }
+      { id: 'mic', label: 'Audio Ingestion Stream', type: 'input', color: '#f43f5e' },
+      { id: 'transcribe', label: 'Whisper Transcription Engine', type: 'process', color: '#fb7185' },
+      { id: 'planner', label: 'Intent Decomposition Agent', type: 'agent', color: '#f43f5e' },
+      { id: 'gmail', label: 'Email API Bridge', type: 'process', color: '#e11d48' },
+      { id: 'calendar', label: 'Calendar API Bridge', type: 'process', color: '#be123c' },
+      { id: 'response', label: 'Audio Feedback Engine', type: 'output', color: '#10b981' }
     ],
     features: [
-      'Voice-to-Action Execution',
-      'Email & Calendar Management',
-      'Real-time Web Search',
-      'Seamless Voice/Text Handoff'
+      'Spoken audio command decomposition and intent extraction',
+      'Automated email inbox triage and drafted responses',
+      'Calendar conflict detection and automated slot scheduling',
+      'Streaming voice confirmation loop'
     ],
-    techStack: ['LangChain', 'Groq LLM', 'Streamlit', 'Google APIs'],
+    techStack: ['LangChain', 'Groq Whisper', 'FastAPI', 'Google Workspace APIs', 'Python'],
     liveUrl: null,
     githubUrl: 'https://github.com/ahmadarif238',
-    stats: 'Real-time Voice Processing'
+    stats: 'Voice Task Orchestration'
   }
 ];
 
@@ -628,10 +672,21 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: 'Present',
     location: 'Remote (International)',
     points: [
-      'Build and manage AI-driven automation workflows on Microsoft Power Automate and the Power Platform, reducing manual processing across internal tax and accounting operations.',
-      'Develop AI-powered virtual agents (Power Virtual Agents) and support enterprise cloud infrastructure on Microsoft Azure.',
-      'Design and deploy intelligent process-automation assistants used across internal teams.',
-      'Develop and ship AI agents, workflows and custom copilots supporting internal tax and financial operations (details confidential due to client financial data).'
+      'Build and manage AI-driven automation workflows on Microsoft Power Automate and Power Platform, reducing manual processing across internal tax and accounting operations.',
+      'Develop AI-powered virtual agents and support enterprise cloud infrastructure on Microsoft Azure.',
+      'Design and deploy intelligent process-automation assistants used across internal operational teams.',
+      'Develop and ship proprietary AI agents, workflows, and custom copilots supporting internal tax and financial operations.'
+    ],
+    isCurrent: true
+  },
+  {
+    role: 'Founder & AI Engineer',
+    company: 'AgentCraft AI Automations',
+    period: '2025 to Present',
+    location: 'Pakistan',
+    points: [
+      'Founded and operate an AI automation studio delivering custom agentic systems, RAG assistants, and workflow automation for client businesses.',
+      'Own the complete delivery lifecycle across discovery, system architecture, implementation, testing, and deployment using LangGraph, FastAPI, and workflow integration platforms.'
     ],
     isCurrent: true
   },
@@ -640,38 +695,42 @@ export const EXPERIENCES: ExperienceItem[] = [
     company: 'ITSOLERA Pvt. Ltd.',
     period: 'Jul 2024 to Oct 2024',
     location: 'Pakistan',
-    points: ['Built real-time pedestrian detection pipelines in Python and OpenCV, robust to low-light, rain and fog conditions.']
+    points: [
+      'Developed real-time pedestrian detection systems in Python and OpenCV, robust to low-light, rain, and fog conditions.',
+      'Built resilient object detection pipelines for complex edge scenarios.',
+      'Contributed to 3D medical imaging reconstruction and cardiovascular disease risk assessment projects based on AI-driven medical image analysis.'
+    ]
   }
 ];
 
 export const EDUCATION: EducationItem[] = [
   {
-    degree: 'BSc Software Engineering',
-    institution: 'University of Malakand',
+    degree: 'B.S., Software Engineering',
+    institution: 'University of Malakand, Pakistan',
     period: '2021 to 2025',
-    gpa: '3.65 / 4.0'
+    gpa: '3.65 / 4.00'
   }
 ];
 
 export const CERTIFICATIONS: CertificationItem[] = [
   {
     name: 'Machine Learning Specialization',
-    issuer: 'Andrew Ng, Coursera',
-    year: '2024'
+    issuer: 'Stanford Online & DeepLearning.AI (Andrew Ng)',
+    year: '2023'
   },
   {
     name: 'Deep Learning Specialization',
-    issuer: 'Andrew Ng, Coursera',
+    issuer: 'DeepLearning.AI (Andrew Ng)',
+    year: '2023'
+  },
+  {
+    name: 'Advanced TensorFlow Coursework',
+    issuer: 'DeepLearning.AI (Google Laurence Moroney)',
     year: '2024'
   },
   {
-    name: 'Understanding Agentic AI',
-    issuer: 'AgentAcademy',
-    year: '2025'
-  },
-  {
-    name: 'Fundamentals of Agents',
-    issuer: 'Hugging Face',
+    name: 'Agentic AI Training',
+    issuer: 'AgentAcademy & Hugging Face',
     year: '2025'
   }
 ];

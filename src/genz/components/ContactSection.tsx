@@ -70,20 +70,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ selectedServiceO
   return (
     <section id="contact" className="relative py-24 border-t border-[#222f43]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* GenZ Section Header */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#131c31] border border-[#222f43] text-xs font-semibold text-[#0bd1d1] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#0ea5ea]" />
-              <span>Let's Build Together</span>
+              <span className="pulse-dot" />
+              <span>Technical Consultation & Project Inquiries</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Get In <span className="color-linear">Touch</span>
+              Contact & <span className="color-linear">Consultation</span>
             </h2>
           </div>
 
           <p className="max-w-md text-sm text-[#94a9c9] leading-relaxed">
-            Have a project in mind or looking to automate your company's workflows? Reach out directly for an immediate reply.
+            Discuss an autonomous AI engineering engagement, custom multi-agent architecture, or enterprise process automation. Direct engineer communication with single-point accountability.
           </p>
         </div>
 
